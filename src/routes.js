@@ -1,5 +1,5 @@
-import Home from './components/Home'
-import Hello from './components/Hello'
+import Home from './pages/Home'
+import Filters from './pages/Filters'
 
 const routes = [
   {
@@ -11,8 +11,8 @@ const routes = [
     component: Home
   },
   {
-    path: '/hello',
-    component: Hello
+    path: '/filter',
+    component: Filters
   }
 ]
 

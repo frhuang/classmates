@@ -1,16 +1,11 @@
 <template>
   <div class="hello">
-    <h1>mint-ui-example</h1>
+    <h1>mint-de</h1>
     <mt-button
       type="primary"
       @click="sheetVisible = true">
       选择操作
     </mt-button>
-    <mt-actionsheet
-      cancel-text=""
-      :actions="actions"
-      :visible.sync="sheetVisible">
-    </mt-actionsheet>
   </div>
 </template>
 

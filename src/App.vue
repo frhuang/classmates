@@ -1,28 +1,43 @@
 <template>
   <div id="app">
+    <router-link class="page-back" v-if="visible" :to="'/'">
+      <i class="mintui mintui-back"></i>
+    </router-link>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
-import Hello from './components/Hello'
-import Home from './components/Home'
-
-export default {
-  name: 'app',
-  components: {
-    Hello,
-    Home
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  html, body {
+    background-color: #fff;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-back {
+    display: inline-block;
+    position: absolute 12px * * 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    i {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
 </style>
+
+<script type="text/babel">
+  export default {
+    computed: {
+      visible() {
+        return ['/'].indexOf(this.$route.path) < 0;
+      }
+    }
+  };
+</script>
