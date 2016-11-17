@@ -1,11 +1,16 @@
 <template id="home">
   <div class="home">
-    <div class="home-container">
-
-    </div>
-    <mt-cell title="小红" isLink></mt-cell>
+    <cell title="测试" isLink></cell>
   </div>
 </template>
+<script>
+import Cell from '../uicomponents/Cell';
+export default {
+  components: {
+    Cell
+  }
+}
+</script>
 <style lang="scss">
   .header{
     font-size: 75px
