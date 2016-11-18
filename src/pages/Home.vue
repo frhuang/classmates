@@ -1,6 +1,9 @@
 <template id="home">
   <div class="home">
-    <cell title="测试" isLink></cell>
+    <cell title="测试" value="我是中间" to="/filter" is-link></cell>
+    <cell title="测试"></cell>
+    <cell title="测试"></cell>
+    <cell title="测试"></cell>
   </div>
 </template>
 <script>
