@@ -1,19 +1,26 @@
 <template>
-  <a class="sx-cell">
-    <span class="sx-cell-mask" v-if="isLink"></span>
-    <div class="sx-cell-wrapper">
-      <div class="sx-cell-title">
+  <a class="pre-cell" :href="href">
+    <span class="pre-cell-mask" v-if="isLink"></span>
+    <div class="pre-cell-left">
+      <slot name="left"></slot>
+    </div>
+    <div class="pre-cell-wrapper">
+      <div class="pre-cell-title">
         <slot name="title">
-          <span v-text="title"></span>
+          <span class="pre-cell-text" v-text="title"></span>
+          <span v-if="label" class="pre-cell-label" v-text="label"></span>
         </slot>
       </div>
-      <div class="sx-cell-value">
-        <slot name="value">
+      <div class="pre-cell-value" :class="{ 'is-link' : isLink }">
+        <slot>
           <span v-text="value"></span>
         </slot>
       </div>
     </div>
-    <i v-if="isLink" class="sx-cell-arrow"></i>
+    <div class="pre-cell-right">
+      <slot name="right"></slot>
+    </div>
+    <i v-if="isLink" class="pre-cell-allow-right"></i>
   </a>
 </template>
 
@@ -42,7 +49,7 @@ function clearPath(path) {
   return path.replace(/\/\//g, '/');
 }
 export default {
-  name: 'sx-cell',
+  name: 'pre-cell',
   props: {
     to: String,
     title: String,

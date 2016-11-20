@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <router-link class="page-back" v-if="visible" :to="'/'">
-      <i class="mintui mintui-back"></i>
-    </router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -16,6 +13,9 @@
 
   a {
     color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
     text-decoration: none;
   }
 

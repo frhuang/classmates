@@ -1,5 +1,6 @@
-import Home from './pages/Home'
-import Filters from './pages/Filters'
+import Home from './pages/Home';
+import Filters from './pages/Filters';
+import NativePlace from './pages/NativePlace'
 
 const routes = [
   {
@@ -13,6 +14,10 @@ const routes = [
   {
     path: '/filter',
     component: Filters
+  },
+  {
+    path: '/nativeplace',
+    component: NativePlace
   }
 ]
 
