@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const router = new VueRouter({
+  mode: 'history',
   base: __dirname,
   routes
 })
@@ -25,21 +26,21 @@ new Vue({
   router
 })
 
-let indexScrollTop = 0;
-router.beforeEach((route, redirect, next) => {
-  if (route.path !== '/') {
-    indexScrollTop = document.body.scrollTop;
-  }
-  document.title = route.meta.title || document.title;
-  next();
-});
-
-router.afterEach(route => {
-  if (route.path !== '/') {
-    document.body.scrollTop = 0;
-  } else {
-    Vue.nextTick(() => {
-      document.body.scrollTop = indexScrollTop;
-    });
-  }
-});
+// let indexScrollTop = 0;
+// router.beforeEach((route, redirect, next) => {
+//   if (route.path !== '/') {
+//     indexScrollTop = document.body.scrollTop;
+//   }
+//   document.title = route.meta.title || document.title;
+//   next();
+// });
+//
+// router.afterEach(route => {
+//   if (route.path !== '/') {
+//     document.body.scrollTop = 0;
+//   } else {
+//     Vue.nextTick(() => {
+//       document.body.scrollTop = indexScrollTop;
+//     });
+//   }
+// });
