@@ -1,9 +1,6 @@
 @import "mixin";
-a, a:hover {
-  text-decoration: none;
-}
-.sxui-cell{
-  background-color: $color-white;
+.pre-cell {
+  background: $color-white;
   box-sizing: border-box;
   color: inherit;
   min-height: 48px;
@@ -11,9 +8,42 @@ a, a:hover {
   overflow: hidden;
   position: relative;
   text-decoration: none;
-  .sxui-cell-wrapper {
+  &:hover {
+    text-decoration: none;
+  }
+  &:first-child {
+    .pre-cell-wrapper {
+      background-origin: border-box;
+    }
+  }
+  &:last-child {
+    background-image: linear-gradient(0deg, $color-grey, $color-grey 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  .pre-cell-mask {
+    &::after {
+      background-color: #000;
+      content: " ";
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &:active::after {
+      opacity: .1;
+    }
+  }
+  img {
+    vertical-align: middle;
+  }
+  .pre-cell-wrapper {
     background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
-    background-size: 120% 1px;
+    background-size: 100% 1px;
     background-repeat: no-repeat;
     background-position: bottom;
     align-items: center;
@@ -26,60 +56,41 @@ a, a:hover {
     padding: 0 10px;
     width: 100%;
   }
-  .sxui-cell-mask {
-    &::after {
-      background-color: #000;
-      content: " ";
-      opacity: 0;
-      position: absolute;
-      top: 0;
-    }
-    &:active::after {
-      opacity: .1;
-    }
-  }
-  .sxui-cell-text {
-    vertical-align: middle;
-  }
-  .sxui-cell-label {
-    color: #888;
-    display: block;
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  img {
-    vertical-align: middle;
-  }
-  .sxui-cell-title {
-    flex: 1;
-  }
-  .sxui-cell-value {
+
+  .pre-cell-value {
     color: $cell-value-color;
-    display: flex;
-    align-items: center;
+    text-align: center;
+    width: 100%;
   }
-  .sxui-cell-left {
+  .pre-cell-title {
+    position: absolute;
+    left:20px;
+  }
+  .pre-cell-left {
     position: absolute;
     height: 100%;
     left: 0;
     transform: translate3d(-100%, 0, 0);
   }
-  .sxui-cell-right {
+  .pre-cell-right {
     position: absolute;
     height: 100%;
     right: 0;
     top: 0;
     transform: translate3d(100%, 0, 0);
   }
-  .sxui-cell-allow-right::after {
-    border: solid 2px $border-color;
-    border-bottom-width: 0;
-    border-left-width: 0;
-    content: " ";
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    size: 5px;
-    transform: translateY(-50%) rotate(45deg);
+  .pre-cell-allow-right {
+    &::after {
+      border: solid 2px $border-color;
+      border-bottom-width: 0;
+      border-left-width: 0;
+      content: " ";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 5px;
+      height: 5px;
+      transform: translateY(-50%) rotate(45deg);
+    }
   }
 }

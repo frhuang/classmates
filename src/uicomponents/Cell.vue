@@ -1,29 +1,26 @@
 <template>
-  <a class="sxui-cell" :href="href">
-    <span class="sxui-cell-mask" v-if="isLink"></span>
-    <div class="sxui-cell-left">
+  <a class="pre-cell" :href="href">
+    <span class="pre-cell-mask" v-if="isLink"></span>
+    <div class="pre-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="sxui-cell-wrapper">
-      <div class="sxui-cell-title">
-        <slot name="icon">
-          <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
-        </slot>
+    <div class="pre-cell-wrapper">
+      <div class="pre-cell-title">
         <slot name="title">
-          <span class="sxui-cell-text" v-text="title"></span>
-          <span v-if="label" class="sxui-cell-label" v-text="label"></span>
+          <span class="pre-cell-text" v-text="title"></span>
+          <span v-if="label" class="pre-cell-label" v-text="label"></span>
         </slot>
       </div>
-      <div class="sxui-cell-value" :class="{ 'is-link' : isLink }">
+      <div class="pre-cell-value" :class="{ 'is-link' : isLink }">
         <slot>
           <span v-text="value"></span>
         </slot>
       </div>
     </div>
-    <div class="sxui-cell-right">
+    <div class="pre-cell-right">
       <slot name="right"></slot>
     </div>
-    <i v-if="isLink" class="sxui-cell-allow-right"></i>
+    <i v-if="isLink" class="pre-cell-allow-right"></i>
   </a>
 </template>
 
@@ -52,7 +49,7 @@ function clearPath(path) {
   return path.replace(/\/\//g, '/');
 }
 export default {
-  name: 'sx-cell',
+  name: 'pre-cell',
   props: {
     to: String,
     title: String,

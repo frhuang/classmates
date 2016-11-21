@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import App from './App'
-import { Button, Cell, Header, Tabbar, TabItem } from 'mint-ui'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routes from './routes'
+import { Header, Cell, Button, Search, Tabbar, TabItem } from 'mint-ui';
 
-Vue.component(Button.name, Button)
-Vue.component(Cell.name, Cell)
-Vue.component(Header.name, Header)
+Vue.component(Header.name, Header);
+Vue.component(Cell.name, Cell);
+Vue.component(Button.name, Button);
+Vue.component(Search.name, Search);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
 Vue.use(VueRouter)

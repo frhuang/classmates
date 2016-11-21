@@ -1,0 +1,26 @@
+@import '../commons/mixin';
+
+.mint-tabbar {
+  height: 1.3333333333333333rem;
+}
+.mint-tab-item {
+  padding: 0;
+  .mint-tab-item-label{
+    line-height: 1.3333333333333333rem;
+    @include font-dpr(16px);
+  }
+}
+.nav-join {
+  background: #09bb07;
+  color: #fff;
+  width: 2.933333333333333rem;
+  @include font-dpr(20px);
+  .mint-tab-item-label {
+    @include font-dpr(20px);
+    font-weight: bold;
+  }
+  &.is-selected {
+    background: #09bb07;
+    color: #fff;
+  }
+}

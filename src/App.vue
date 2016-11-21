@@ -1,34 +1,28 @@
 <template>
   <div id="app">
-    <router-link class="page-back" v-if="visible" :to="'/'">
-      <i class="mintui mintui-back"></i>
-    </router-link>
     <router-view></router-view>
   </div>
 </template>
 
 <style>
+*{
+  margin: 0;
+  padding: 0;
+}
   html, body {
     background-color: #fff;
     -webkit-overflow-scrolling: touch;
     user-select: none;
+    margin: 0;
+    padding: 0;
   }
 
   a {
     color: inherit;
     text-decoration: none;
   }
-
-  .page-back {
-    display: inline-block;
-    position: absolute 12px * * 10px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    i {
-      font-size: 40px;
-      line-height: 40px;
-    }
+  a:hover {
+    text-decoration: none;
   }
 </style>
 
