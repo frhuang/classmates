@@ -1,0 +1,2 @@
+export const SELECT_PROVINCE = 'SELECT_PROVIOCE';
+export const SELECT_CITY = 'SELECT_CITY';
