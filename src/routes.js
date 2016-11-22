@@ -5,6 +5,8 @@ import School from './pages/School';
 import Profession from './pages/Profession';
 import StartYear from './pages/StartYear';
 import Interest from './pages/Interest';
+import PersonalInfo from './pages/PersonalInfo';
+import MyPage from './pages/MyPage';
 
 const routes = [
   {
@@ -20,24 +22,32 @@ const routes = [
     component: Filters
   },
   {
-    path: '/nativeplace',
+    path: '/filter/nativeplace',
     component: NativePlace
   },
   {
-    path: '/school',
+    path: '/filter/school',
     component: School
   },
   {
-    path: '/profession',
+    path: '/filter/profession',
     component: Profession
   },
   {
-    path: '/startyear',
+    path: '/filter/startYear',
     component: StartYear
   },
   {
-    path: '/interest',
+    path: '/filter/interest',
     component: Interest
+  },
+  {
+    path: '/personalinfo/:id',
+    component: PersonalInfo
+  },
+  {
+    path: '/my',
+    component: MyPage
   }
 ]
 

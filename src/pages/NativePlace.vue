@@ -2,7 +2,7 @@
   <div class="nativeplace">
     <mt-header title="籍贯">
       <router-link to="/filter" slot="left">
-        <mt-button icon="back"></mt-button>
+        <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
     <mt-cell v-for="(pro, key) in address" :title="key" is-link></mt-cell>
