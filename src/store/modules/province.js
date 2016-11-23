@@ -2,8 +2,8 @@ import * as types from '../mutation-types'
 import { address } from '../../config'
 
 const state = {
-  province: null,
-  city: null
+  province: "广东",
+  city: "广州"
 }
 
 const getters = {

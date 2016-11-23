@@ -6,10 +6,13 @@ import province from './modules/province'
 
 Vue.use(Vuex)
 
+const debug = process.env.NODE_ENV !== 'production'
+
 export default new Vuex.Store({
   actions,
   getters,
   modules: {
     province
-  }
+  },
+  trict: debug
 })

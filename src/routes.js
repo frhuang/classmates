@@ -1,6 +1,7 @@
 import Home from './pages/Home';
 import Filters from './pages/Filters';
 import NativePlace from './pages/NativePlace';
+import NativePlace2 from './pages/NativePlace2';
 import School from './pages/School';
 import Profession from './pages/Profession';
 import StartYear from './pages/StartYear';
@@ -24,6 +25,10 @@ const routes = [
   {
     path: '/filter/nativeplace',
     component: NativePlace
+  },
+  {
+    path: '/filter/nativeplace2/:id',
+    component: NativePlace2
   },
   {
     path: '/filter/school',

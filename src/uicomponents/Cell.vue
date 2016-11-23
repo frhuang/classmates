@@ -1,6 +1,6 @@
 <template>
-  <a class="pre-cell" :href="href">
-    <span class="pre-cell-mask" v-if="isLink"></span>
+  <div class="pre-cell">
+    <span class="pre-cell-mask"></span>
     <div class="pre-cell-left">
       <slot name="left"></slot>
     </div>
@@ -11,17 +11,8 @@
           <span v-if="label" class="pre-cell-label" v-text="label"></span>
         </slot>
       </div>
-      <div class="pre-cell-value" :class="{ 'is-link' : isLink }">
-        <slot>
-          <span v-text="value"></span>
-        </slot>
-      </div>
     </div>
-    <div class="pre-cell-right">
-      <slot name="right"></slot>
-    </div>
-    <i v-if="isLink" class="pre-cell-allow-right"></i>
-  </a>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -45,47 +36,11 @@
  *   <div slot="value">描述文字啊哈</div>
  * </mt-cell>
  */
-function clearPath(path) {
-  return path.replace(/\/\//g, '/');
-}
+
 export default {
   name: 'pre-cell',
   props: {
-    to: String,
     title: String,
-    label: String,
-    isLink: Boolean,
-    value: {}
-  },
-  computed: {
-    href() {
-      let href;
-
-      if (this.$router && this.to) {
-        const base = this.$router.history.base;
-        const resolved = this.$router.match(this.to);
-        const fullPath = resolved.redirectedForm || resolved.fullPath;
-
-        href = base ? clearPath(base + fullPath) : fullPath;
-      } else {
-        href = this.to;
-      }
-
-      if (href && !this.added && this.$router) {
-        this.$nextTick(() => {
-          this.added = true;
-          this.$el.addEventListener('click', this.handleClick)
-        });
-      }
-      return href;
-    }
-  },
-
-  methods: {
-    handleClick($event) {
-      $event.preventDefault();
-      this.$router.push(this.href);
-    }
   }
 }
 </script>

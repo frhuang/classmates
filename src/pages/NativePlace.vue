@@ -5,7 +5,7 @@
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <mt-cell v-for="(pro, key) in address" :title="key" is-link></mt-cell>
+    <mt-cell v-for="(pro, key) in address" :to="'/filter/nativeplace2/'+key" :title="key" @click="selectPlace(key)" is-link></mt-cell>
   </div>
 </template>
 
@@ -15,6 +15,12 @@
     data() {
       return {
         address: address
+      }
+    },
+    methods: {
+      selectPlace(key) {
+        console.log(key);
+        this.$store.dispatch('selectProvince', key);
       }
     }
   }

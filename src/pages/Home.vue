@@ -1,6 +1,6 @@
 <template id="home">
   <div class="home">
-    <mt-header title="找同学">
+    <mt-header title="找同学" fixed>
       <router-link to="/filter" slot="right">
         <mt-button class="home-filter"></mt-button>
       </router-link>

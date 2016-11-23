@@ -5,8 +5,8 @@
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <mt-cell title="籍贯" to="/filter/nativeplace" value="广东广州" is-link></mt-cell>
-    <mt-cell title="学校" to="/filter/school" value="不限" is-link></mt-cell>
+    <mt-cell title="籍贯" to="/filter/nativeplace" :value="pro +' '+ city" is-link></mt-cell>
+    <mt-cell title="学校" to="/filter/school" :value="school" is-link></mt-cell>
     <mt-cell title="专业" to="/filter/profession" value="不限" is-link></mt-cell>
     <mt-cell title="入学年份" to="/filter/startyear" value="不限" is-link></mt-cell>
     <mt-cell title="兴趣爱好" to="/filter/interest" value="不限" is-link></mt-cell>
@@ -20,8 +20,22 @@
 </template>
 
 <script type="text/babel">
+import { mapState } from 'vuex';
   export default {
-
+    data () {
+      return {
+        pro: '',
+        city: '',
+        school: '不限',
+        profession: '不限',
+        startyear: '不限',
+        interest: '不限'
+      }
+    },
+    computed: mapState({
+      pro: state => state.province.province,
+      city: state => state.province.city
+    })
   }
 </script>
 
