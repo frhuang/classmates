@@ -1,5 +1,5 @@
 <template>
-  <div class="pre-cell">
+  <a class="pre-cell" @click="handleClick">
     <span class="pre-cell-mask"></span>
     <div class="pre-cell-left">
       <slot name="left"></slot>
@@ -12,7 +12,7 @@
         </slot>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script type="text/babel">
@@ -39,8 +39,11 @@
 
 export default {
   name: 'pre-cell',
-  props: {
-    title: String,
+  props: ['title', 'callback'],
+  methods: {
+    handleClick() {
+      this.callback(this.title);
+    }
   }
 }
 </script>

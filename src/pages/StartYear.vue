@@ -2,10 +2,10 @@
   <div class="profession">
     <mt-header title="入学年份">
       <router-link to="/filter" slot="left">
-        <mt-button icon="back"></mt-button>
+        <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <mt-cell v-for="year in years" :title="year" is-link></mt-cell>
+    <pre-cell v-for="year in years" :title="year" :callback="selectYear"></pre-cell>
   </div>
 </template>
 
@@ -15,6 +15,12 @@
     data() {
       return {
         years: years
+      }
+    },
+    methods: {
+      selectYear(key) {
+        this.$store.dispatch('selectYear', key);
+        this.$router.push('/filter');
       }
     }
   }

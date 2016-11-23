@@ -1,11 +1,13 @@
 <template>
   <div class="nativeplace">
-    <mt-header title="籍贯">
+    <mt-header title="籍贯" fixed>
       <router-link to="/filter" slot="left">
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <mt-cell v-for="(pro, key) in address" :to="'/filter/nativeplace2/'+key" :title="key" @click="selectPlace(key)" is-link></mt-cell>
+    <div class="cell-list">
+      <mt-cell v-for="(pro, key) in address" :to="'/filter/nativeplace2/'+key" :title="key" is-link></mt-cell>
+    </div>
   </div>
 </template>
 
@@ -15,12 +17,6 @@
     data() {
       return {
         address: address
-      }
-    },
-    methods: {
-      selectPlace(key) {
-        console.log(key);
-        this.$store.dispatch('selectProvince', key);
       }
     }
   }

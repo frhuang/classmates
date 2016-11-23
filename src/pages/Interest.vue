@@ -2,10 +2,10 @@
   <div class="profession">
     <mt-header title="兴趣爱好">
       <router-link to="/filter" slot="left">
-        <mt-button icon="back"></mt-button>
+        <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <mt-cell v-for="interest in interests" :title="interest"></mt-cell>
+    <pre-cell v-for="interest in interests" :title="interest" :callback="selectInterest"></pre-cell>
   </div>
 </template>
 
@@ -15,6 +15,12 @@
     data() {
       return {
         interests: interests
+      }
+    },
+    methods: {
+      selectInterest(key) {
+        this.$store.dispatch('selectInterest', key);
+        this.$router.push('/filter');
       }
     }
   }

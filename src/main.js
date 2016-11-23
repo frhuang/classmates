@@ -3,8 +3,10 @@ import App from './App'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routes from './routes'
-import { Header, Cell, Button, Search, Tabbar, TabItem } from 'mint-ui';
+import { Header, Cell, Button, Search, Tabbar, TabItem, Radio } from 'mint-ui';
 import store from './store'
+import PreCell from './uicomponents/Cell'
+import PreRadio from './uicomponents/Radio'
 
 Vue.component(Header.name, Header);
 Vue.component(Cell.name, Cell);
@@ -12,6 +14,9 @@ Vue.component(Button.name, Button);
 Vue.component(Search.name, Search);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
+Vue.component(Radio.name, Radio);
+Vue.component(PreCell.name, PreCell);
+Vue.component(PreRadio.name, PreRadio);
 Vue.use(VueRouter)
 Vue.use(VueResource)
 

@@ -3,7 +3,9 @@ import { address } from '../../config'
 
 const state = {
   province: "广东",
-  city: "广州"
+  city: "广州",
+  year: "不限",
+  interest: "不限"
 }
 
 const getters = {
@@ -12,12 +14,17 @@ const getters = {
 }
 
 const mutations = {
-  [types.SELECT_PROVINCE] (state, { province }) {
+  [types.SELECT_PROVINCE] (state, province) {
     state.province = province
-    state.city = address[province]
   },
-  [types.SELECT_PROVINCE] (state, { city }) {
+  [types.SELECT_CITY] (state, city ) {
     state.city = city
+  },
+  [types.SELECT_YEAR] (state, year) {
+    state.year = year
+  },
+  [types.SELECT_INTEREST] (state, interest) {
+    state.interest = interest
   }
 }
 

@@ -13,9 +13,27 @@
     font-family: 'MicrosoftYaHei';
     @include font-dpr(15px);
   }
+  .mint-cell-title {
+    position: absolute;
+    left: 0.26666666666666666rem;
+  }
+  .mint-cell-value {
+    width: 100%;
+    text-align: center;
+    flex: 1;
+  }
+  .mint-cell-wrapper {
+    background: none;
+    position: relative;
+    border-bottom: 1px solid $border-color;
+  }
 }
+
 .mint-search {
 
+}
+.cell-list {
+  padding-top: 1.3333333333333333rem;
 }
 .common-back {
   width: 0.3333333333333333rem;
@@ -27,7 +45,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 30%;
+  width: 50%;
   margin-left: -15%;
   margin-top: -18px;
   display: flex;
@@ -36,4 +54,5 @@
     margin-left: 20px;
     border: 1px solid #c8c8cd;
   }
+
 }

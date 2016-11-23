@@ -1,17 +1,18 @@
 <template>
   <div class="nativeplace">
-    <mt-header :title="title">
+    <mt-header :title="title" fixed>
       <router-link to="/filter/nativeplace" slot="left">
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <pre-cell v-for="pro in selectId" :title="pro" @click="selectPlace"></pre-cell>
+    <div class="cell-list">
+      <pre-cell v-for="city in selectId" :callback="selectCity" :title="city"></pre-cell>
+    </div>
   </div>
 </template>
 
 <script type="text/babel">
   import { address } from '../config.js';
-  import PreCell from '../uicomponents/Cell';
   export default {
     data () {
       return {
@@ -20,14 +21,14 @@
       }
     },
     methods: {
-      selectPlace() {
-        console.log(key);
-        alert('fsfs');
-        // this.$store.dispatch('selectProvince', key);
+      selectCity(key) {
+        this.$store.dispatch('selectProvince', this.title);
+        this.$store.dispatch('selectCity', key);
+        this.$router.push('/filter');
       }
-    },
-    components: {
-      PreCell
     }
   }
 </script>
+<style lang="scss">
+  @import "../assets/sass/uicomponents/cell.scss";
+</style>
