@@ -15,3 +15,10 @@ export const selectYear = ({ commit }, year) => {
 export const selectInterest = ({ commit }, interest) => {
   commit(types.SELECT_INTEREST, interest)
 }
+
+export const selectSchool = ({ commit}, school) => {
+  commit(types.SELECT_SCHOOL, school)
+}
+export const selectProfession = ({ commit}, profession) => {
+  commit(types.SELECT_PROFESSION, profession)
+}

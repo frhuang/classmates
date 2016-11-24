@@ -21,6 +21,15 @@
         </div>
       </div>
     </div>
+    <photo></photo>
+    <div class="info-list">
+      <p class="info-title">籍贯</p>
+      <p class="info-content">广东深圳</p>
+      <p class="info-title">在校学生职位</p>
+      <p class="info-content">学生会主席   班长</p>
+      <p class="info-title">兴趣爱好</p>
+      <p class="info-content">舞蹈 体育 编程</p>
+    </div>
     <mt-tabbar  v-model="selected" fixed>
       <mt-tab-item id="通过微信认识TA" class="nav-join">通过微信认识TA</mt-tab-item>
     </mt-tabbar>
@@ -29,6 +38,7 @@
 
 <script type="text/babel">
   import { getPost } from '../config';
+  import Photo from '../components/Photo';
   export default {
     data () {
       return {
@@ -53,12 +63,13 @@
         }
       })
       }
+    },
+    components: {
+      Photo
     }
   }
 </script>
-<style>
-  .personalInfo {
-    height: 100%;
-    background: #f5f5f5;
-  }
+<style lang="scss">
+@import "../assets/sass/personalinfo.scss";
+
 </style>

@@ -4,7 +4,9 @@ import { address } from '../../config'
 const state = {
   province: "广东",
   city: "广州",
+  school: "不限",
   year: "不限",
+  profession: "不限",
   interest: "不限"
 }
 
@@ -25,6 +27,12 @@ const mutations = {
   },
   [types.SELECT_INTEREST] (state, interest) {
     state.interest = interest
+  },
+  [types.SELECT_SCHOOL] (state, school) {
+    state.school = school
+  },
+  [types.SELECT_PROFESSION] (state, profession) {
+    state.profession = profession
   }
 }
 

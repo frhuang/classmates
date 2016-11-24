@@ -43,6 +43,9 @@
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
   }
+  ul{
+    list-style: none;
+  }
 </style>
 
 <script type="text/babel">

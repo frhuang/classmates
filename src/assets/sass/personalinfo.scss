@@ -1,0 +1,20 @@
+@import "./commons/mixin";
+.personalInfo {
+  height: 100%;
+  background: #f5f5f5;
+  .info-list{
+    .info-title {
+      @include font-dpr(12px);
+      color: #999999;
+      line-height: 0.6666666666666666rem;
+      padding-left:0.26666666666666666rem;
+    }
+    .info-content {
+      color: $color-green;
+      @include font-dpr(15px);
+      padding-left:0.26666666666666666rem;
+      background: #fff;
+      line-height: 100px;
+    }
+  }
+}

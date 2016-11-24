@@ -1,16 +1,29 @@
+@import "../commons/mixin";
 .pre-radio-input {
   display: none;
 }
 .pre-radio-model{
   float: left;
-  width: 1.6rem;
-  height: .8rem;
-  line-height: .8rem;
-  margin-left: 0.2rem;
-  border: 1px solid #999;
+  width: 1.3333333333333333rem;
+  height: 0.6666666666666666rem;
+  line-height: 0.6666666666666666rem;
+  margin-left:0.4rem;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
   text-align: center;
+  color: #000;
+  @include font-dpr(15px);
+  &:first-child {
+    margin-left: 0;
+  }
 }
 .pre-radio-label{
-  width: 1.6rem;
-  height: .8rem;
+  display: inline-block;
+  width: 1.3333333333333333rem;
+  height: 0.6666666666666666rem;
+  background: #ff;
+}
+.pre-radio-input:checked + .pre-radio-label {
+  background: $color-green;
+  color: #fff;
 }

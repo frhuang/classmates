@@ -1,7 +1,8 @@
 @import './commons/mixin';
 .home-list{
-  padding-top: 1.4666666666666666rem;
+  margin-top: 1.4666666666666666rem;
   padding-bottom: 1.3333333333333333rem;
+  overflow: scroll;
 }
 .flag {
   display: table;
@@ -21,6 +22,8 @@
         margin-left: 0.26666666666666666rem;
         display: block;
         border-radius: 50%;
+        border: none;
+        background-color: #eee;
         width: 1.6rem;
         height: 1.6rem;
       }
