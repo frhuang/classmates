@@ -18,3 +18,18 @@
     }
   }
 }
+.mint-tab-item-label a{
+  display: block;
+  width: 100%;
+  height: 1.3333333333333333rem;
+  position: absolute;
+  bottom: 0;
+}
+.complaints-btn {
+  border: 0;
+  appearance: none;
+  background: #fff;
+  color: #000;
+  @include font-dpr(18px);
+  outline: 0;
+}

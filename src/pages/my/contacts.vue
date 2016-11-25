@@ -1,0 +1,9 @@
+<template>
+  <div class="filter">
+    <mt-header title="我的人脉">
+      <router-link to="/my" slot="left">
+        <mt-button class="common-back"></mt-button>
+      </router-link>
+    </mt-header>
+  </div>
+</template>

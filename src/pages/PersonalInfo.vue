@@ -1,9 +1,10 @@
 <template>
   <div class="personalInfo" v-if="post">
     <mt-header :title="post.name">
-      <router-link to="/" slot="left">
+      <a @click="goback" slot="left">
         <mt-button class="common-back"></mt-button>
-      </router-link>
+      </a>
+      <button class="complaints-btn" slot="right" title="确定" @click="confirm">投诉</button>
     </mt-header>
     <div class="flag">
       <div class="avatar flag-item">
@@ -30,8 +31,11 @@
       <p class="info-title">兴趣爱好</p>
       <p class="info-content">舞蹈 体育 编程</p>
     </div>
-    <mt-tabbar  v-model="selected" fixed>
-      <mt-tab-item id="通过微信认识TA" class="nav-join">通过微信认识TA</mt-tab-item>
+    <mt-tabbar fixed>
+      <mt-tab-item id="通过微信认识TA" class="nav-join">
+        通过微信认识TA
+        <router-link :to="'/personalinfo/'+id+'/lookta'"></router-link>
+      </mt-tab-item>
     </mt-tabbar>
   </div>
 </template>
@@ -43,7 +47,8 @@
     data () {
       return {
         post: null,
-        error: null
+        error: null,
+        id: this.$route.params.id
       }
     },
     created () {
@@ -56,12 +61,18 @@
       fetchData () {
         this.error = this.post = null
         getPost(this.$route.params.id, (err, post) => {
-        if (err) {
-          this.error = err.toString()
-        } else {
-          this.post = post
-        }
-      })
+          if (err) {
+            this.error = err.toString()
+          } else {
+            this.post = post
+          }
+        })
+      },
+      goback() {
+        this.$router.go(-1);
+      },
+      confirm() {
+        alert('tousu');
       }
     },
     components: {
@@ -71,5 +82,4 @@
 </script>
 <style lang="scss">
 @import "../assets/sass/personalinfo.scss";
-
 </style>

@@ -8,14 +8,16 @@ import StartYear from './pages/StartYear';
 import Interest from './pages/Interest';
 import PersonalInfo from './pages/PersonalInfo';
 import MyPage from './pages/MyPage';
+import LookTa from './pages/LookTa';
+import Money from './pages/my/money';
+import Contacts from './pages/my/contacts';
+import Records from './pages/my/records';
+import About from './pages/my/about';
+import MyInfo from './pages/my/myinfo';
 
 const routes = [
   {
     path: '/',
-    component: Home
-  },
-  {
-    path: '/home',
     component: Home
   },
   {
@@ -51,9 +53,34 @@ const routes = [
     component: PersonalInfo
   },
   {
+    path: '/personalinfo/:id/lookta',
+    component: LookTa
+  },
+  {
     path: '/my',
     component: MyPage
+  },
+  {
+    path: '/my/money',
+    component: Money
+  },
+  {
+    path: '/my/contacts',
+    component: Contacts
+  },
+  {
+    path: '/my/records',
+    component: Records
+  },
+  {
+    path: '/my/about',
+    component: About
+  },
+  {
+    path: '/my/myinfo',
+    component: MyInfo
   }
+
 ]
 
 export default routes;

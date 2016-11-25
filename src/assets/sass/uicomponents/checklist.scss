@@ -1,0 +1,10 @@
+@import "../commons/mixin";
+.pre-checklist {
+  .pre-checklist-label {
+    display: block;
+    padding: 0 0.13333333333333333rem;
+  }
+  .pre-checklist-title {
+    color: #000;
+  }
+}

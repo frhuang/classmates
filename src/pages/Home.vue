@@ -6,7 +6,6 @@
       </router-link>
     </mt-header>
     <home-list></home-list>
-    <tabbar></tarbar>
   </div>
 </template>
 <script type="text/babel">

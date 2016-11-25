@@ -1,17 +1,25 @@
 <template>
   <div id="app">
+
+    <mt-tabbar v-model="selected" fixed v-if="$route.path == '/my' || $route.path == '/'">
+      <pre-tab-item id="找同学" to="/">找同学</pre-tab-item>
+      <!-- <pre-tab-item id="加入" class="nav-join">加入</pre-tab-item> -->
+      <pre-tab-item id="我的" to="/my">我的</pre-tab-item>
+    </mt-tabbar>
     <transition :name="transitionName">
       <router-view class="child-view"></router-view>
     </transition>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import './assets/sass/components/nav.scss';
   *{
     margin: 0;
     padding: 0;
   }
   html, body {
+    font-family: "Microsoft YaHei";
     background-color: #fff;
     -webkit-overflow-scrolling: touch;
     user-select: none;
@@ -46,13 +54,19 @@
   ul{
     list-style: none;
   }
+  .mint-tabbar > .mint-tab-item.is-selected {
+    background: #09bb07;
+    color: #fff;
+  }
 </style>
 
 <script type="text/babel">
+import PreTabItem from './uicomponents/TabItem';
   export default {
     data () {
       return {
-        transitionName: 'slide-left'
+        transitionName: 'slide-left',
+        selected: "找同学"
       }
     },
     watch: {
@@ -70,6 +84,9 @@
       visible() {
         return ['/'].indexOf(this.$route.path) < 0;
       }
+    },
+    components: {
+      PreTabItem
     }
   };
 </script>

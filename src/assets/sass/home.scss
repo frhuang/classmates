@@ -58,5 +58,10 @@
       color: #02b300;
       @include font-dpr(12px);
     }
+    .flag-tips {
+      margin-top: 0.4rem;
+      color: #999999;
+      @include font-dpr(10px);
+    }
   }
 }
