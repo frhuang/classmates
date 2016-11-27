@@ -48,6 +48,12 @@ export const address = {
     "插画"
   ];
 
+export const moneyTypes = {
+    "1": "1个苹果",
+    "2": "1个鸡腿",
+    "3": "1杯咖啡"
+  };
+
   export function getPost(id, cb) {
     setTimeout(() => {
       if (lists[id]) {

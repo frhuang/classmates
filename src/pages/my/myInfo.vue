@@ -1,7 +1,7 @@
 <template>
   <div class="myinfo">
     <mt-header title="个人信息">
-      <a slot="left" @click="goback">
+      <a slot="left" @click="routerBack">
         <mt-button class="common-back"></mt-button>
       </a>
       <button class="filter-btn" slot="right" title="我要加入">我要加入</button>
@@ -23,7 +23,7 @@
 <script type="text/babel">
   export default {
     methods: {
-      goback() {
+      routerBack() {
         this.$router.go(-1);
       }
     }

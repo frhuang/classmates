@@ -12,10 +12,50 @@
       </div>
     </div>
     <div class="page-content">
-      <router-link to="/my/money">人脉心意</router-link>
-      <router-link to="/my/contacts">我的人脉</router-link>
-      <router-link to="/my/records">访问记录</router-link>
-      <router-link to="/my/about">关于我们</router-link>
+      <router-link to="/my/money">
+        <div class="content-item">
+          <div class="item-icon">
+            <i class="icon icon1"></i>
+          </div>
+          <div class="content">
+            <p class="num">¥{{money}}</p>
+            <p class="title">人脉心意</p>
+          </div>
+        </div>
+      </router-link>
+      <router-link to="/my/contacts">
+        <div class="content-item">
+          <div class="item-icon">
+            <i class="icon icon2"></i>
+          </div>
+          <div class="content">
+            <p class="num">{{contacts}}</p>
+            <p class="title">我的人脉</p>
+          </div>
+        </div>
+      </router-link>
+      <router-link to="/my/records">
+        <div class="content-item">
+          <div class="item-icon">
+            <i class="icon icon3"></i>
+          </div>
+          <div class="content">
+            <p class="num">{{records}}</p>
+            <p class="title">访问记录</p>
+          </div>
+        </div>
+      </router-link>
+      <router-link to="/my/about">
+        <div class="content-item">
+          <div class="item-icon">
+            <i class="icon icon4"></i>
+          </div>
+          <div class="content">
+            <p class="num about">.</p>
+            <p class="title">关于我们</p>
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -24,7 +64,9 @@
   export default {
     data () {
       return {
-        msg: "this is my pages"
+        money: '0.00',
+        contacts: 0,
+        records: 0
       }
     },
     methods: {

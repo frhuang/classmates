@@ -2,7 +2,12 @@ $color-green: #09bb07;
 $color-black: #000;
 $color-white: #fff;
 $color-grey: #999999;
+$color-orange: #ff8604;
 $border-color: #d9d9d9;
+
+$grey-bg-color: #f5f5f5;
+$white-bg-color: #fff;
+
 
 @mixin font-dpr($font-size){
   font-size: $font-size;

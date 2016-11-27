@@ -48,6 +48,8 @@
       @include font-dpr(15px);
       color: #000;
       font-weight: bold;
+      display: table;
+      width: 100%;
     }
     .flag-pro {
       margin: 0.2rem 0;

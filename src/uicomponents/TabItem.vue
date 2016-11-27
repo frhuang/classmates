@@ -3,7 +3,6 @@
     :href="href"
     @click="$parent.$emit('input', id)"
     :class="{ 'is-selected': $parent.value === id }">
-    <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
     <div class="mint-tab-item-label"><slot></slot></div>
   </a>
 </template>
@@ -27,7 +26,7 @@
    return path.replace(/\/\//g, '/');
  }
  export default {
-   name: 'mt-cell',
+   name: 'pre-cell',
 
    props: {
      to: String,

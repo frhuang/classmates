@@ -1,0 +1,17 @@
+@import "./commons/mixin";
+.contacts-pages {
+  background: $grey-bg-color;
+  .contacts {
+    margin-top: 1.3333333333333333rem;
+    .contacts-title {
+      padding-left: 0.26666666666666666rem;
+      height: 0.6666666666666666rem;
+      line-height: 0.6666666666666666rem;
+      color: $color-grey;
+      @include font-dpr(12px);
+    }
+    .flag {
+      padding-bottom: 0.8rem;
+    }
+  }
+}

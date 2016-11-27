@@ -1,0 +1,44 @@
+@import './commons/mixin';
+.records-pages{
+  background: $grey-bg-color;
+  .records-title{
+    margin-top: 1.3333333333333333rem;
+    line-height: 0.6666666666666666rem;
+    padding-left: 0.26666666666666666rem;
+    color: $color-grey;
+  }
+  .records-header {
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    top: 0.3rem;
+    width: 5rem;
+    margin-left: -2.5rem;
+    display: flex;
+    .pre-tab-item {
+      text-align: center;
+      width: 2.1333333333333333rem;
+      height: 0.6666666666666666rem;
+      line-height: 0.6666666666666666rem;
+      margin-right: 0.6rem;
+      border: 1px solid $color-green;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: $color-green;
+      &:last-child{
+        margin-right: 0;
+      }
+      &.is-selected {
+        background: $color-green;
+        color: $color-white;
+        .pre-tab-item-label {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+.mint-navbar .mint-tab-item.is-selected {
+  border-bottom: none;
+  background: $color-green;
+}
