@@ -7,6 +7,7 @@
     <transition :name="transitionName">
       <router-view class="child-view"></router-view>
     </transition>
+    <loading v-show="isLoading"></loading>
   </div>
 </template>
 
@@ -41,7 +42,8 @@ import PreTabItem from './uicomponents/TabItem';
     data () {
       return {
         transitionName: 'slide-left',
-        selected: "找同学"
+        selected: "找同学",
+        isLoading: false
       }
     },
     watch: {

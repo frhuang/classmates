@@ -1,6 +1,6 @@
 <template>
   <div @change="$emit('change', currentValue)" class="my-checklist" :class="{ 'is-limit': max <= currentValue.length }">
-    <mt-cell v-for="option in options">
+    <div class="my-checklist-wrapper" v-for="option in options">
       <label class="my-checklist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"
@@ -15,7 +15,7 @@
         </span>
         <span class="my-checkbox-label" v-text="option.label || option"></span>
       </label>
-    </mt-cell>
+    </div>
   </div>
 </template>
 

@@ -51,6 +51,8 @@
   .my-cell-title {
     position: absolute;
     left: 0.26666666666666666rem;
+    top: 50%;
+    transform: translate(0, -50%);
   }
   .my-cell-left {
     position: absolute;

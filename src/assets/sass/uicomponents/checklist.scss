@@ -1,12 +1,24 @@
 @import "../commons/mixin";
 .my-checklist {
+  .my-checklist-wrapper {
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+    background: $color-white;
+    box-sizing: border-box;
+    color: $color-black;
+    min-height: 1.3333333333333333rem;
+    line-height: 1.3333333333333333rem;
+    overflow: hidden;
+    @include font-dpr(15px);
+  }
   .my-checklist-label {
-    display: block;
+    display: inline-block;
+    padding-left: 0.26666666666666666rem;
+    width: 100%;
   }
   .my-checkbox {
-    &.is-right {
-      float: right;
-    }
+    position: absolute;
+    right: 0.26666666666666666rem;
     .my-checkbox-input {
       display: none;
       &:checked {

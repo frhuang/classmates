@@ -18,6 +18,7 @@ import MyCell from './uicomponents/Cell'
 import PreRadio from './uicomponents/Radio'
 import PreSearch from './uicomponents/Search'
 import MyCheckList from './uicomponents/Checklist'
+import Loading from './components/Loading'
 
 Vue.component(Header.name, Header);
 Vue.component(Cell.name, Cell);
@@ -34,6 +35,8 @@ Vue.component(MyCell.name, MyCell);
 Vue.component(PreRadio.name, PreRadio);
 Vue.component(PreSearch.name, PreSearch);
 Vue.component(MyCheckList.name, MyCheckList);
+Vue.component(Loading.name, Loading);
+
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
@@ -42,11 +45,19 @@ const router = new VueRouter({
   routes
 })
 
-new Vue({
+const app = new Vue({
   el: '#app',
   store,
   render: h => h(App),
   router
+});
+
+Vue.http.interceptors.push((request, next) => {
+  app.isLoading = true
+  next((response) => {
+    app.isLoading = false;
+    return response
+  })
 })
 
 let indexScrollTop = 0;
