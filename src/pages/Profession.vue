@@ -12,7 +12,7 @@
       <div class="pre-search-list" v-show="value">
         <div class="pre-search-list-warp">
           <slot>
-            <pre-cell v-for="(item, index) in filterResult" :key="index" :title="item" :callback="selectProfession"></pre-cell>
+            <my-cell v-for="(item, index) in filterResult" :key="index" :title="item" :callback="selectProfession"></my-cell>
           </slot>
         </div>
       </div>

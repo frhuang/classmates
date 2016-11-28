@@ -12,27 +12,7 @@
 
 <style lang="scss">
 @import './assets/sass/components/nav.scss';
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  html, body {
-    font-family: "Microsoft YaHei";
-    background-color: #fff;
-    -webkit-overflow-scrolling: touch;
-    user-select: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: none;
-  }
+@import './assets/sass/common.scss';
   .child-view {
     position: absolute;
     width: 100%;
@@ -48,9 +28,6 @@
     opacity: 0;
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
-  }
-  ul{
-    list-style: none;
   }
   .mint-tabbar > .mint-tab-item.is-selected {
     background: #09bb07;
@@ -70,11 +47,15 @@ import PreTabItem from './uicomponents/TabItem';
     watch: {
       '$route' (to, from) {
         if(to.path === '/') {
-          this.transitionName = 'slide-right'
+          this.transitionName = 'slide-right';
+          this.selected = "找同学";
         }else {
           const toDepth = to.path.split('/').length
           const fromDepth = from.path.split('/').length
           this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+        }
+        if(to.path === '/my') {
+          this.selected = "我的";
         }
       }
     },

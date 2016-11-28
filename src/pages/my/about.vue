@@ -13,7 +13,7 @@
         <p>电话 :   <span class="green-title">12354636</span></p>
         <p>微信公众号 : 12354636</p>
         <div class="centent-img">
-          <img src="/static/student-card.png" alt="" />
+          <img src="/static/img/student-card.png" alt="" />
         </div>
       </div>
       <p class="footer">广州峡谷科技有限公司</p>

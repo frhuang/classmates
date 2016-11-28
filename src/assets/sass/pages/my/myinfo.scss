@@ -1,0 +1,19 @@
+@import '../../commons/mixin';
+body {
+  background: $grey-bg-color;
+}
+.myinfo {
+  // background: $grey-bg-color;
+  .photo-title{
+    color: $color-grey;
+    padding: 0.26666666666666666rem;
+  }
+  .upload {
+    margin-left: 0.26666666666666666rem;
+    padding-bottom: 0.26666666666666666rem;
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}

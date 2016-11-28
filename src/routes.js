@@ -9,6 +9,7 @@ import Interest from './pages/Interest';
 import PersonalInfo from './pages/PersonalInfo';
 import MyPage from './pages/MyPage';
 import LookTa from './pages/LookTa';
+import Complaints from './pages/Complaints';
 import Money from './pages/my/money';
 import Contacts from './pages/my/contacts';
 import Records from './pages/my/records';
@@ -55,6 +56,10 @@ const routes = [
   {
     path: '/personalinfo/:id/lookta',
     component: LookTa
+  },
+  {
+    path: '/personalinfo/:id/complaints',
+    component: Complaints
   },
   {
     path: '/my',

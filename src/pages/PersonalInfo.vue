@@ -4,7 +4,7 @@
       <a @click="goback" slot="left">
         <mt-button class="common-back"></mt-button>
       </a>
-      <button class="complaints-btn" slot="right" title="确定" @click="confirm">投诉</button>
+      <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right">投诉</router-link>
     </mt-header>
     <div class="flag">
       <div class="avatar flag-item">

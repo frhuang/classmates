@@ -6,19 +6,19 @@
       </router-link>
       <button class="filter-btn" slot="right" title="确定" @click="confirm">确定</button>
     </mt-header>
-    <mt-cell title="籍贯" to="/filter/nativeplace" :value="province +' '+ city" is-link></mt-cell>
-    <mt-cell title="学校" to="/filter/school" :value="school" is-link></mt-cell>
-    <mt-cell title="专业" to="/filter/profession" :value="profession" is-link></mt-cell>
-    <mt-cell title="入学年份" to="/filter/startyear" :value="year" is-link></mt-cell>
-    <mt-cell title="兴趣爱好" to="/filter/interest" :value="interest" is-link></mt-cell>
-    <mt-cell title="性别">
+    <my-cell title="籍贯" to="/filter/nativeplace" :value="province +' '+ city" is-link req></my-cell>
+    <my-cell title="学校" to="/filter/school" :value="school" is-link></my-cell>
+    <my-cell title="专业" to="/filter/profession" :value="profession" is-link></my-cell>
+    <my-cell title="入学年份" to="/filter/startyear" :value="year" is-link></my-cell>
+    <my-cell title="兴趣爱好" to="/filter/interest" :value="interest" is-link></my-cell>
+    <my-cell title="性别">
       <div class="pre-cell-sex">
         <pre-radio
           class="page-part"
           v-model="value"
           :options="options" />
       </div>
-    </mt-cell>
+    </my-cell>
   </div>
 </template>
 

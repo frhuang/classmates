@@ -14,9 +14,10 @@ import { Header,
   TabContainer,
   TabContainerItem } from 'mint-ui';
 import store from './store'
-import PreCell from './uicomponents/Cell'
+import MyCell from './uicomponents/Cell'
 import PreRadio from './uicomponents/Radio'
 import PreSearch from './uicomponents/Search'
+import MyCheckList from './uicomponents/Checklist'
 
 Vue.component(Header.name, Header);
 Vue.component(Cell.name, Cell);
@@ -29,14 +30,14 @@ Vue.component(Loadmore.name, Loadmore);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 
-Vue.component(PreCell.name, PreCell);
+Vue.component(MyCell.name, MyCell);
 Vue.component(PreRadio.name, PreRadio);
 Vue.component(PreSearch.name, PreSearch);
+Vue.component(MyCheckList.name, MyCheckList);
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const router = new VueRouter({
-  mode: 'history',
   base: __dirname,
   routes
 })

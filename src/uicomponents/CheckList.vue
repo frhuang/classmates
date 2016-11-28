@@ -1,30 +1,43 @@
 <template>
-  <div @change="$emit('change', currentValue)" class="pre-checklist" :class="{ 'is-limit': max <= currentValue.length }">
-    <label class="pre-checklist-title" v-text="title"></label>
+  <div @change="$emit('change', currentValue)" class="my-checklist" :class="{ 'is-limit': max <= currentValue.length }">
     <mt-cell v-for="option in options">
-      <label class="pre-checklist-label" slot="title">
+      <label class="my-checklist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"
-          class="pre-checkbox">
+          class="my-checkbox">
           <input
-            class="pre-checkbox-input"
+            class="my-checkbox-input"
             type="checkbox"
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
-          <span class="pre-checkbox-core"></span>
+          <span class="my-checkbox-core"></span>
         </span>
-        <span class="pre-checkbox-label" v-text="option.label || option"></span>
+        <span class="my-checkbox-label" v-text="option.label || option"></span>
       </label>
     </mt-cell>
   </div>
 </template>
+
 <script>
+/**
+ * my-checklist
+ * @module uicomponents/checklist
+ * @desc 复选框列表，依赖 cell 组件
+ *
+ * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
+ * @param {string[]} value - 选中值的数组
+ * @param {number} [max] - 最多可选的个数
+ * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
+ *
+ *
+ * @example
+ * <my-checklist :v-model="value" :options="['a', 'b', 'c']"></my-checklist>
+ */
 export default {
-  name: 'pre-checklist',
+  name: 'my-checklist',
   props: {
     max: Number,
-    title: String,
     align: String,
     options: {
       type: Array,

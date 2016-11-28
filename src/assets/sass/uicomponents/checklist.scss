@@ -1,10 +1,34 @@
 @import "../commons/mixin";
-.pre-checklist {
-  .pre-checklist-label {
+.my-checklist {
+  .my-checklist-label {
     display: block;
-    padding: 0 0.13333333333333333rem;
   }
-  .pre-checklist-title {
-    color: #000;
+  .my-checkbox {
+    &.is-right {
+      float: right;
+    }
+    .my-checkbox-input {
+      display: none;
+      &:checked {
+        + .my-checkbox-core {
+          background-image: url(/static/img/check-selected.png);
+          &::after {
+            border-color: $color-white;
+          }
+        }
+      }
+      &[disabled] + .my-checkbox-core {
+        background-color: $color-grey;
+      }
+    }
+    .my-checkbox-core {
+      display: inline-block;
+      background-image: url(/static/img/check_normal.png);
+      background-size: cover;
+      position: relative;
+      width: 0.6666666666666666rem;
+      height: 0.6666666666666666rem;
+      vertical-align: middle;
+    }
   }
 }

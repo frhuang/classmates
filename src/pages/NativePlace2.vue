@@ -6,7 +6,7 @@
       </router-link>
     </mt-header>
     <div class="cell-list">
-      <pre-cell v-for="city in selectId" :callback="selectCity" :title="city"></pre-cell>
+      <my-cell v-for="city in selectId" :callback="selectCity" :title="city" required></my-cell>
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@
     },
     methods: {
       selectCity(key) {
+        console.log('fsdf')
         this.$store.dispatch('selectProvince', this.title);
         this.$store.dispatch('selectCity', key);
         this.$router.push('/filter');

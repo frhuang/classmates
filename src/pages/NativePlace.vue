@@ -6,7 +6,7 @@
       </router-link>
     </mt-header>
     <div class="cell-list">
-      <mt-cell v-for="(pro, key) in address" :to="'/filter/nativeplace2/'+key" :title="key" is-link></mt-cell>
+      <my-cell v-for="(pro, key) in address" :to="'/filter/nativeplace2/'+key" :title="key" is-link></my-cell>
     </div>
   </div>
 </template>

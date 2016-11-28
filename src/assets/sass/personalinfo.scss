@@ -26,10 +26,6 @@
   bottom: 0;
 }
 .complaints-btn {
-  border: 0;
-  appearance: none;
-  background: #fff;
   color: #000;
   @include font-dpr(18px);
-  outline: 0;
 }

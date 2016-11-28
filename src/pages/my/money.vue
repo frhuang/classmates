@@ -46,7 +46,7 @@
             <li v-for="item in detailLists" class="money-listitem">
               <div class="flag">
                 <div class="avatar flag-item">
-                  <img class="avatar-img">
+                  <img src="/static/img/default.png" class="avatar-img">
                   <i :class="{'female': item.s =='2', 'male': item.s == '1'}"></i>
                 </div>
                 <div class="flag-item">
