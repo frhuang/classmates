@@ -5,7 +5,7 @@
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <pre-cell v-for="interest in interests" :title="interest" :callback="selectInterest"></pre-cell>
+    <callback-cell v-for="interest in interests" :title="interest.name" :id="interest.it_id" :callback="selectInterest"></callback-cell>
   </div>
 </template>
 
@@ -14,12 +14,26 @@
   export default {
     data() {
       return {
-        interests: interests
+        interests: {}
       }
     },
+    created() {
+      var vm = this;
+      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/interests-list',{
+        params: {type:2},
+        headers: {
+        },
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        vm.interests = data.data;
+      })
+      .catch(function(response) {
+      })
+    },
     methods: {
-      selectInterest(key) {
-        this.$store.dispatch('selectInterest', key);
+      selectInterest(title, id) {
+        this.$store.dispatch('selectFilterInterest', {id: id, name: title});
         this.$router.push('/filter');
       }
     }

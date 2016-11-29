@@ -30,7 +30,7 @@ const routes = [
     component: NativePlace
   },
   {
-    path: '/filter/nativeplace2/:id',
+    path: '/filter/nativeplace2/:id/:name',
     component: NativePlace2
   },
   {

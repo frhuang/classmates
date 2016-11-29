@@ -1,18 +1,18 @@
 <template>
   <div class="school">
-    <mt-header title="专业">
+    <mt-header title="专业" fixed>
       <router-link to="/filter" slot="left">
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <pre-search
+    <pre-search class="fixed-top"
       placeholder="请输入专业全称"
       v-model="value">
       </pre-search>
       <div class="pre-search-list" v-show="value">
         <div class="pre-search-list-warp">
           <slot>
-            <my-cell v-for="(item, index) in filterResult" :key="index" :title="item" :callback="selectProfession"></my-cell>
+            <callback-cell v-for="item in result" :id="item.id" :title="item.name" :callback="selectProfession"></callback-cell>
           </slot>
         </div>
       </div>
@@ -20,36 +20,43 @@
 </template>
 
 <script type="text/babel">
+import { mapState } from 'vuex';
 export default {
   data () {
     return {
       value: '',
-      defaultResult: [
-        '网络工程',
-        '软件工程',
-        '计算机技术',
-        '数字和科学',
-        '旅游管理',
-        '日语',
-        '英语',
-        '生命科学',
-        '哲学',
-        '经济学',
-        '法学',
-        '教育学',
-        "文学"
-      ]
+      sid: '',
+      result: []
     }
   },
-  computed: {
-    filterResult () {
-      return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));
+  computed: mapState({
+    sid: state => state.filter.schoolId,
+  }),
+  watch: {
+    value() {
+      if(this.value != '') {
+        this.getProfession();
+      }
     }
   },
   methods: {
-    selectProfession(key) {
-      this.$store.dispatch('selectProfession', key);
-      this.$router.push('/filter');
+    selectProfession(title, id) {
+      this.$store.dispatch('selectFilterProfession', {id: id, name: title});
+      this.$router.go(-1);
+    },
+    getProfession() {
+      var vm = this;
+      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/speciality-list',{
+        params: {name:vm.value, sid: vm.sid},
+        headers: {
+        },
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        vm.result = data.data;
+      })
+      .catch(function(response) {
+      })
     }
   }
 }

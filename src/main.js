@@ -15,6 +15,7 @@ import { Header,
   TabContainerItem } from 'mint-ui';
 import store from './store'
 import MyCell from './uicomponents/Cell'
+import MyCallbackCell from './uicomponents/CallbackCell'
 import PreRadio from './uicomponents/Radio'
 import PreSearch from './uicomponents/Search'
 import MyCheckList from './uicomponents/Checklist'
@@ -32,6 +33,7 @@ Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 
 Vue.component(MyCell.name, MyCell);
+Vue.component(MyCallbackCell.name, MyCallbackCell)
 Vue.component(PreRadio.name, PreRadio);
 Vue.component(PreSearch.name, PreSearch);
 Vue.component(MyCheckList.name, MyCheckList);
@@ -53,9 +55,9 @@ const app = new Vue({
 });
 
 Vue.http.interceptors.push((request, next) => {
-  app.isLoading = true
+  app.$children[0].isLoading = true;
   next((response) => {
-    app.isLoading = false;
+    app.$children[0].isLoading = false;
     return response
   })
 })

@@ -9,7 +9,7 @@
   box-sizing: border-box;
   width: 100%;
   background-color: #fff;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid $border-color;
   padding: 0.26666666666666666rem 0;
   .flag-item {
     display: table-cell;
@@ -64,6 +64,15 @@
       margin-top: 0.4rem;
       color: #999999;
       @include font-dpr(10px);
+    }
+    .flag-auth {
+      @include font-dpr(10px);
+      margin-left: 0.26666666666666666rem;
+      padding: 0.05rem 0.14rem;
+      color: $color-green;
+      border: 1px solid $color-green;
+      border-radius: 3px;
+      font-weight: normal;
     }
   }
 }

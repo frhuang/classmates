@@ -12,28 +12,6 @@
   import HomeList from '../components/HomeList';
   import Tabbar from '../components/Nav';
   export default {
-    data () {
-      return {
-        lists: []
-      }
-    },
-    created() {
-      console.log('ready');
-      var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/interests-list',{
-        params: {type:2, id:0},
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
-        emulateJSON: true}
-      ).then((response) => {
-                console.log(response);
-                this.$set('lists', response.data)
-              })
-              .catch(function(response) {
-                console.log(response)
-              })
-    },
     components: {
       HomeList,
       Tabbar

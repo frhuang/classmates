@@ -33,25 +33,29 @@ import { mapState } from 'vuex';
         profession: '不限',
         year: '不限',
         interest: '不限',
-        value: '全部'
+        value: ' '
       }
     },
     created() {
-      this.options = ['全部', '男', '女'];
+      this.options = [
+        {label: '全部', value: ' '},
+        {label: '男', value: '0'},
+        {label: '女', value: '1'}
+      ];
     },
     methods: {
       confirm() {
-        alert('筛选信息为：'+this.province+this.city+this.school+this.profession+this.year+this.interest+this.value);
-        this.$router.push('/');
+        // alert('筛选信息为：'+this.province+this.city+this.school+this.profession+this.year+this.interest+this.value);
+        this.$router.go(-1);
       }
     },
     computed: mapState({
-      province: state => state.province.province,
-      city: state => state.province.city,
-      school: state => state.province.school,
-      profession: state => state.province.profession,
-      year: state => state.province.year,
-      interest: state => state.province.interest
+      province: state => state.filter.province,
+      city: state => state.filter.city,
+      school: state => state.filter.school,
+      profession: state => state.filter.profession,
+      year: state => state.filter.year,
+      interest: state => state.filter.interest
     })
   }
 </script>

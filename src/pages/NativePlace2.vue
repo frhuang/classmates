@@ -1,12 +1,12 @@
 <template>
   <div class="nativeplace">
     <mt-header :title="title" fixed>
-      <router-link to="/filter/nativeplace" slot="left">
+      <a @click="routerBack" slot="left">
         <mt-button class="common-back"></mt-button>
-      </router-link>
+      </a>
     </mt-header>
     <div class="cell-list">
-      <my-cell v-for="city in selectId" :callback="selectCity" :title="city" required></my-cell>
+      <callback-cell v-for="city in selectId" :callback="selectCity" :title="city.name" :id="city.aid"></callback-cell>
     </div>
   </div>
 </template>
@@ -16,16 +16,33 @@
   export default {
     data () {
       return {
-        title: this.$route.params.id,
-        selectId: address[this.$route.params.id]
+        title: this.$route.params.name,
+        selectId: []
       }
     },
+    created() {
+      var vm = this;
+      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/area-list',{
+        params: {type:1, id: this.$route.params.id},
+        headers: {
+        },
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        vm.selectId = data.data;
+      })
+      .catch(function(response) {
+      })
+    },
     methods: {
-      selectCity(key) {
-        console.log('fsdf')
-        this.$store.dispatch('selectProvince', this.title);
-        this.$store.dispatch('selectCity', key);
+      selectCity(title, id) {
+
+        this.$store.dispatch('selectFilterProvince', {id:this.$route.params.id, name:this.title});
+        this.$store.dispatch('selectFilterCity', {id: id, name: title});
         this.$router.push('/filter');
+      },
+      routerBack() {
+        this.$router.go(-1);
       }
     }
   }

@@ -5,7 +5,7 @@
         <mt-button class="common-back"></mt-button>
       </router-link>
     </mt-header>
-    <pre-cell v-for="year in years" :title="year" :callback="selectYear"></pre-cell>
+    <callback-cell v-for="year in years" :title="year" :callback="selectYear"></callback-cell>
   </div>
 </template>
 
@@ -18,9 +18,9 @@
       }
     },
     methods: {
-      selectYear(key) {
-        this.$store.dispatch('selectYear', key);
-        this.$router.push('/filter');
+      selectYear(title, key) {
+        this.$store.dispatch('selectFilterYear', title);
+        this.$router.go('-1');
       }
     }
   }

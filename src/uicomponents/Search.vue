@@ -23,13 +23,6 @@
         <span class="pre-searchbar-text" v-text="placeholder"></span>
       </label>
     </div>
-    <div class="pre-search-list" v-show="show || currentValue">
-      <div class="pre-search-list-warp">
-        <slot>
-          <pre-cell v-for="(item, index) in result" :key="index" :title="item"></pre-cell>
-        </slot>
-      </div>
-    </div>
   </div>
 </template>
 
