@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import filter from './modules/filter'
+import img from './modules/img'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    filter
+    filter,
+    img
   },
   trict: debug
 })

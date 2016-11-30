@@ -1,9 +1,7 @@
 <template>
   <div class="nativeplace">
     <mt-header title="籍贯" fixed>
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <div class="cell-list">
       <my-cell v-for="pro in address" :to="'/filter/nativeplace2/'+pro.aid+'/'+pro.name" :title="pro.name" is-link></my-cell>
@@ -31,9 +29,7 @@
       })
     },
     methods: {
-      routerBack() {
-        this.$router.go(-1);
-      }
+      
     }
   }
 </script>

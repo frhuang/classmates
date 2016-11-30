@@ -1,9 +1,7 @@
 <template>
   <div class="lookta">
   <mt-header title="通过微信认识TA" fixed>
-    <a @click="goback" slot="left">
-      <mt-button class="common-back"></mt-button>
-    </a>
+    <my-back slot="left"></my-back>
   </mt-header>
   <div class="looklist">
     <p class="look-title">
@@ -40,9 +38,7 @@
       this.options = ["10元红包请TA喝杯咖啡", "5元红包请TA喝瓶饮料", "3元红包请TA饭堂加个菜"]
     },
     methods: {
-      goback() {
-        this.$router.go(-1);
-      }
+      
     }
   }
 </script>

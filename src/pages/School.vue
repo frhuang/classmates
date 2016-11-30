@@ -1,9 +1,7 @@
 <template>
   <div class="school">
     <mt-header title="学校" fixed>
-      <router-link to="/filter" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </router-link>
+      <my-back slot="left"></my-back>
     </mt-header>
     <pre-search class="fixed-top"
       placeholder="请输入学校全称"
@@ -20,11 +18,13 @@
 </template>
 
 <script type="text/babel">
+import { rootUrl } from '../config'
   export default {
     data () {
       return {
         value: '',
-        result: []
+        result: [],
+        apiUrl: rootUrl + '/find/school-list'
       }
     },
     watch: {
@@ -36,12 +36,18 @@
     },
     methods: {
       selectSchool(title, id) {
-        this.$store.dispatch('selectFilterSchool', {id: id, name: title});
+        if(this.$route.params.id === 1) {
+            this.$store.dispatch('selectFilterSchool', {id: id, name: title});
+        }else {
+          // this.$store.dispatch('selectFilterSchool', {id: id, name: title});
+          console.log('my school')
+        }
+
         this.$router.go(-1);
       },
       getSchool() {
         var vm = this;
-        vm.$http.get('http://schoolmate.liyuzhou.net/api/find/school-list',{
+        vm.$http.get(vm.apiUrl, {
           params: {name:vm.value},
           headers: {
           },

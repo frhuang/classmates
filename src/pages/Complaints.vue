@@ -1,9 +1,7 @@
 <template>
   <div class="complaints">
     <mt-header title="投诉">
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <my-checklist align="right" v-model="value" :options="options"></mt-checklist>
   </div>
@@ -18,9 +16,6 @@
       }
     },
     methods: {
-      routerBack() {
-        this.$router.go(-1);
-      }
     }
   }
 </script>

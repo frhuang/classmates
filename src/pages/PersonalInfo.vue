@@ -1,9 +1,7 @@
 <template>
   <div class="personalInfo" v-if="post">
     <mt-header :title="post.name">
-      <a @click="goback" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
       <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right">投诉</router-link>
     </mt-header>
     <div class="flag">
@@ -67,9 +65,6 @@
             this.post = post
           }
         })
-      },
-      goback() {
-        this.$router.go(-1);
       },
       confirm() {
         alert('tousu');

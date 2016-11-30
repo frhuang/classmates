@@ -1,9 +1,7 @@
 <template>
   <div class="records-pages">
     <mt-header fixed>
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <!-- <mt-navbar class="records-header" v-model="selected">
       <mt-tab-item id="1">访问过我</mt-tab-item>

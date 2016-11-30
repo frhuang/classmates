@@ -1,9 +1,7 @@
 <template>
   <div class="school">
     <mt-header title="专业" fixed>
-      <router-link to="/filter" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </router-link>
+      <my-back slot="left"></my-back>
     </mt-header>
     <pre-search class="fixed-top"
       placeholder="请输入专业全称"
@@ -42,7 +40,7 @@ export default {
   methods: {
     selectProfession(title, id) {
       this.$store.dispatch('selectFilterProfession', {id: id, name: title});
-      this.$router.go(-1);
+      this.routerBack();
     },
     getProfession() {
       var vm = this;

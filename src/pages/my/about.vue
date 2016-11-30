@@ -1,9 +1,7 @@
 <template>
   <div class="about-pages">
     <mt-header title="关于找同学">
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </router-link>
+      <my-back slot="left"></my-back>
     </mt-header>
     <div class="about-content">
       <div class="content">

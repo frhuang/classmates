@@ -1,9 +1,7 @@
 <template>
   <div class="contacts-pages">
     <mt-header title="我的人脉" fixed>
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <div class="contacts">
       <p class="contacts-title">共100位</p>

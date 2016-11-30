@@ -1,9 +1,7 @@
 <template>
   <div class="profession">
     <mt-header title="兴趣爱好">
-      <router-link to="/filter" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </router-link>
+      <my-back slot="left"></my-back>
     </mt-header>
     <callback-cell v-for="interest in interests" :title="interest.name" :id="interest.it_id" :callback="selectInterest"></callback-cell>
   </div>

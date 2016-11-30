@@ -1,9 +1,7 @@
 <template>
   <div class="money-pages">
     <mt-header title="人脉心意" fixed>
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <div class="money-content">
       <div class="money-header">

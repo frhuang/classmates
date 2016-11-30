@@ -1,9 +1,7 @@
 <template>
   <div class="nativeplace">
     <mt-header :title="title" fixed>
-      <a @click="routerBack" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </a>
+      <my-back slot="left"></my-back>
     </mt-header>
     <div class="cell-list">
       <callback-cell v-for="city in selectId" :callback="selectCity" :title="city.name" :id="city.aid"></callback-cell>
@@ -40,9 +38,6 @@
         this.$store.dispatch('selectFilterProvince', {id:this.$route.params.id, name:this.title});
         this.$store.dispatch('selectFilterCity', {id: id, name: title});
         this.$router.push('/filter');
-      },
-      routerBack() {
-        this.$router.go(-1);
       }
     }
   }

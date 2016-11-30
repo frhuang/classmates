@@ -1,9 +1,7 @@
 <template>
   <div class="profession">
     <mt-header title="入学年份">
-      <router-link to="/filter" slot="left">
-        <mt-button class="common-back"></mt-button>
-      </router-link>
+      <my-back slot="left"></my-back>
     </mt-header>
     <callback-cell v-for="year in years" :title="year" :callback="selectYear"></callback-cell>
   </div>

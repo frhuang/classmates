@@ -1,5 +1,4 @@
 import * as types from '../mutation-types'
-import { address } from '../../config'
 
 const state = {
   province: "不限",

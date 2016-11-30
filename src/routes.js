@@ -15,6 +15,8 @@ import Contacts from './pages/my/contacts';
 import Records from './pages/my/records';
 import About from './pages/my/about';
 import MyInfo from './pages/my/myinfo';
+import MyName from './pages/my/my-name';
+import Album from './components/Album';
 
 const routes = [
   {
@@ -34,7 +36,7 @@ const routes = [
     component: NativePlace2
   },
   {
-    path: '/filter/school',
+    path: '/filter/school/:id',
     component: School
   },
   {
@@ -84,8 +86,15 @@ const routes = [
   {
     path: '/my/myinfo',
     component: MyInfo
+  },
+  {
+    path: '/my/myinfo/myname/:title',
+    component: MyName
+  },
+  {
+    path: '/my/myinfo/album',
+    component: Album
   }
-
 ]
 
 export default routes;

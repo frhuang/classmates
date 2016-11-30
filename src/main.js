@@ -21,6 +21,7 @@ import PreRadio from './uicomponents/Radio'
 import PreSearch from './uicomponents/Search'
 import MyCheckList from './uicomponents/Checklist'
 import Loading from './components/Loading'
+import Back from './components/Back'
 
 Vue.component(Header.name, Header);
 Vue.component(Cell.name, Cell);
@@ -40,6 +41,7 @@ Vue.component(PreRadio.name, PreRadio);
 Vue.component(PreSearch.name, PreSearch);
 Vue.component(MyCheckList.name, MyCheckList);
 Vue.component(Loading.name, Loading);
+Vue.component(Back.name, Back);
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
