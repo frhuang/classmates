@@ -12,7 +12,8 @@ import { Header,
   Radio,
   Loadmore,
   TabContainer,
-  TabContainerItem } from 'mint-ui';
+  TabContainerItem,
+  Actionsheet } from 'mint-ui';
 import store from './store'
 import MyCell from './uicomponents/Cell'
 import MyCallbackCell from './uicomponents/CallbackCell'
@@ -31,6 +32,7 @@ Vue.component(Radio.name, Radio);
 Vue.component(Loadmore.name, Loadmore);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
+Vue.component(Actionsheet .name, Actionsheet);
 
 Vue.component(MyCell.name, MyCell);
 Vue.component(MyCallbackCell.name, MyCallbackCell)

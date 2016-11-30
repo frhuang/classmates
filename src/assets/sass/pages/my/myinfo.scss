@@ -16,4 +16,15 @@ body {
       height: 1.6rem;
     }
   }
+  .mint-actionsheet-listitem {
+    border-color: $border-color;
+    height: 1.3333333333333333rem;
+    line-height: 1.3333333333333333rem;
+    @include font-dpr(18px);
+  }
+  .my-avatar {
+    width: 0.9333333333333333rem;
+    height: 0.9333333333333333rem;
+    border-radius: 50%;
+  }
 }

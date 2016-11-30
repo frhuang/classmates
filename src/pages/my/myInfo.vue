@@ -6,9 +6,13 @@
       </a>
       <mt-button class="join-btn" slot="right">我要加入</mt-button>
     </mt-header>
-    <my-cell title="头像" is-link required></my-cell>
+    <my-cell title="头像" is-link required @click.native="sheetVisible = true">
+      <img :src="avatar" class="my-avatar">
+    </my-cell>
     <my-cell title="真实姓名" :value="name" is-link required></my-cell>
-    <my-cell title="性别" :value="name" is-link required></my-cell>
+    <my-cell title="性别" :value="name"  required>
+
+    </my-cell>
     <my-cell title="籍贯" :value="place" is-link required></my-cell>
     <my-cell title="学校" :value="school" is-link required></my-cell>
     <my-cell title="专业" :value="speciality" is-link required></my-cell>
@@ -21,6 +25,7 @@
     <div class="upload">
       <img src="/static/img/upload.png" alt="">
     </div>
+    <mt-actionsheet :actions="actions" v-model="sheetVisible" cancel-text=""></mt-actionsheet>
   </div>
 </template>
 
@@ -28,7 +33,9 @@
   export default {
     data () {
       return {
+        sheetVisible: false,
         name: "必须与学生证姓名一致",
+        avatar: "http://wx.qlogo.cn/mmopen/Q3auHgzwzM5La0zRdYAUQfQpY3ZyW3UQNI5XvsxtWfJBLkicBrLzbnzxOkric6GuOp6WciaoU2YWjhKIB5M5WSmicU4G8oaIJujaJJsY99LrA5I/0",
         sex: 1,
         place: '填写可以让同乡找到你',
         school: '填写可以让校友找到你',
@@ -40,9 +47,21 @@
         office: '展示你的才能 (选填)',
       }
     },
+    mounted() {
+      this.actions = [{
+        name: '更改头像',
+        method: this.takePhoto
+      }, {
+        name: '查看大图',
+        method: this.openAlbum
+      }];
+    },
     methods: {
       routerBack() {
         this.$router.go(-1);
+      },
+      openAlbum() {
+
       }
     }
   }
