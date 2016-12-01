@@ -1,0 +1,51 @@
+@import "../../commons/mixin";
+.std-card-content {
+  padding-top: 1.7333333333333334rem;
+  @include font-dpr(15px);
+  color: $color-grey;
+  text-align: center;
+  .std-title {
+    font-size: 0.4rem;
+  }
+  .std-detail-title{
+    padding: 0.4rem 0 0.13333333333333333rem;
+  }
+
+  .ex-card-img {
+    display: block;
+    width: 6.746666666666667rem;
+    height: 4.8533333333333335rem;
+    margin: 0.6666666666666666rem auto 0.13333333333333333rem;
+  }
+}
+.upload-box {
+  width: 6.666666666666667rem;
+  height: 4.666666666666667rem;
+  // line-height: 4.666666666666667rem;
+  // text-align: center;
+  border:1px solid #ddd;
+  background: $color-white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto 0.26666666666666666rem;
+  position: relative;
+  .box-add-arrow {
+    width: 1.4rem;
+    height: 0.1rem;
+    background: $border-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &:after {
+      content: '';
+      width: 0.1rem;
+      height: 1.4rem;
+      background: $border-color;
+      position: absolute;
+      left: .66rem;
+      top: -0.66rem;
+    }
+  }
+}

@@ -36,7 +36,8 @@ import { rootUrl } from '../config'
     },
     methods: {
       selectSchool(title, id) {
-        if(this.$route.params.id === 1) {
+        console.log(this.$route.params.id);
+        if(this.$route.params.id == 1) {
             this.$store.dispatch('selectFilterSchool', {id: id, name: title});
         }else {
           // this.$store.dispatch('selectFilterSchool', {id: id, name: title});

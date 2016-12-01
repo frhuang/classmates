@@ -1,4 +1,4 @@
-export const rootUrl = "http://schoolmate.liyuzhou.net/api";
+export const rootUrl = "http://tongxue.wangwangpei.com/api";
 
 export const address = {
     '北京': ['北京'],

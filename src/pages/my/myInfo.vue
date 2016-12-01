@@ -8,16 +8,21 @@
       <img :src="avatar" class="my-avatar">
     </my-cell>
     <my-cell title="真实姓名" to="/my/myinfo/myname/name" :value="name" is-link required></my-cell>
-    <my-cell title="性别" :value="name"  required>
-
+    <my-cell title="性别" required>
+        <div class="pre-cell-sex">
+          <my-radio
+            class="page-part"
+            v-model="sex"
+            :options="options" />
+        </div>
     </my-cell>
     <my-cell title="籍贯" to="/my/myinfo/myname/area" :value="place" is-link required></my-cell>
     <my-cell title="学校" to="/filter/school/2" :value="school" is-link required></my-cell>
     <my-cell title="专业" :value="speciality" is-link required></my-cell>
     <my-cell title="入学年份" :value="year" is-link required></my-cell>
     <my-cell title="兴趣爱好" :value="interest" is-link required></my-cell>
-    <my-cell title="微信二维码" :value="qcode" is-link required></my-cell>
-    <my-cell title="实名认证学生证" :value="stucard" is-link required></my-cell>
+    <my-cell title="微信二维码"  to="/my/myinfo/qrcode" :value="qcode" is-link required></my-cell>
+    <my-cell title="实名认证学生证" to="/my/myinfo/stdcard" :value="stucard" is-link required></my-cell>
     <my-cell title="学生职位" to="/my/myinfo/myname/jobs" :value="office" is-link></my-cell>
     <p class="photo-title">上传自己的魅力相册，多方位展示才有故事发生</p>
     <div class="upload">
@@ -34,8 +39,13 @@
         sheetVisible: false,
         name: "必须与学生证姓名一致",
         avatar: "http://wx.qlogo.cn/mmopen/Q3auHgzwzM5La0zRdYAUQfQpY3ZyW3UQNI5XvsxtWfJBLkicBrLzbnzxOkric6GuOp6WciaoU2YWjhKIB5M5WSmicU4G8oaIJujaJJsY99LrA5I/0",
-        sex: 1,
-        place: '填写可以让同乡找到你',
+        options: [
+          {label: '男', value: '0'},
+          {label: '女', value: '1'}
+        ],
+        sex: '0',
+        pro: '填写可以让同乡找到你',
+        city: '',
         school: '填写可以让校友找到你',
         speciality: '填写可以让同专业的找到你',
         year: '填写可以让同年级的找到你',

@@ -1,0 +1,26 @@
+@import "../../commons/mixin";
+.qrcode-content {
+  padding-top: 1.6rem;
+  padding-left: 0.26666666666666666rem;
+  padding-right: 0.26666666666666666rem;
+  color: $color-grey;
+  @include font-dpr(15px);
+  .upload-title{
+      color: $color-black;
+      text-align: center;
+      margin: 0.6666666666666666rem 0;
+  }
+  .upload-box {
+    width: 2.6666666666666665rem;
+    height: 2.6666666666666665rem;
+    margin-bottom: 0.5rem;
+  }
+  .readyImg {
+    width: 5.733333333333333rem;
+    height: 7.733333333333333rem;
+    margin: 0 auto 0.6666666666666666rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

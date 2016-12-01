@@ -13,7 +13,8 @@ const state = {
   professionId: "",
   interest: "不限",
   interestId: "",
-  sex: " "
+  sex: " ",
+  status: false
 }
 
 const getters = {
@@ -47,6 +48,9 @@ const mutations = {
   },
   [types.SELECT_FILTER_SEX] (state, id) {
     state.sex = id
+  },
+  [types.FILTER_STATUS] (state, status) {
+    state.status = status
   }
 }
 

@@ -1,8 +1,8 @@
 @import "../commons/mixin";
-.pre-radio-input {
+.my-radio-input {
   display: none;
 }
-.pre-radio-model{
+.my-radio-model{
   float: left;
   width: 1.3333333333333333rem;
   height: 0.6666666666666666rem;
@@ -17,13 +17,13 @@
     margin-left: 0;
   }
 }
-.pre-radio-label{
+.my-radio-label{
   display: inline-block;
   width: 1.3333333333333333rem;
   height: 0.6666666666666666rem;
   background: #ff;
 }
-.pre-radio-input:checked + .pre-radio-label {
+.my-radio-input:checked + .my-radio-label {
   background: $color-green;
   color: #fff;
 }

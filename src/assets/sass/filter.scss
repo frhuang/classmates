@@ -57,15 +57,13 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 4.9rem;
-  margin-left: -2.45rem;
-  margin-top: -0.3333333333333333rem;
-  display: flex;
+  transform: translate(-50%, -50%);
 }
 .filter-btn {
   appearance: none;
   border: none;
   position: absolute;
+  border-radius: 3px;
   top: 0.3333333333333333rem;
   width:1.3333333333333333rem;
   height:0.6666666666666666rem;
@@ -73,4 +71,7 @@
   background: $color-green;
   color: #fff;
   @include font-dpr(15px);
+  &.disabled {
+    background: $color-grey;
+  }
 }

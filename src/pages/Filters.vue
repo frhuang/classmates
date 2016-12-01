@@ -11,7 +11,7 @@
     <my-cell title="兴趣爱好" to="/filter/interest" :value="interest" is-link></my-cell>
     <my-cell title="性别">
       <div class="pre-cell-sex">
-        <pre-radio
+        <my-radio
           class="page-part"
           v-model="value"
           :options="options" />
@@ -43,7 +43,6 @@ import { mapState } from 'vuex';
     },
     methods: {
       confirm() {
-        // alert('筛选信息为：'+this.province+this.city+this.school+this.profession+this.year+this.interest+this.value);
         this.$router.go(-1);
       }
     },

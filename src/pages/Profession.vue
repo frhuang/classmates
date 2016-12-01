@@ -19,12 +19,14 @@
 
 <script type="text/babel">
 import { mapState } from 'vuex';
+import { rootUrl } from '../config';
 export default {
   data () {
     return {
       value: '',
       sid: '',
-      result: []
+      result: [],
+      apiUrl: rootUrl + '/find/speciality-list'
     }
   },
   computed: mapState({
@@ -40,11 +42,11 @@ export default {
   methods: {
     selectProfession(title, id) {
       this.$store.dispatch('selectFilterProfession', {id: id, name: title});
-      this.routerBack();
+      this.$router.go(-1);
     },
     getProfession() {
       var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/speciality-list',{
+      vm.$http.get(vm.apiUrl, {
         params: {name:vm.value, sid: vm.sid},
         headers: {
         },

@@ -16,6 +16,8 @@ import Records from './pages/my/records';
 import About from './pages/my/about';
 import MyInfo from './pages/my/myinfo';
 import MyName from './pages/my/my-name';
+import MyQrcode from './pages/my/my-qrcode';
+import MyStdCard from './pages/my/my-std-card';
 import Album from './components/Album';
 
 const routes = [
@@ -94,6 +96,14 @@ const routes = [
   {
     path: '/my/myinfo/album',
     component: Album
+  },
+  {
+    path: '/my/myinfo/qrcode',
+    component: MyQrcode
+  },
+  {
+    path: '/my/myinfo/stdcard',
+    component: MyStdCard
   }
 ]
 

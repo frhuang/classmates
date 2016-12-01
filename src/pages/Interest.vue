@@ -8,16 +8,17 @@
 </template>
 
 <script type="text/babel">
-  import { interests } from '../config.js';
+  import { rootUrl } from '../config';
   export default {
     data() {
       return {
-        interests: {}
+        interests: {},
+        apiUrl: rootUrl + '/find/interests-list'
       }
     },
     created() {
       var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/interests-list',{
+      vm.$http.get(vm.apiUrl,{
         params: {type:2},
         headers: {
         },

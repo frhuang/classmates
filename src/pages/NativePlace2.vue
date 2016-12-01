@@ -10,17 +10,18 @@
 </template>
 
 <script type="text/babel">
-  import { address } from '../config.js';
+  import { rootUrl } from '../config';
   export default {
     data () {
       return {
         title: this.$route.params.name,
-        selectId: []
+        selectId: [],
+        apiUrl: rootUrl + '/find/area-list'
       }
     },
     created() {
       var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/area-list',{
+      vm.$http.get(vm.apiUrl, {
         params: {type:1, id: this.$route.params.id},
         headers: {
         },
@@ -34,10 +35,9 @@
     },
     methods: {
       selectCity(title, id) {
-
         this.$store.dispatch('selectFilterProvince', {id:this.$route.params.id, name:this.title});
         this.$store.dispatch('selectFilterCity', {id: id, name: title});
-        this.$router.push('/filter');
+        this.$router.go(-2);
       }
     }
   }

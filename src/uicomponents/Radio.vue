@@ -1,17 +1,17 @@
 <template>
-  <div class="pre-radiolist" @change="$emit('change', currentValue)">
-    <div v-for="option in options" class="pre-radio-model">
-      <label class="pre-radiolist-label">
+  <div class="my-radiolist" @change="$emit('change', currentValue)">
+    <div v-for="option in options" class="my-radio-model">
+      <label class="my-radiolist-label">
         <span
           :class="{'is-right': align === 'right'}"
-          class="pre-radio">
+          class="my-radio">
           <input
-            class="pre-radio-input"
+            class="my-radio-input"
             type="radio"
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
-            <span class="pre-radio-label" v-text="option.label || option"></span>
+            <span class="my-radio-label" v-text="option.label || option"></span>
         </span>
       </label>
     </div>
@@ -20,7 +20,7 @@
 
 <script type="text/babel">
 export default {
-  name: 'pre-radio',
+  name: 'my-radio',
 
   props: {
     align: String,

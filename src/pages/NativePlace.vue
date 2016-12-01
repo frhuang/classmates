@@ -10,15 +10,17 @@
 </template>
 
 <script type="text/babel">
+  import { rootUrl } from '../config';
   export default {
     data() {
       return {
-        address: []
+        address: [],
+        apiUrl: rootUrl + '/find/area-list'
       }
     },
     created() {
       var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/area-list',{
+      vm.$http.get(vm.apiUrl,{
         params: {type:1},
         emulateJSON: true
       }).then((response) => {
@@ -29,7 +31,7 @@
       })
     },
     methods: {
-      
+
     }
   }
 </script>
