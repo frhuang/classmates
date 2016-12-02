@@ -3,10 +3,10 @@
     <mt-header title="专业" fixed>
       <my-back slot="left"></my-back>
     </mt-header>
-    <pre-search class="fixed-top"
+    <my-search class="fixed-top"
       placeholder="请输入专业全称"
       v-model="value">
-      </pre-search>
+    </my-search>
       <div class="pre-search-list" v-show="value">
         <div class="pre-search-list-warp">
           <slot>

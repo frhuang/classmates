@@ -4,6 +4,14 @@
   .textwrapper{
     background: $grey-bg-color;
     padding: 0.26666666666666666rem;
+    position: relative;
+    @include font-dpr(15px);
+    .check-length {
+      position: absolute;
+      right: 0.28rem;
+      top: 2.1rem;
+      color: $color-grey;
+    }
   }
   .textarea {
     appearance: none;

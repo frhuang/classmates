@@ -4,6 +4,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import filter from './modules/filter'
 import img from './modules/img'
+import info from './modules/info'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   getters,
   modules: {
     filter,
-    img
+    img,
+    info
   },
   trict: debug
 })

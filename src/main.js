@@ -17,8 +17,8 @@ import { Header,
 import store from './store'
 import MyCell from './uicomponents/Cell'
 import MyCallbackCell from './uicomponents/CallbackCell'
-import PreRadio from './uicomponents/Radio'
-import PreSearch from './uicomponents/Search'
+import MyRadio from './uicomponents/Radio'
+import MySearch from './uicomponents/Search'
 import MyCheckList from './uicomponents/Checklist'
 import Loading from './components/Loading'
 import Back from './components/Back'
@@ -37,8 +37,8 @@ Vue.component(Actionsheet .name, Actionsheet);
 
 Vue.component(MyCell.name, MyCell);
 Vue.component(MyCallbackCell.name, MyCallbackCell)
-Vue.component(PreRadio.name, PreRadio);
-Vue.component(PreSearch.name, PreSearch);
+Vue.component(MyRadio.name, MyRadio);
+Vue.component(MySearch.name, MySearch);
 Vue.component(MyCheckList.name, MyCheckList);
 Vue.component(Loading.name, Loading);
 Vue.component(Back.name, Back);

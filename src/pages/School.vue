@@ -3,10 +3,10 @@
     <mt-header title="学校" fixed>
       <my-back slot="left"></my-back>
     </mt-header>
-    <pre-search class="fixed-top"
+    <my-search class="fixed-top"
       placeholder="请输入学校全称"
       v-model="value">
-      </pre-search>
+    </my-search>
       <div class="pre-search-list" v-show="value != ''">
         <div class="pre-search-list-warp">
           <slot>

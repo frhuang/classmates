@@ -43,3 +43,20 @@ ul{
 .pre-search-list{
   margin-top: 2.6666666666666665rem;
 }
+
+.default-pages {
+  padding-top: 2.6666666666666665rem;
+  text-align: center;
+  color: $color-grey;
+  @include font-dpr(15px);
+  a{
+    display: block;
+    width: 2.6666666666666665rem;
+    height: 0.6666666666666666rem;
+    line-height: 0.6666666666666666rem;
+    background: $color-green;
+    margin: 0.26666666666666666rem auto;
+    color: $color-white;
+    border-radius: 4px;
+  }
+}

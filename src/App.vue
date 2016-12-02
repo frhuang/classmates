@@ -56,8 +56,7 @@ import PreTabItem from './uicomponents/TabItem';
           const fromDepth = from.path.split('/').length
           this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
-        console.log(this.$router.path);
-        if(this.$router.path === '/my') {
+        if(to.path === '/my') {
           this.selected = "我的";
         }
       }

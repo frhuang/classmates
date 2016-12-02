@@ -71,28 +71,31 @@
 </template>
 
 <script type="text/babel">
-var lists = [
-  {"n":"伊莎贝拉", "s": 1, "t": 1, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"大卫", "s": 2, "t": 2, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"}
-];
-
-import { moneyTypes } from '../../config';
+import { moneyTypes, rootUrl } from '../../config';
 
 export default {
   data () {
     return {
       detailLists: [],
-      rewards: "0.00",
+      usable_money: "0.00",
+      total_money: '0',
+      rank: '1',
+      today: {
+        coffee: '0',
+        drink: '0',
+        frute: '0'
+      },
+      total: {
+        coffee: '0',
+        drink: '0',
+        frute: '0'
+      },
       allLoaded: false,
       bottomStatus: '',
       wrapperHeight: 0,
-      total: 3,
-      moneyTypes: moneyTypes
+      total: 5,
+      moneyTypes: moneyTypes,
+      apiUrl: rootUrl + '/user/get-my-income-list'
     }
   },
   methods: {
@@ -105,7 +108,7 @@ export default {
       setTimeout(() => {
         if (lastValue < this.total) {
           for (let i = 1; i <= 10; i++) {
-            this.detailLists.push(lists["1"]);
+            // this.detailLists.push(lists["1"]);
           }
         } else {
           this.allLoaded = true;
@@ -113,14 +116,30 @@ export default {
         this.$refs.loadmore.onBottomLoaded(id);
       }, 1500);
     },
-    routerBack() {
-      this.$router.go(-1);
+    getData() {
+      var vm = this;
+      vm.$http.get(vm.apiUrl, {
+        params: {size:vm.size, page: vm.page},
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        var orderInfo = data.data.orderInfo;
+        var userData = data.data.userData;
+        var userTradeLog = data.data.userTradeLog;
+
+        // for(let i=0; i< dd.length ; i++) {
+        //   this.detailLists.push(dd[i]);
+        // }
+      })
+      .catch(function(response) {
+      })
     }
   },
   created() {
-    for (let i = 0; i < lists.length; i++) {
-      this.detailLists.push(lists[i]);
-    }
+    this.getData();
+    // for (let i = 0; i < lists.length; i++) {
+    //   this.detailLists.push(lists[i]);
+    // }
   },
   mounted() {
    this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().bottom;

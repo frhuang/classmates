@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'pre-navbar',
+  name: 'my-navbar',
   props: {
     value: {}
   }

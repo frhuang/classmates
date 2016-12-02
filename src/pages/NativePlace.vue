@@ -26,6 +26,8 @@
       }).then((response) => {
         var data = JSON.parse(response.data);
         vm.address = data.data;
+      }, (response) => {
+        console.log(response.data)
       })
       .catch(function(response) {
       })

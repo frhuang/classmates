@@ -42,7 +42,7 @@ const routes = [
     component: School
   },
   {
-    path: '/filter/profession',
+    path: '/filter/profession/id',
     component: Profession
   },
   {
@@ -90,7 +90,7 @@ const routes = [
     component: MyInfo
   },
   {
-    path: '/my/myinfo/myname/:title',
+    path: '/my/myinfo/myname/:id',
     component: MyName
   },
   {

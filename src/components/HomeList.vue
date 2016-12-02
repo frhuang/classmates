@@ -31,7 +31,7 @@
 </template>
 
 <script type="text/babel">
-  import { lists } from '../config.js';
+  import { rootUrl } from '../config.js';
   export default {
     data () {
       return {
@@ -39,7 +39,8 @@
         allLoaded: false,
         bottomStatus: '',
         total: 40,
-        wrapperHeight: 0
+        wrapperHeight: 0,
+        apiUrl: rootUrl + '/find/list'
       }
     },
     methods: {
@@ -64,7 +65,7 @@
     },
     created() {
       var vm = this;
-      vm.$http.get('http://schoolmate.liyuzhou.net/api/find/list',{
+      vm.$http.get(vm.apiUrl,{
         params: {},
         headers: {
         },

@@ -3,61 +3,70 @@
     <mt-header fixed>
       <my-back slot="left"></my-back>
     </mt-header>
-    <!-- <mt-navbar class="records-header" v-model="selected">
-      <mt-tab-item id="1">访问过我</mt-tab-item>
-      <mt-tab-item id="2">我访问过</mt-tab-item>
-    </mt-navbar> -->
-    <pre-navbar class="records-header" v-model="selected">
-      <pre-nav-item id="1">访问过我</pre-nav-item>
-      <pre-nav-item id="2">我访问过</pre-nav-item>
-    </pre-navbar>
-    <p class="records-title">共100位</p>
+    <my-navbar class="records-header" v-model="selected">
+      <my-nav-item id="1" @click.native ="viewMe(1)">访问过我</my-nav-item>
+      <my-nav-item id="2" @click.native ="viewMe(2)">我访问过</my-nav-item>
+    </my-navbar>
+    <p class="records-title">共 {{detailLists.length}} 位</p>
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
-        <div v-for="list in mainLists" class="flag">
-          <div class="avatar flag-item">
-            <img :src="list.img" class="avatar-img">
-            <i :class="{'female': list.sex =='2', 'male': list.sex == '1'}"></i>
-          </div>
-          <div class="flag-item">
-            <div class="flag-title">{{list.name}}</div>
-            <div class="flag-pro">
-              <span>{{list.stu}}</span>
-              <span>{{list.pro}}</span>
-              <span>{{list.lv}}级</span>
-            </div>
-            <div class="flag-pro">
-              2013.05.21
-            </div>
-          </div>
-        </div>
+        <view-list :detailLists="detailLists"></view-list>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+        <view-list :detailLists="detailLists"></view-list>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
 </template>
 
 <script type="text/babel">
-import PreNavItem from '../../uicomponents/NavItem.vue';
-import PreNavbar from '../../uicomponents/Navbar.vue';
-import { lists } from '../../config';
+import MyNavItem from '../../uicomponents/NavItem.vue';
+import MyNavbar from '../../uicomponents/Navbar.vue';
+import ViewList from '../../components/ViewList';
+import { rootUrl } from '../../config';
 export default {
   data () {
     return {
-      mainLists: lists,
-      selected: '1'
+      detailLists: [],
+      selected: '1',
+      page: 1,
+      size: 20,
+      apiUrl: rootUrl + '/user/get-view-me-list'
     }
   },
+  created() {
+    this.getData();
+  },
   methods: {
-    routerBack() {
-      this.$router.go(-1);
+    viewMe(type) {
+      if(type == 1) {
+        this.apiUrl = rootUrl + '/user/get-view-me-list';
+      }else if(type == 2) {
+        this.apiUrl = rootUrl + '/user/get-my-view-list';
+      }
+      this.detailLists = [];
+      this.getData();
+    },
+    getData() {
+      var vm = this;
+      vm.$http.get(vm.apiUrl, {
+        params: {size:vm.size, page: vm.page},
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        var dd = data.data;
+        for(let i=0; i< dd.length ; i++) {
+          this.detailLists.push(dd[i]);
+        }
+      })
+      .catch(function(response) {
+      })
     }
   },
   components: {
-    PreNavItem,
-    PreNavbar
+    MyNavItem,
+    MyNavbar,
+    ViewList
   }
 }
 </script>

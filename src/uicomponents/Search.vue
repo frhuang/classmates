@@ -28,7 +28,7 @@
 
 <script type="text/babel">
 export default {
-  name: 'pre-search',
+  name: 'my-search',
 
   data() {
     return {
@@ -57,7 +57,7 @@ export default {
     placeholder: {
       default: '搜索'
     },
-    result: Array
+    result: Array,
   },
 
   mounted() {

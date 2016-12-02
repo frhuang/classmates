@@ -4,26 +4,26 @@
       <my-back slot="left"></my-back>
     </mt-header>
     <div class="contacts">
-      <p class="contacts-title">共100位</p>
+      <p class="contacts-title">共 {{length}} 位</p>
       <div class="contacts-list" ref="wrapper">
         <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
           <ul class="page-loadmore-list">
             <li v-for="item in detailLists" class="money-listitem">
               <div class="flag">
                 <div class="avatar flag-item">
-                  <img class="avatar-img">
-                  <i :class="{'female': item.s =='2', 'male': item.s == '1'}"></i>
+                  <img class="avatar-img" :src="item.avatar">
+                  <i :class="{'female': item.gender =='0', 'male': item.gender == '1'}"></i>
                 </div>
                 <div class="flag-item">
                   <div class="flag-title">
-                      {{item.n}}
+                      {{item.username}}
                   </div>
                   <div class="flag-money-content">
                     <div class="money-left money-cc">
                       <p class="flag-pro">
                         <span>中山大学</span><span>软件工程</span><span>2014级</span>
                       </p>
-                      <p><span class="green-title">送了你{{moneyTypes[item.t]}}并说：</span><span>{{item.c}}</span></p>
+                      <p><span class="green-title">送了你{{moneyTypes[item.t]}}并说：</span><span>{{item.remark}}</span></p>
                     </div>
                     <div class="money-right">
                       <a @click="lookWeixin">查看微信</a>
@@ -34,23 +34,17 @@
             </li>
           </ul>
         </mt-loadmore>
+        <div class="contacts-pages" v-show="length == 0">
+          <p>还没自己的大学人脉圈？</p>
+          <router-link to="/">去找找</router-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/babel">
-var lists = [
-  {"n":"伊莎贝拉", "s": 1, "t": 1, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"大卫", "s": 2, "t": 2, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"},
-  {"n":"拉斯", "s": 1, "t": 3, "c":"想和你交个朋友，我也喜欢摄影！"}
-];
-
-import { moneyTypes } from '../../config';
+import { moneyTypes, rootUrl } from '../../config';
 
 export default {
   data () {
@@ -60,8 +54,13 @@ export default {
       allLoaded: false,
       bottomStatus: '',
       wrapperHeight: 0,
-      total: 3,
-      moneyTypes: moneyTypes
+      total: 0,
+      moneyTypes: moneyTypes,
+      size: 20,
+      page: 1,
+      length: 0,
+      currentLength: 0,
+      apiUrl: rootUrl + '/user/get-rolodex-list',
     }
   },
   methods: {
@@ -70,29 +69,37 @@ export default {
     },
 
     loadBottom(id) {
-      let lastValue = this.detailLists.length;
-      setTimeout(() => {
-        if (lastValue < this.total) {
-          for (let i = 1; i <= 10; i++) {
-            this.detailLists.push(lists["1"]);
-          }
-        } else {
-          this.allLoaded = true;
-        }
-        this.$refs.loadmore.onBottomLoaded(id);
-      }, 1500);
+      if(this.currentLength >= this.size) {
+        // this.getData();
+      }else{
+        this.allLoaded = true;
+      }
+      this.$refs.loadmore.onBottomLoaded(id);
     },
     lookWeixin() {
       alert('查看微信');
     },
-    routerBack() {
-      this.$router.go(-1);
+    getData() {
+      var vm = this;
+      vm.$http.get(vm.apiUrl, {
+        params: {size:vm.size, page: vm.page},
+        emulateJSON: true
+      }).then((response) => {
+        var data = JSON.parse(response.data);
+        var dd = data.data;
+        for(let i=0; i < dd.length; i++) {
+          this.detailLists.push(dd[i]);
+        }
+        console.log(this.detailLists);
+        vm.currentLength = dd.length;
+        vm.length = this.detailLists.length;
+      })
+      .catch(function(response) {
+      })
     }
   },
   created() {
-    for (let i = 0; i < lists.length; i++) {
-      this.detailLists.push(lists[i]);
-    }
+    this.getData();
   },
   mounted() {
    this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;

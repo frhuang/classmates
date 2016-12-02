@@ -6,7 +6,7 @@
     </mt-header>
     <my-cell title="籍贯" to="/filter/nativeplace" :value="province +' '+ city" is-link req></my-cell>
     <my-cell title="学校" to="/filter/school/1" :value="school" is-link></my-cell>
-    <my-cell title="专业" to="/filter/profession" :value="profession" is-link></my-cell>
+    <my-cell title="专业" to="/filter/profession/1" :value="profession" is-link></my-cell>
     <my-cell title="入学年份" to="/filter/startyear" :value="year" is-link></my-cell>
     <my-cell title="兴趣爱好" to="/filter/interest" :value="interest" is-link></my-cell>
     <my-cell title="性别">
