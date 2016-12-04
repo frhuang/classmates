@@ -1,9 +1,6 @@
 <template>
   <div class="home-list" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
     <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <!-- <ul class="page-loadmore-list">
-          <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
-        </ul> -->
         <router-link v-for="list in mainLists" class="flag" :to="'/personalinfo/'+list.uid">
           <div class="avatar flag-item">
             <img :src="list.avatar" class="avatar-img">
@@ -27,6 +24,10 @@
           </div>
         </router-link>
       </mt-loadmore>
+      <div class="default-pages" v-show="mainLists.length == 0">
+        <p>该条件下找不到相应的童鞋哦</p>
+        <router-link to="/filter">重新筛选</router-link>
+      </div>
   </div>
 </template>
 

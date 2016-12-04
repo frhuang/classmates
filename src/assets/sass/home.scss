@@ -56,14 +56,24 @@
       color: $color-grey;
       @include font-dpr(12px);
     }
+    .flag-content {
+      margin-top: .2rem;
+      color: $color-grey;
+      @include font-dpr(12px);
+    }
     .flag-interest {
       color: #02b300;
       @include font-dpr(12px);
     }
-    .flag-tips {
-      margin-top: 0.4rem;
+    .flag-no-auth, .flag-is-auth{
       color: #999999;
       @include font-dpr(10px);
+    }
+    .flag-no-auth {
+      margin-top: 0.5rem;
+    }
+    .flag-is-auth {
+      margin-top: 0.26rem;
     }
     .flag-auth {
       @include font-dpr(10px);

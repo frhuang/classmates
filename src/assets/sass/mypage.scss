@@ -60,7 +60,7 @@
   }
 }
 
-.mypage-btn {
+.mypage-join {
   position: absolute;
   right: 0.4rem;
   top: 0;
@@ -71,6 +71,14 @@
   text-align: center;
   color: #fff;
   @include font-dpr(12px);
-  outline: 0;
-  border: none;
+}
+.mypage-edit {
+  position: absolute;
+  right: 0.5333333333333333rem;
+  top: 0.1rem;
+  display: block;
+  width: 0.6133333333333333rem;
+  height: 0.6133333333333333rem;
+  background: url(/static/img/edit.png);
+  background-size: cover;
 }

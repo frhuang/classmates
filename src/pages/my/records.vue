@@ -11,9 +11,17 @@
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
         <view-list :detailLists="detailLists"></view-list>
+        <div class="default-pages" v-show="detailLists.length == 0">
+          <p>平时多上来露露脸，相册等个人信息丰富完善一点</p>
+          <router-link to="/my/myinfo">去完善</router-link>
+        </div>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
         <view-list :detailLists="detailLists"></view-list>
+        <div class="default-pages" v-show="detailLists.length == 0">
+          <p>各大高校大学生都在这，快去认识下吧</p>
+          <router-link to="/my/myinfo">去瞧瞧</router-link>
+        </div>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
