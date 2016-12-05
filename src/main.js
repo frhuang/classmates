@@ -4,9 +4,9 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routes from './routes'
 import store from './store'
+
 import MyHeader from './uicomponents/Header'
 import MyCell from './uicomponents/Cell'
-import MyCallbackCell from './uicomponents/CallbackCell'
 import MyRadio from './uicomponents/Radio'
 import MySearch from './uicomponents/Search'
 import MyCheckList from './uicomponents/Checklist'
@@ -14,10 +14,11 @@ import Loading from './components/Loading'
 import MyBack from './components/Back'
 import MyNavbar from './uicomponents/Navbar';
 import MyNavItem from './uicomponents/NavItem';
+import MyButton from './uicomponents/Button';
+import MyActionsheet from './uicomponents/actionsheet';
 
 Vue.component(MyHeader.name, MyHeader);
 Vue.component(MyCell.name, MyCell);
-Vue.component(MyCallbackCell.name, MyCallbackCell)
 Vue.component(MyRadio.name, MyRadio);
 Vue.component(MySearch.name, MySearch);
 Vue.component(MyCheckList.name, MyCheckList);
@@ -25,6 +26,8 @@ Vue.component(Loading.name, Loading);
 Vue.component(MyBack.name, MyBack);
 Vue.component(MyNavbar.name, MyNavbar);
 Vue.component(MyNavItem.name, MyNavItem);
+Vue.component(MyButton.name, MyButton);
+Vue.component(MyActionsheet.name, MyActionsheet);
 
 Vue.use(VueRouter)
 Vue.use(VueResource)

@@ -1,8 +1,8 @@
 <template>
-  <a class="my-tab-item"
+  <a class="my-nav-item"
     @click="$parent.$emit('input', id)"
     :class="{ 'is-selected': $parent.value === id }">
-    <div class="my-tab-item-label"><slot></slot></div>
+    <div class="my-nav-item-label"><slot></slot></div>
   </a>
 </template>
 

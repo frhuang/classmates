@@ -41,7 +41,7 @@
         bottomStatus: '',
         total: 40,
         wrapperHeight: 0,
-        apiUrl: 'http://schoolmate.liyuzhou.net:80/api' + '/find/list'
+        apiUrl: rootUrl + '/find/list'
       }
     },
     methods: {

@@ -1,9 +1,9 @@
 <template>
   <div class="myinfo">
-    <mt-header title="个人信息">
+    <my-header title="个人信息">
       <my-back slot="left"/>
-      <mt-button class="join-btn" slot="right">我要加入</mt-button>
-    </mt-header>
+      <my-button class="join-btn" slot="right" :disabled="disabled">我要加入</my-button>
+    </my-header>
     <my-cell title="头像" is-link required @click.native="sheetVisible = true">
       <img :src="user_info.avatar" class="my-avatar">
     </my-cell>
@@ -29,25 +29,31 @@
       :value="user_info.speciality_text == '' ? defalut.profession : user_info.speciality_text"
       is-link required></my-cell>
     <my-cell title="入学年份"
-      to="/filter/year"
+      to="/filter/startyear/2"
       :value="user_info.syear == '' ? defalut.year : user_info.syear"
       is-link required></my-cell>
     <my-cell title="兴趣爱好"
+      to="/my/myinfo/myinterests"
       :value="interestValue == '' ? defalut.interest : interestValue" is-link required></my-cell>
     <my-cell title="微信二维码"  to="/my/myinfo/qrcode" :value="qrcode" is-link required></my-cell>
     <my-cell title="实名认证学生证" to="/my/myinfo/stdcard" :value="stdcard" is-link required></my-cell>
     <my-cell title="学生职位" to="/my/myinfo/myname/2" :value="jobs" is-link></my-cell>
     <p class="photo-title">上传自己的魅力相册，多方位展示才有故事发生</p>
-    <div class="upload">
-      <img src="/static/img/upload.png" alt="">
+    <div class="upload-box" v-show="photoLength < 4">
+      <upload
+        :api="upload.api"
+        :success="upload.success">
+        <div class="box-add-arrow"></div>
+      </upload>
     </div>
-    <mt-actionsheet :actions="actions" v-model="sheetVisible" cancel-text=""></mt-actionsheet>
+    <my-actionsheet :actions="actions" v-model="sheetVisible" cancel-text=""></my-actionsheet>
   </div>
 </template>
 
 <script type="text/babel">
   import { mapState } from 'vuex';
   import { infoDefault, rootUrl } from '../../config';
+  import upload from "../../components/Upload.vue"
   export default {
     data () {
       return {
@@ -61,6 +67,7 @@
         stdcard: '',
         interestValue: '',
         defalut: infoDefault,
+        photoLength: 0,
         apiUrl: rootUrl + '/user/detail',
         user_info: {
           avatar: '',
@@ -77,8 +84,17 @@
           username:'',
           wechat:'',
           wechat_status:''
+        },
+        upload:{
+          api:"",
+          success:(data)=>{
+            this.successCallback(data);
+          }
         }
       }
+    },
+    components: {
+      upload
     },
     mounted() {
       this.actions = [{
@@ -126,6 +142,9 @@
           student_id: vm.student_id,
           interests: vm.interests
         })
+      },
+      successCallback(data) {
+
       }
     }
   }

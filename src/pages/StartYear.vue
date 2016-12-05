@@ -1,9 +1,9 @@
 <template>
   <div class="profession">
-    <mt-header title="入学年份">
+    <my-header title="入学年份">
       <my-back slot="left"></my-back>
-    </mt-header>
-    <callback-cell v-for="year in years" :title="year" :callback="selectYear"></callback-cell>
+    </my-header>
+    <my-cell v-for="year in years" :title="year" @click.native="selectYear(year)"></my-cell>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
       }
     },
     methods: {
-      selectYear(title, key) {
+      selectYear(title) {
         this.$store.dispatch('selectFilterYear', title);
         this.$router.go('-1');
       }

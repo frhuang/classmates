@@ -1,11 +1,11 @@
 
 <template>
   <div class="album">
-    <mt-header :title="title">
+    <my-header :title="title">
       <a slot="left" @click="routerBack">
-        <mt-button class="common-back"></mt-button>
+        <my-button class="common-back"></my-button>
       </a>
-    </mt-header>
+    </my-header>
     <div class="mask" ref="albumWrapper" :style="{ height: wrapperHeight + 'px' }">
       <img :src="src" id="pswp__img" />
       <img :src="src" class="show__img" :style="{width: imgWidth + 'px', height: imgHeight + 'px'}"/>

@@ -1,8 +1,8 @@
 <template>
   <div class="complaints">
-    <mt-header title="投诉">
+    <my-header title="投诉">
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <my-checklist align="right" v-model="value" :options="options"></mt-checklist>
   </div>
 </template>

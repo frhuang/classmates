@@ -1,0 +1,31 @@
+@import "../commons/mixin";
+
+.my-actionsheet {
+  position: fixed;
+  background: #e0e0e0;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  backface-visibility: hidden;
+  transition: transform .3s ease-out;
+  .my-actionsheet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .my-actionsheet-listitem {
+    border-bottom: 1px solid #e0e0e0;
+    display: block;
+    width: 100%;
+    height: 1.3333333333333333rem;
+    line-height: 100px;
+    @include font-dpr(18px);
+    color: #333;
+    background-color: #fff;
+    &:active {
+      background-color: #f0f0f0;
+    }
+  }
+}

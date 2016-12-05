@@ -1,9 +1,9 @@
 <template>
   <div class="my-qrcode">
-    <mt-header title="微信二维码" fixed>
+    <my-header title="微信二维码" fixed>
       <my-back slot="left"></my-back>
       <button class="filter-btn" :class="{disabled:uploadVisible==true}" slot="right" title="保存" @click="confirm">保存</button>
-    </mt-header>
+    </my-header>
     <div class="qrcode-content">
       <p class="qrcode-title"><span class="red-title">*</span> 如果他人主动要查看你微信二维码，需先赠送你1份礼物（3元/5元/10元不等）作为心意，礼物可以自动兑现。同时，你还可以免费查看对方的微信二维码</p>
       <p class="upload-title">请上传相应的<span class="green-title">微信二维码</span></p>

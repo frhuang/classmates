@@ -1,8 +1,8 @@
 <template>
   <div class="money-pages">
-    <mt-header title="人脉心意" fixed>
+    <my-header title="人脉心意" fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <div class="money-content">
       <div class="money-header">
         <p class="header-title">今天收获心意</p>

@@ -20,6 +20,7 @@ import MyQrcode from './pages/my/my-qrcode';
 import MyStdCard from './pages/my/my-std-card';
 import Album from './components/Album';
 import NoFound from './components/NoFound';
+import MyInterests from './pages/my/my-interests'
 
 const routes = [
   {
@@ -47,7 +48,7 @@ const routes = [
     component: Profession
   },
   {
-    path: '/filter/startYear',
+    path: '/filter/startYear/:id',
     component: StartYear
   },
   {
@@ -105,6 +106,10 @@ const routes = [
   {
     path: '/my/myinfo/stdcard',
     component: MyStdCard
+  },
+  {
+    path: '/my/myinfo/myinterests',
+    component: MyInterests
   }
 ]
 

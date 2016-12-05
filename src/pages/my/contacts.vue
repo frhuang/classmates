@@ -1,12 +1,12 @@
 <template>
   <div class="contacts-pages">
-    <mt-header title="我的人脉" fixed>
+    <my-header title="我的人脉" fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <div class="contacts">
       <p class="contacts-title">共 {{length}} 位</p>
       <div class="contacts-list" ref="wrapper">
-        <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
+        <!-- <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore"> -->
           <ul class="page-loadmore-list">
             <li v-for="item in detailLists" class="money-listitem">
               <div class="flag">
@@ -33,7 +33,7 @@
               </div>
             </li>
           </ul>
-        </mt-loadmore>
+        <!-- </mt-loadmore> -->
         <div class="default-pages" v-show="length == 0">
           <p>还没自己的大学人脉圈？</p>
           <router-link to="/">去找找</router-link>

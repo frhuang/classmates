@@ -1,9 +1,9 @@
 <template>
   <div class="my-name">
-    <mt-header :title="title">
+    <my-header :title="title">
       <my-back slot="left"></my-back>
       <button class="filter-btn" slot="right" title="保存" @click="confirm">保存</button>
-    </mt-header>
+    </my-header>
     <div class="textwrapper">
       <textarea class="textarea" :placeholder="placeholder" v-model="value" :maxlength="maxLength" @keyup="check"></textarea>
       <span class="check-length">{{length}}</span>

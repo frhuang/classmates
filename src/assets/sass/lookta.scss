@@ -13,6 +13,7 @@ textarea::-webkit-input-placeholder {
     @include font-dpr(15px);
   }
   .textwrapper{
+    background: #fff;
     padding: 0.26666666666666666rem;
   }
   .look-textarea {
@@ -26,5 +27,48 @@ textarea::-webkit-input-placeholder {
     resize: none;
     color: #999999;
     @include font-dpr(15px);
+  }
+  .my-radio-model {
+    position: relative;
+    float: none;
+    width: 100%;
+    height: 1.3333333333333333rem;
+    line-height: 1.3333333333333333rem;
+    text-align: left;
+    background: #fff;
+    margin: 0;
+  }
+  .my-radio-label{
+    display: block;
+    padding-left: 0.26666666666666666rem;
+    width: 100%;
+    height: 1.3333333333333333rem;
+    background: #fff;
+  }
+  .my-radio-label {
+    &:after{
+      content: '';
+      display: block;
+      background-image: url(/static/img/check_normal.png);
+      background-size: cover;
+      position: absolute;
+      right: 0.26666666666666666rem;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 0.6666666666666666rem;
+      height: 0.6666666666666666rem;
+      vertical-align: middle;
+    }
+  }
+  .my-radio-input:checked + .my-radio-label {
+    background: $color-white;
+    color: #000;
+  }
+  .my-radio-input:checked{
+    + .my-radio-label {
+      &:after {
+        background-image: url(/static/img/check-selected.png);
+      }
+    }
   }
 }

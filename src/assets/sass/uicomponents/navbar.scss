@@ -1,8 +1,9 @@
 @import "../commons/mixin";
 .my-navbar {
-  width: 100%;
   display: flex;
   text-align: center;
+  height: 1.3333333333333333rem;
+  line-height: 1.3333333333333333rem;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -13,12 +14,16 @@
     left: 0;
     right: 0;
   }
-  .my-tab-item.is-selected {
-    background: $color-green;
+  .my-nav-item {
+    display: block;
+    flex: 1;
   }
-  .my-tab-item-label {
+  .my-nav-item.is-selected {
+    background: $color-green;
+    color: $color-white;
+  }
+  .my-nav-item-label {
     color: inherit;
     @include font-dpr(16px);
-    line-height: 1;
   }
 }

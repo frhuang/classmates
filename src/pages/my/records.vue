@@ -1,29 +1,29 @@
 <template>
   <div class="records-pages">
-    <mt-header fixed>
+    <my-header fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <my-navbar class="records-header" v-model="selected">
       <my-nav-item id="1" @click.native ="viewMe(1)">访问过我</my-nav-item>
       <my-nav-item id="2" @click.native ="viewMe(2)">我访问过</my-nav-item>
     </my-navbar>
     <p class="records-title">共 {{detailLists.length}} 位</p>
-    <mt-tab-container v-model="selected">
-      <mt-tab-container-item id="1">
+    <div>
+      <div v-show="viewMeStatus">
         <view-list :detailLists="detailLists"></view-list>
         <div class="default-pages" v-show="detailLists.length == 0">
           <p>平时多上来露露脸，相册等个人信息丰富完善一点</p>
           <router-link to="/my/myinfo">去完善</router-link>
         </div>
-      </mt-tab-container-item>
-      <mt-tab-container-item id="2">
+      </div>
+      <div v-show="myViewStatus">
         <view-list :detailLists="detailLists"></view-list>
         <div class="default-pages" v-show="detailLists.length == 0">
           <p>各大高校大学生都在这，快去认识下吧</p>
           <router-link to="/my/myinfo">去瞧瞧</router-link>
         </div>
-      </mt-tab-container-item>
-    </mt-tab-container>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,6 +37,8 @@ export default {
     return {
       detailLists: [],
       selected: '1',
+      viewMeStatus: true,
+      myViewStatus: false,
       page: 1,
       size: 20,
       apiUrl: rootUrl + '/user/get-view-me-list'
@@ -49,8 +51,12 @@ export default {
     viewMe(type) {
       if(type == 1) {
         this.apiUrl = rootUrl + '/user/get-view-me-list';
+        this.viewMeStatus = true;
+        this.myViewStatus = false;
       }else if(type == 2) {
         this.apiUrl = rootUrl + '/user/get-my-view-list';
+        this.viewMeStatus = false;
+        this.myViewStatus = true;
       }
       this.detailLists = [];
       this.getData();

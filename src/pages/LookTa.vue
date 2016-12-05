@@ -1,8 +1,8 @@
 <template>
   <div class="lookta">
-  <mt-header title="通过微信认识TA" fixed>
+  <my-header title="通过微信认识TA" fixed>
     <my-back slot="left"></my-back>
-  </mt-header>
+  </my-header>
   <div class="looklist">
     <p class="look-title">
       <span class="red-title">*</span><span class="green-title">认识理由</span><span class="grey-title"> (礼貌不唐突)</span>
@@ -11,17 +11,17 @@
     <p class="look-title">
       <span class="red-title">*</span><span class="green-title">带点小心意</span><span class="grey-title"> (礼轻情意重)</span>
     </p>
-    <mt-radio
+    <my-radio
       align="right"
       v-model="value"
       :options="options" />
   </div>
-  <mt-tabbar fixed>
-    <mt-tab-item id="带心意查看微信" class="nav-join">
+  <my-navbar fixed>
+    <my-nav-item id="带心意查看微信" class="nav-join">
       带心意查看微信
       <router-link to="/"></router-link>
-    </mt-tab-item>
-  </mt-tabbar>
+    </my-nav-item>
+  </my-navbar>
 </div>
 </template>
 
@@ -38,7 +38,7 @@
       this.options = ["10元红包请TA喝杯咖啡", "5元红包请TA喝瓶饮料", "3元红包请TA饭堂加个菜"]
     },
     methods: {
-      
+
     }
   }
 </script>

@@ -11,7 +11,8 @@
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
-            <span class="my-radio-label" v-text="option.label || option"></span>
+            <span class="my-radio-label" v-text="option.label || option">
+            </span>
         </span>
       </label>
     </div>

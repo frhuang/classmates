@@ -1,6 +1,6 @@
 <template>
   <a @click="routerBack">
-    <mt-button class="common-back"></mt-button>
+    <my-button class="common-back"></my-button>
   </a>
 </template>
 

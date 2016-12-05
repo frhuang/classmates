@@ -1,8 +1,8 @@
 <template>
   <div class="nativeplace">
-    <mt-header title="籍贯" fixed>
+    <my-header title="籍贯" fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <div class="cell-list">
       <my-cell v-for="pro in address" :to="'/filter/nativeplace2/'+typeId+'/'+pro.aid+'/'+pro.name" :title="pro.name" is-link></my-cell>
     </div>

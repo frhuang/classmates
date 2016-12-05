@@ -1,10 +1,10 @@
 
 <template>
   <div class="my-std-card">
-    <mt-header title="实名认证学生证" fixed>
+    <my-header title="实名认证学生证" fixed>
       <my-back slot="left"></my-back>
       <button class="filter-btn" :class="{disabled:arrowVisible==true}" slot="right" title="保存" @click="confirm">保存</button>
-    </mt-header>
+    </my-header>
     <div class="std-card-content">
       <p class="std-title"><span class="red-title">*</span>真实公平交友 请上传本人学生证 保证清晰可见</p>
       <p class="std-detail-title">学生证详情页</p>

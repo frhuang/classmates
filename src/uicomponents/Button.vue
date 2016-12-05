@@ -1,24 +1,21 @@
 <template>
-  <button class="pre-button">
-    <span class="pre-button-icon" v-if="icon">
-      <slot name="icon">
-        <i v-if="icon" class="preui" :class="'preui-' + icon"></i>
-      </slot>
-    </span>
-    <label class="pre-button-text"><slot></slot></label>
+  <button class="my-button"
+    @click="handleClick"
+    :disabled="disabled">
+    <label class="my-button-text"><slot></slot></label>
   </button>
 </template>
 
 <script>
   export default {
-    name: 'pre-button',
+    name: 'my-button',
+    props: {
+      disables: Boolean,
+    },
     methods: {
       handleClick(evt) {
         this.$emit('click', evt);
       }
-    },
-    props: {
-      icon: String
     }
   }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="nativeplace">
-    <mt-header :title="title" fixed>
+    <my-header :title="title" fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <div class="cell-list">
-      <callback-cell v-for="city in selectId" :callback="selectCity" :title="city.name" :id="city.aid"></callback-cell>
+      <my-cell v-for="city in selectId" @click.native="selectCity(city.name, city.aid)" :title="city.name"></my-cell>
     </div>
   </div>
 </template>

@@ -1,17 +1,20 @@
 <template>
-  <div class="profession">
+  <div class="complaints">
     <my-header title="兴趣爱好">
       <my-back slot="left"></my-back>
     </my-header>
-    <my-cell v-for="interest in interests" :title="interest.name" @click.native="selectInterest(interest.name, interest.it_id)"></my-cell>
+    <my-checklist align="right" v-model="value" :options="options"></mt-checklist>
   </div>
 </template>
 
+
 <script type="text/babel">
-  import { rootUrl } from '../config';
+  import { rootUrl } from '../../config';
   export default {
-    data() {
+    data () {
       return {
+        value: [],
+        options: [],
         interests: {},
         apiUrl: rootUrl + '/find/interests-list'
       }
@@ -26,15 +29,15 @@
       }).then((response) => {
         var data = JSON.parse(response.data);
         vm.interests = data.data;
+        for(let key in vm.interests) {
+          vm.options.push(vm.interests[key]['name']);
+        }
       })
       .catch(function(response) {
       })
     },
     methods: {
-      selectInterest(title, id) {
-        this.$store.dispatch('selectFilterInterest', {id: id, name: title});
-        this.$router.push('/filter');
-      }
+
     }
   }
 </script>

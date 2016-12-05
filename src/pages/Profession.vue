@@ -1,8 +1,8 @@
 <template>
   <div class="school">
-    <mt-header title="专业" fixed>
+    <my-header title="专业" fixed>
       <my-back slot="left"></my-back>
-    </mt-header>
+    </my-header>
     <my-search class="fixed-top"
       placeholder="请输入专业全称"
       v-model="value">
@@ -10,7 +10,7 @@
       <div class="pre-search-list" v-show="value">
         <div class="pre-search-list-warp">
           <slot>
-            <callback-cell v-for="item in result" :id="item.id" :title="item.name" :callback="selectProfession"></callback-cell>
+            <my-cell v-for="item in result" :title="item.name" @click.native="selectProfession(item.name, item.id)"></my-cell>
           </slot>
         </div>
       </div>

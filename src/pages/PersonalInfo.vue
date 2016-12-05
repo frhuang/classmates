@@ -1,9 +1,9 @@
 <template>
   <div class="personalInfo">
-    <mt-header :title="username">
+    <my-header :title="username">
       <my-back slot="left"></my-back>
       <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right">投诉</router-link>
-    </mt-header>
+    </my-header>
     <div class="flag">
       <div class="avatar flag-item">
         <img :src="avatar" class="avatar-img">
@@ -31,12 +31,12 @@
         <span class="content-item" v-for="interest in user_interests">{{interest.name}}</span>
       </p>
     </div>
-    <mt-tabbar fixed>
-      <mt-tab-item id="通过微信认识TA" class="nav-join">
+    <my-navbar fixed>
+      <my-nav-item id="通过微信认识TA" class="nav-join" @click.native="lookTa">
         通过微信认识TA
-        <router-link :to="'/personalinfo/'+id+'/lookta'"></router-link>
-      </mt-tab-item>
-    </mt-tabbar>
+        <!-- <router-link :to="'/personalinfo/'+id+'/lookta'"></router-link> -->
+      </my-nav-item>
+    </my-tabbar>
   </div>
 </template>
 
@@ -86,6 +86,9 @@
       },
       confirm() {
         alert('tousu');
+      },
+      lookTa() {
+        this.$router.push('/personalinfo/'+this.id+'/lookta');
       }
     },
     components: {
