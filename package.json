@@ -30,7 +30,6 @@
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.17.2",
     "json-loader": "^0.5.4",
-    "mint-ui": "^2.0.5",
     "node-sass": "^3.13.0",
     "opn": "^4.0.2",
     "ora": "^0.3.0",
@@ -51,6 +50,7 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
+    "mint-ui": "^2.0.5",
     "vue": "^2.0.6",
     "vue-router": "^2.0.2",
     "vuex": "^2.0.0"

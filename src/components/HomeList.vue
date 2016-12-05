@@ -1,6 +1,6 @@
 <template>
   <div class="home-list" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
-    <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
+    <!-- <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore"> -->
         <router-link v-for="list in mainLists" class="flag" :to="'/personalinfo/'+list.uid">
           <div class="avatar flag-item">
             <img :src="list.avatar" class="avatar-img">
@@ -23,7 +23,7 @@
             </div>
           </div>
         </router-link>
-      </mt-loadmore>
+      <!-- </mt-loadmore> -->
       <div class="default-pages" v-show="mainLists.length == 0">
         <p>该条件下找不到相应的童鞋哦</p>
         <router-link to="/filter">重新筛选</router-link>
@@ -41,7 +41,7 @@
         bottomStatus: '',
         total: 40,
         wrapperHeight: 0,
-        apiUrl: rootUrl + '/find/list'
+        apiUrl: 'http://schoolmate.liyuzhou.net:80/api' + '/find/list'
       }
     },
     methods: {

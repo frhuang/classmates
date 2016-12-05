@@ -1,21 +1,22 @@
 import * as types from '../mutation-types'
 
 const state = {
-  name: '',
-  pro: '',
-  city: '',
-  school: '',
-  profession: '',
-  interest: '',
+  username: '',
   year: '',
-  qrcode: '',
-  stdcard: '',
-  jobs: ''
+  job_name: '',
+  wechat: '',
+  student_id: '',
+  interests: []
 }
 
 const mutations = {
-  [types.INFO_PERSONAL_NAME] (state, name) {
-    state.name = name
+  [types.INFO_PERSONAL_INFO] (state, {username, year, job_name, wechat, student_id, interests}) {
+    state.username = username
+    state.year = year
+    state.job_name = job_name
+    state.wechat = wechat
+    state.student_id = student_id
+    state.interests = interests
   }
 }
 

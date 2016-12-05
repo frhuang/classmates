@@ -1,33 +1,35 @@
 <template>
-  <div class="personalInfo" v-if="post">
-    <mt-header :title="post.name">
+  <div class="personalInfo">
+    <mt-header :title="username">
       <my-back slot="left"></my-back>
       <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right">投诉</router-link>
     </mt-header>
     <div class="flag">
       <div class="avatar flag-item">
-        <img :src="post.img" class="avatar-img">
-        <i :class="{'female': post.sex =='2', 'male': post.sex == '1'}"></i>
+        <img :src="avatar" class="avatar-img">
+        <i :class="{'female': gender == '0', 'male': gender == '1'}"></i>
       </div>
       <div class="flag-item">
-        <div class="flag-title">{{post.stu}}</div>
+        <div class="flag-title">{{school}}</div>
         <div class="flag-pro">
-          <span>{{post.pro}}</span>
-          <span>{{post.lv}}级</span>
+          <span>{{profession}}</span>
+          <span>{{year}}级</span>
         </div>
         <div class="flag-interest">
           <span>校内人脉排名：115</span> <span>访问量：100</span>
         </div>
       </div>
     </div>
-    <photo></photo>
+    <photo :photos="user_photo"></photo>
     <div class="info-list">
       <p class="info-title">籍贯</p>
-      <p class="info-content">广东深圳</p>
+      <div class="info-content">{{origin_city_text}}</div>
       <p class="info-title">在校学生职位</p>
-      <p class="info-content">学生会主席   班长</p>
+      <div class="info-content">{{job_name}}</div>
       <p class="info-title">兴趣爱好</p>
-      <p class="info-content">舞蹈 体育 编程</p>
+      <p class="info-content">
+        <span class="content-item" v-for="interest in user_interests">{{interest.name}}</span>
+      </p>
     </div>
     <mt-tabbar fixed>
       <mt-tab-item id="通过微信认识TA" class="nav-join">
@@ -39,31 +41,47 @@
 </template>
 
 <script type="text/babel">
-  import { getPost } from '../config';
   import Photo from '../components/Photo';
   export default {
     data () {
       return {
-        post: null,
-        error: null,
-        id: this.$route.params.id
+        username: '',
+        gender: '0',
+        school: '',
+        profession: '',
+        year: '',
+        avatar: '',
+        user_interests: [],
+        user_photo: [],
+        job_name:'',
+        origin_city_text: '',
+        id: this.$route.params.id,
+        apiUrl: 'http://schoolmate.liyuzhou.net:80/api' + '/user/info'
       }
     },
     created () {
       this.fetchData();
     },
-    watch: {
-      '$route': 'fetchData'
-    },
     methods: {
       fetchData () {
-        this.error = this.post = null
-        getPost(this.$route.params.id, (err, post) => {
-          if (err) {
-            this.error = err.toString()
-          } else {
-            this.post = post
-          }
+        var vm = this;
+        vm.$http.get(vm.apiUrl, {
+          params: {uid:vm.id},
+          emulateJSON: true
+        }).then((response) => {
+          var data = JSON.parse(response.data);
+          var userInfo = data.data.user_info;
+          var userPhoto = data.data.user_photo;
+          vm.username = userInfo.username;
+          vm.gender = userInfo.gender;
+          vm.avatar = userInfo.avatar;
+          vm.school = userInfo.schools_text;
+          vm.profession = userInfo.speciality_text;
+          vm.year = userInfo.syear;
+          vm.user_interests = data.data.user_interests;
+          vm.user_photo.push(userPhoto.fname);
+        })
+        .catch(function(response) {
         })
       },
       confirm() {

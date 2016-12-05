@@ -34,7 +34,7 @@
             </li>
           </ul>
         </mt-loadmore>
-        <div class="contacts-pages" v-show="length == 0">
+        <div class="default-pages" v-show="length == 0">
           <p>还没自己的大学人脉圈？</p>
           <router-link to="/">去找找</router-link>
         </div>

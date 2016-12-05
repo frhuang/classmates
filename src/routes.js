@@ -19,22 +19,23 @@ import MyName from './pages/my/my-name';
 import MyQrcode from './pages/my/my-qrcode';
 import MyStdCard from './pages/my/my-std-card';
 import Album from './components/Album';
+import NoFound from './components/NoFound';
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: require('./pages/Home.vue')
   },
   {
     path: '/filter',
     component: Filters
   },
   {
-    path: '/filter/nativeplace',
+    path: '/filter/nativeplace/:id',
     component: NativePlace
   },
   {
-    path: '/filter/nativeplace2/:id/:name',
+    path: '/filter/nativeplace2/:id/:proId/:name',
     component: NativePlace2
   },
   {
@@ -42,7 +43,7 @@ const routes = [
     component: School
   },
   {
-    path: '/filter/profession/id',
+    path: '/filter/profession/:id',
     component: Profession
   },
   {

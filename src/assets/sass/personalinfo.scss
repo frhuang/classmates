@@ -14,7 +14,11 @@
       @include font-dpr(15px);
       padding-left:0.26666666666666666rem;
       background: #fff;
-      line-height: 100px;
+      height: 1.3333333333333333rem;
+      line-height: 1.3333333333333333rem;
+      .content-item {
+        padding-left: 0.26666666666666666rem;
+      }
     }
   }
 }

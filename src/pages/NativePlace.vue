@@ -4,7 +4,7 @@
       <my-back slot="left"></my-back>
     </mt-header>
     <div class="cell-list">
-      <my-cell v-for="pro in address" :to="'/filter/nativeplace2/'+pro.aid+'/'+pro.name" :title="pro.name" is-link></my-cell>
+      <my-cell v-for="pro in address" :to="'/filter/nativeplace2/'+typeId+'/'+pro.aid+'/'+pro.name" :title="pro.name" is-link></my-cell>
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
     data() {
       return {
         address: [],
+        typeId: this.$route.params.id,
         apiUrl: rootUrl + '/find/area-list'
       }
     },

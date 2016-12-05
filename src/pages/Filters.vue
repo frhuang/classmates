@@ -4,7 +4,7 @@
       <my-back slot="left"></my-back>
       <button class="filter-btn" slot="right" title="确定" @click="confirm">确定</button>
     </mt-header>
-    <my-cell title="籍贯" to="/filter/nativeplace" :value="province +' '+ city" is-link req></my-cell>
+    <my-cell title="籍贯" to="/filter/nativeplace/1" :value="province +' '+ city" is-link req></my-cell>
     <my-cell title="学校" to="/filter/school/1" :value="school" is-link></my-cell>
     <my-cell title="专业" to="/filter/profession/1" :value="profession" is-link></my-cell>
     <my-cell title="入学年份" to="/filter/startyear" :value="year" is-link></my-cell>

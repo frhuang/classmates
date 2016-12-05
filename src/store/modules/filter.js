@@ -23,9 +23,11 @@ const getters = {
 }
 
 const mutations = {
-  [types.SELECT_FILTER_PROVINCE] (state, {id, name}) {
-    state.province = name
-    state.provinceId = id
+  [types.SELECT_FILTER_AREA] (state, {proId, proName, cityId, cityName}) {
+    state.province = proName
+    state.provinceId = proId
+    state.city = cityName
+    state.cityId = cityId
   },
   [types.SELECT_FILTER_SCHOOL] (state,  {id, name}) {
     state.school = name

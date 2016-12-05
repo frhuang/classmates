@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    <mt-tabbar v-model="selected" fixed v-if="$route.path == '/my' || $route.path == '/'">
-      <pre-tab-item id="找同学" to="/">找同学</pre-tab-item>
-      <pre-tab-item id="我的" to="/my">我的</pre-tab-item>
-    </mt-tabbar>
+  <div>
     <transition :name="transitionName">
       <router-view class="child-view"></router-view>
     </transition>
     <loading v-show="isLoading"></loading>
+    <my-navbar v-model="selected" fixed v-if="$route.path == '/my' || $route.path == '/'">
+      <my-nav-item id="找同学" to="/">找同学</my-nav-item>
+      <my-nav-item id="我的" to="/my">我的</my-nav-item>
+    </my-navbar>
   </div>
 </template>
 
@@ -30,14 +30,9 @@
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
   }
-  .mint-tabbar > .mint-tab-item.is-selected {
-    background: #09bb07;
-    color: #fff;
-  }
 </style>
 
 <script type="text/babel">
-import PreTabItem from './uicomponents/TabItem';
   export default {
     data () {
       return {
@@ -65,9 +60,6 @@ import PreTabItem from './uicomponents/TabItem';
       visible() {
         return ['/'].indexOf(this.$route.path) < 0;
       }
-    },
-    components: {
-      PreTabItem
     }
   };
 </script>

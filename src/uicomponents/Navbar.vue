@@ -1,5 +1,7 @@
 <template>
-  <div class="pre-navbar">
+  <div class="my-navbar" :class="{
+      'is-fixed': fixed
+    }">
     <slot></slot>
   </div>
 </template>
@@ -8,13 +10,11 @@
 export default {
   name: 'my-navbar',
   props: {
+    fixed: Boolean,
     value: {}
   }
 };
 </script>
-<style>
-.pre-navbar {
-  display: flex;
-  text-align: center;
-}
+<style lang="scss">
+@import "../assets/sass/uicomponents/navbar.scss";
 </style>

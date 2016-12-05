@@ -1,10 +1,11 @@
 <template>
-  <header class="pre-header">
-    <div class="pre-header-back is-left">
+  <header class="my-header"
+    :class="{ 'is-fixed': fixed }">
+    <div class="my-header-back is-left">
       <slot name="left"></slot>
     </div>
-    <h1 class="pre-header-title" v-text="title"></h1>
-    <div class="pre-header-button is-right">
+    <h1 class="my-header-title" v-text="title"></h1>
+    <div class="my-header-button is-right">
       <slot name="right"></slot>
     </div>
   </header>
@@ -12,7 +13,7 @@
 
 <script type="text/babel">
   export default {
-    name: 'pre-header',
+    name: 'my-header',
 
     props: {
       fixed: Boolean,

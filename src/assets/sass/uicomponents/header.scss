@@ -1,25 +1,37 @@
-@import "mixin";
+@import "../commons/mixin";
 
-.pre-header {
+.my-header {
   align-items: center;
   background-color: $color-white;
   box-sizing: border-box;
-  color: $font-color;
   display: flex;
-  font-size: 16px;
-  height: $header-height;
+  height: 1.3333333333333333rem;
+  padding: 0 0.26666666666666666rem;
   line-height: 1;
-  padding: 0 10px;
+  .is-left {
+    text-align: left;
+  }
+  .is-right {
+    text-align: right;
+  }
   position: relative;
   text-align: center;
   white-space: nowrap;
   border-bottom: 1px solid $border-color;
-  .pre-header-title {
+  .my-header-title {
     text-align: center;
     width: 100%;
-    font-size: 16px;
+    color: $color-green;
+    @include font-dpr(16px);
   }
-  .pre-header-forward {
+  .my-header-forward {
 
+  }
+  &.is-fixed {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 1;
   }
 }

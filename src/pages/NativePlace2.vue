@@ -15,6 +15,8 @@
     data () {
       return {
         title: this.$route.params.name,
+        proId: this.$route.params.proId,
+        typeId: this.$route.params.id,
         selectId: [],
         apiUrl: rootUrl + '/find/area-list'
       }
@@ -22,7 +24,7 @@
     created() {
       var vm = this;
       vm.$http.get(vm.apiUrl, {
-        params: {type:1, id: this.$route.params.id},
+        params: {type:1, id: vm.proId},
         headers: {
         },
         emulateJSON: true
@@ -35,8 +37,12 @@
     },
     methods: {
       selectCity(title, id) {
-        this.$store.dispatch('selectFilterProvince', {id:this.$route.params.id, name:this.title});
-        this.$store.dispatch('selectFilterCity', {id: id, name: title});
+        if(this.typeId == 1) {
+          this.$store.dispatch('selectFilterArea', {proId:this.$route.params.id, proName:this.title, cityId: id, cityName: title});
+        } else if(this.typeId == 2) {
+          this.$store.dispatch('changeInfoArea', {proId:this.$route.params.id, proName:this.title, cityId: id, cityName: title});
+        }
+
         this.$router.go(-2);
       }
     }

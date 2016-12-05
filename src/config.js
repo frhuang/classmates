@@ -1,4 +1,5 @@
 export const rootUrl = "http://tongxue.wangwangpei.com/api";
+// export const rootUrl = "http://schoolmate.liyuzhou.net:80/api";
 
 export const infoDefault = {
   name: '必须与学生证姓名一致',

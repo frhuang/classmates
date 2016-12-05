@@ -5,22 +5,35 @@
       <mt-button class="join-btn" slot="right">我要加入</mt-button>
     </mt-header>
     <my-cell title="头像" is-link required @click.native="sheetVisible = true">
-      <img :src="avatar" class="my-avatar">
+      <img :src="user_info.avatar" class="my-avatar">
     </my-cell>
-    <my-cell title="真实姓名" to="/my/myinfo/myname/1" :value="name=='' ? defalut.name : name" is-link required></my-cell>
+    <my-cell title="真实姓名" to="/my/myinfo/myname/1" :value="user_info.username=='' ? defalut.name : user_info.username" is-link required></my-cell>
     <my-cell title="性别" required>
       <div class="pre-cell-sex">
         <my-radio
           class="page-part"
-          v-model="sex"
+          v-model="user_info.gender"
           :options="options" />
       </div>
     </my-cell>
-    <my-cell title="籍贯" to="/my/myinfo/myname/area" :value="pro == '' ? defalut.pro : pro + city" is-link required></my-cell>
-    <my-cell title="学校" to="/filter/school/2" :value="school == '' ? defalut.school : school" is-link required></my-cell>
-    <my-cell title="专业" to="/filter/profession/2" :value="defalut.profession" is-link required></my-cell>
-    <my-cell title="入学年份" :value="year == '' ? defalut.year : year" is-link required></my-cell>
-    <my-cell title="兴趣爱好" :value="interest == '' ? defalut.interest : interest" is-link required></my-cell>
+    <my-cell title="籍贯"
+      to="/filter/nativeplace/2"
+      :value="user_info.origin_province_text == '' ? defalut.pro : user_info.origin_province_text + user_info.origin_city_text"
+      is-link required></my-cell>
+    <my-cell title="学校"
+      to="/filter/school/2"
+      :value="user_info.schools_text == '' ? defalut.school : user_info.schools_text"
+      is-link required></my-cell>
+    <my-cell title="专业"
+      to="/filter/profession/2"
+      :value="user_info.speciality_text == '' ? defalut.profession : user_info.speciality_text"
+      is-link required></my-cell>
+    <my-cell title="入学年份"
+      to="/filter/year"
+      :value="user_info.syear == '' ? defalut.year : user_info.syear"
+      is-link required></my-cell>
+    <my-cell title="兴趣爱好"
+      :value="interestValue == '' ? defalut.interest : interestValue" is-link required></my-cell>
     <my-cell title="微信二维码"  to="/my/myinfo/qrcode" :value="qrcode" is-link required></my-cell>
     <my-cell title="实名认证学生证" to="/my/myinfo/stdcard" :value="stdcard" is-link required></my-cell>
     <my-cell title="学生职位" to="/my/myinfo/myname/2" :value="jobs" is-link></my-cell>
@@ -34,28 +47,37 @@
 
 <script type="text/babel">
   import { mapState } from 'vuex';
-  import { infoDefault } from '../../config';
+  import { infoDefault, rootUrl } from '../../config';
   export default {
     data () {
       return {
         sheetVisible: false,
-        name: "",
-        avatar: "http://wx.qlogo.cn/mmopen/Q3auHgzwzM5La0zRdYAUQfQpY3ZyW3UQNI5XvsxtWfJBLkicBrLzbnzxOkric6GuOp6WciaoU2YWjhKIB5M5WSmicU4G8oaIJujaJJsY99LrA5I/0",
         options: [
-          {label: '男', value: '0'},
-          {label: '女', value: '1'}
+          {label: '男', value: '1'},
+          {label: '女', value: '0'}
         ],
-        sex: '0',
-        pro: '',
-        city: '',
-        school: '',
-        profession: '',
-        year: '',
-        interest: '',
+        interests: [],
         qrcode: '',
         stdcard: '',
-        jobs: '',
-        defalut: infoDefault
+        interestValue: '',
+        defalut: infoDefault,
+        apiUrl: rootUrl + '/user/detail',
+        user_info: {
+          avatar: '',
+          avatar_status: '',
+          gender:'',
+          job_name:'',
+          origin_city_text:'',
+          origin_province_text:'',
+          schools_text: '',
+          speciality_text:'',
+          student_id:'',
+          student_id_status:'',
+          syear:'',
+          username:'',
+          wechat:'',
+          wechat_status:''
+        }
       }
     },
     mounted() {
@@ -67,19 +89,43 @@
         method: this.openAlbum
       }];
     },
-    computed: mapState({
-      name: state => state.info.name,
-      pro: state => state.info.pro,
-      city: state => state.info.city,
-      school: state => state.info.school,
-      profession: state => state.info.profession,
-      year: state => state.info.year,
-      interest: state => state.info.interest,
-    }),
+    created() {
+      this.getData();
+    },
     methods: {
       openAlbum() {
         this.$store.dispatch('albumImgSrc', {title: '个人头像', src: this.avatar})
         this.$router.push('/my/myinfo/album');
+      },
+      getData() {
+        var vm = this;
+        vm.$http.get(vm.apiUrl,{
+          params: {},
+          emulateJSON: true
+        }).then((response) => {
+          var data = JSON.parse(response.data);
+          var userInfo = data.data.user_info;
+          for(var key in vm.user_info) {
+            vm.user_info[key] = userInfo[key];
+          }
+          vm.interests = data.data.user_interests;
+          vm.updatePersonalInfo();
+        }, (response) => {
+          console.log(response.data)
+        })
+        .catch(function(response) {
+        })
+      },
+      updatePersonalInfo() {
+        var vm = this;
+        this.$store.dispatch('updatePersonalInfo', {
+          username: vm.username,
+          year: vm.year,
+          job_name: vm.job_name,
+          wechat: vm.wechat,
+          student_id: vm.student_id,
+          interests: vm.interests
+        })
       }
     }
   }
