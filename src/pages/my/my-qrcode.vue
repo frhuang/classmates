@@ -38,6 +38,13 @@ export default {
       uploadVisible: true,
     }
   },
+  created() {
+    this.file = this.$store.state.info.wechat;
+    console.log(this.file);
+    if(this.file != '') {
+      this.uploadVisible = false;
+    }
+  },
   components: {
     upload
   },

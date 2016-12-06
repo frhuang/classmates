@@ -4,10 +4,11 @@
       <my-back slot="left"></my-back>
     </my-header>
     <div class="search-box">
-      <my-search
+      <mt-search
+        autofocus
         placeholder="请输入专业全称"
         v-model="value">
-      </my-search>
+      </mt-search>
     </div>
     <div class="pre-search-list" v-show="value">
       <div class="pre-search-list-warp">
@@ -28,7 +29,8 @@ export default {
       value: '',
       sid: '',
       result: [],
-      apiUrl: rootUrl + '/find/speciality-list'
+      apiUrl: rootUrl + '/find/speciality-list',
+      editUrl: rootUrl + '/user/edit'
     }
   },
   computed: mapState({
@@ -43,8 +45,22 @@ export default {
   },
   methods: {
     selectProfession(title, id) {
-      this.$store.dispatch('selectFilterProfession', {id: id, name: title});
-      this.$router.go(-1);
+      var rid = this.$route.params.id;
+      if(rid == 1) {
+        this.$store.dispatch('selectFilterProfession', {id: id, name: title});
+        this.$router.go(-1);
+      } else if(rid == 2) {
+        var vm = this;
+        var params = {};
+        params.speciality = id;
+        vm.$http.post(vm.editUrl, params).then((response) => {
+          this.$router.go(-1);
+        }, (response) => {
+          // console.log(response);
+        })
+        .catch(function(response) {
+        })
+      }
     },
     getProfession() {
       var vm = this;

@@ -8,17 +8,32 @@
 </template>
 
 <script type="text/babel">
-  import { years } from '../config.js';
+  import { years, rootUrl } from '../config.js';
   export default {
     data() {
       return {
-        years: years
+        years: years,
+        editUrl: rootUrl + '/user/edit'
       }
     },
     methods: {
       selectYear(title) {
-        this.$store.dispatch('selectFilterYear', title);
-        this.$router.go('-1');
+        var rid = this.$route.params.id;
+        if(rid == 1) {
+          this.$store.dispatch('selectFilterYear', title);
+          this.$router.go('-1');
+        } else if(rid == 2) {
+          var vm = this;
+          var params = {};
+          params.syear = title;
+          vm.$http.post(vm.editUrl, params).then((response) => {
+            this.$router.go(-1);
+          }, (response) => {
+            // console.log(response);
+          })
+          .catch(function(response) {
+          })
+        }
       }
     }
   }

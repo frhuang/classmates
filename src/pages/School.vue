@@ -8,8 +8,8 @@
         autofocus
         placeholder="请输入学校全称"
         v-model="value">
+      </mt-search>
     </div>
-    </my-search>
     <div class="pre-search-list" v-show="value != ''">
       <div class="pre-search-list-warp">
         <my-cell v-for="item in result" :title="item.name" @click.native="selectSchool(item.name, item.id)"></my-cell>

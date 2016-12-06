@@ -119,11 +119,6 @@ export default {
 
 <template>
 <div class="upload">
-    <slot></slot>
-    <div class="progress" v-if="percent>0">
-        <span :style="{width:percent+'%'}"></span>
-        <em class="pa">{{percent}}%</em>
-    </div>
     <input type="file" class="upload" @change="fileChange" :accept="accepts">
 </div>
 </template>
