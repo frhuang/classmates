@@ -3,17 +3,18 @@
     <my-header title="学校" fixed>
       <my-back slot="left"></my-back>
     </my-header>
-    <my-search class="fixed-top"
-      placeholder="请输入学校全称"
-      v-model="value">
+    <div class="search-box">
+      <mt-search
+        autofocus
+        placeholder="请输入学校全称"
+        v-model="value">
+    </div>
     </my-search>
-      <div class="pre-search-list" v-show="value != ''">
-        <div class="pre-search-list-warp">
-          <slot>
-            <my-cell v-for="item in result" :title="item.name" @click.native="selectSchool(item.name, item.id)"></my-cell>
-          </slot>
-        </div>
+    <div class="pre-search-list" v-show="value != ''">
+      <div class="pre-search-list-warp">
+        <my-cell v-for="item in result" :title="item.name" @click.native="selectSchool(item.name, item.id)"></my-cell>
       </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +25,8 @@ import { rootUrl } from '../config'
       return {
         value: '',
         result: [],
-        apiUrl: rootUrl + '/find/school-list'
+        apiUrl: rootUrl + '/find/school-list',
+        editUrl: rootUrl + '/user/edit'
       }
     },
     watch: {
@@ -36,15 +38,22 @@ import { rootUrl } from '../config'
     },
     methods: {
       selectSchool(title, id) {
-        console.log(this.$route.params.id);
-        if(this.$route.params.id == 1) {
-            this.$store.dispatch('selectFilterSchool', {id: id, name: title});
-        }else {
-          // this.$store.dispatch('selectFilterSchool', {id: id, name: title});
-          console.log('my school')
+        var rid = this.$route.params.id;
+        if(rid == 1) {
+          this.$store.dispatch('selectFilterSchool', {id: id, name: title});
+          this.$router.go(-1);
+        }else if(rid == 2) {
+          var vm = this;
+          var params = {};
+          params.schools = id;
+          vm.$http.post(vm.editUrl, params).then((response) => {
+            this.$router.go(-1);
+          }, (response) => {
+            // console.log(response);
+          })
+          .catch(function(response) {
+          })
         }
-
-        this.$router.go(-1);
       },
       getSchool() {
         var vm = this;
@@ -63,3 +72,11 @@ import { rootUrl } from '../config'
     }
   }
 </script>
+<style lang="scss">
+.search-box {
+  position: absolute;
+  top: 1.3333333333333333rem;
+  left: 0;
+  right: 0;
+}
+</style>

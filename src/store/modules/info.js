@@ -11,6 +11,7 @@ const state = {
 
 const mutations = {
   [types.INFO_PERSONAL_INFO] (state, {username, year, job_name, wechat, student_id, interests}) {
+    console.log(username)
     state.username = username
     state.year = year
     state.job_name = job_name

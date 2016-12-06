@@ -29,8 +29,6 @@ export const albumImgSrc = ( { commit }, {title, src}) => {
   commit(types.ALBUM_IMG_SRC, {title, src});
 }
 //更新个人信息
-export const updatePersonalInfo = ({ commit }, {
-  username, year, job_name, wechat, student_id, interests
-}) => {
-  commit(INFO_PERSONAL_INFO, {username, year, job_name, wechat, student_id, interests})
+export const updatePersonalInfo = ({ commit }, { username, year, job_name, wechat, student_id, interests }) => {
+  commit(types.INFO_PERSONAL_INFO, {username, year, job_name, wechat, student_id, interests})
 }

@@ -42,7 +42,25 @@
 }
 
 .mint-search {
-
+  height: 1.3333333333333333rem;
+  .mint-searchbar{
+    padding: 0.26666666666666666rem;
+    .mint-searchbar-inner {
+      height: 0.8rem;
+      padding: 0 0 0 0.13333333333333333rem;
+      @include font-dpr(15px)
+      .mint-searchbar-core {
+        width: 94%;
+        @include font-dpr(15px)
+      }
+    }
+    .mintui-search{
+      @include font-dpr(15px)
+    }
+    .mint-searchbar-text{
+      @include font-dpr(15px)
+    }
+  }
 }
 .cell-list {
   padding-top: 1.3333333333333333rem;

@@ -5,13 +5,27 @@
       </router-link>
     </my-header>
     <home-list></home-list>
+    <my-navbar v-model="selected" fixed v-if="$route.path == '/my' || $route.path == '/'">
+      <my-nav-item id="找同学">找同学</my-nav-item>
+      <my-nav-item id="我的" @click.native="meRouter">我的</my-nav-item>
+    </my-navbar>
   </div>
 </template>
 <script type="text/babel">
   import HomeList from '../components/HomeList.vue';
   export default {
+    data() {
+      return {
+        selected: "找同学",
+      }
+    },
     components: {
       HomeList
+    },
+    methods: {
+      meRouter() {
+        this.$router.push('/my')
+      }
     }
   }
 </script>

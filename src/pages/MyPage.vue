@@ -59,6 +59,10 @@
         </div>
       </router-link>
     </div>
+    <my-navbar v-model="selected" v-if="$route.path == '/my' || $route.path == '/'">
+      <my-nav-item id="找同学" @click.native="homeRouter">找同学</my-nav-item>
+      <my-nav-item id="我的">我的</my-nav-item>
+    </my-navbar>
   </div>
 </template>
 
@@ -67,6 +71,7 @@
   export default {
     data () {
       return {
+        selected: "我的",
         toal_money: '0.00',
         friend_num: 0,
         viewed_num : 0,
@@ -106,6 +111,9 @@
       })
     },
     methods: {
+      homeRouter() {
+        this.$router.push('/');
+      },
       joinTo() {
         this.$router.push('/my/myinfo');
       }

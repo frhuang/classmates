@@ -13,47 +13,66 @@
 
 <script>
 import { mapState } from 'vuex';
+import { rootUrl } from '../../config'
 export default {
   data() {
     return {
       title: '真实姓名',
+      disabled: false,
       placeholder: '',
       id: 0,
       value: '',
       length: 0,
       maxLength: 0,
-      currentValue: ''
+      currentValue: '',
+      apiUrl: rootUrl + '/user/edit'
+      // apiUrl: 'http://schoolmate.liyuzhou.net/api/user/edit'
     }
   },
 
   created() {
-    if(this.$route.params.id == 1) {
+    console.log(this.$route.params.id)
+    this.id = this.$route.params.id;
+    if(this.id == 1) {
       this.title = '真实姓名';
       this.placeholder = '请填写您的真实姓名';
-      this.id = 1;
       this.maxLength = 10;
+      this.value = this.$store.state.info.username;
       this.length = this.maxLength - this.value.length;
-      this.value = this.$store.state.info.name;
-    }else if(this.$route.params.id == 2) {
+      console.log(this.value)
+    }else if(this.id == 2) {
       this.title = '学生职位';
       this.placeholder = '填写目前担任的学生干部职务，如学生会、团委、社团协会、班干部等等';
-      this.id = 2;
       this.maxLength = 20;
+      this.value = this.$store.state.info.job_name;
       this.length = this.maxLength - this.value.length;
-      this.value = this.$store.state.info.jobs;
     }
   },
   methods: {
     confirm() {
-      this.$store.dispatch('changeInfoName', this.value);
-      this.$router.go(-1);
+      var params = {};
+      if(this.id == 1) {
+        params.username = this.value;
+      }else if(this.id == 2) {
+        params.job_name = this.value;
+      }
+      var vm = this;
+      vm.$http.post(vm.apiUrl, params).then((response) => {
+        this.$router.go(-1);
+      }, (response) => {
+        // console.log(response);
+      })
+      .catch(function(response) {
+      })
+      // this.$store.dispatch('changeInfoName', this.value);
+      // this.$router.go(-1);
     },
     check() {
       var regC = /[^ -~]+/g;
       var regE = /\D+/g;
       var str = this.value;
       if (regC.test(str)){
-          this.value = this.value.substr(0,this.maxLength);
+          this.value = this.value.substr(0, this.maxLength);
       }
       if(regE.test(str)){
           this.value = this.value.substr(0, this.maxLength);

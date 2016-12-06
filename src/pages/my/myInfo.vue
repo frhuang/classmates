@@ -18,7 +18,7 @@
     </my-cell>
     <my-cell title="籍贯"
       to="/filter/nativeplace/2"
-      :value="user_info.origin_province_text == '' ? defalut.pro : user_info.origin_province_text + user_info.origin_city_text"
+      :value="user_info.origin_province_text == '' ? defalut.pro : user_info.origin_province_text +' '+ user_info.origin_city_text"
       is-link required></my-cell>
     <my-cell title="学校"
       to="/filter/school/2"
@@ -69,6 +69,7 @@
         defalut: infoDefault,
         photoLength: 0,
         apiUrl: rootUrl + '/user/detail',
+        access_token: 'Kax3QzuVGyeXDt1xzPQ9gL2HqTE50EIs',
         user_info: {
           avatar: '',
           avatar_status: '',
@@ -110,7 +111,7 @@
     },
     methods: {
       openAlbum() {
-        this.$store.dispatch('albumImgSrc', {title: '个人头像', src: this.avatar})
+        this.$store.dispatch('albumImgSrc', {title: '个人头像', src: this.user_info.avatar})
         this.$router.push('/my/myinfo/album');
       },
       getData() {
@@ -133,14 +134,13 @@
         })
       },
       updatePersonalInfo() {
-        var vm = this;
         this.$store.dispatch('updatePersonalInfo', {
-          username: vm.username,
-          year: vm.year,
-          job_name: vm.job_name,
-          wechat: vm.wechat,
-          student_id: vm.student_id,
-          interests: vm.interests
+          username: this.user_info.username,
+          year: this.user_info.year,
+          job_name: this.user_info.job_name,
+          wechat: this.user_info.wechat,
+          student_id: this.user_info.student_id,
+          interests: this.user_info.interests
         })
       },
       successCallback(data) {

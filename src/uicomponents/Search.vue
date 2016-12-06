@@ -5,7 +5,7 @@
         <input
         ref="input"
         @click="visible = true"
-        type="search"
+        type="text"
         v-model="currentValue"
         :placeholder="visible ? placeholder : ''"
         class="pre-searchbar-core">
@@ -59,7 +59,6 @@ export default {
     },
     result: Array,
   },
-
   mounted() {
     this.autofocus && this.$refs.input.focus();
   }

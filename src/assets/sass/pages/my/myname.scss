@@ -1,6 +1,12 @@
 @import '../../commons/mixin';
 .my-name {
   background: $color-white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top:0;
+
   .textwrapper{
     background: $grey-bg-color;
     padding: 0.26666666666666666rem;

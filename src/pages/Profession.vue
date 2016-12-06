@@ -3,17 +3,19 @@
     <my-header title="专业" fixed>
       <my-back slot="left"></my-back>
     </my-header>
-    <my-search class="fixed-top"
-      placeholder="请输入专业全称"
-      v-model="value">
-    </my-search>
-      <div class="pre-search-list" v-show="value">
-        <div class="pre-search-list-warp">
-          <slot>
-            <my-cell v-for="item in result" :title="item.name" @click.native="selectProfession(item.name, item.id)"></my-cell>
-          </slot>
-        </div>
+    <div class="search-box">
+      <my-search
+        placeholder="请输入专业全称"
+        v-model="value">
+      </my-search>
+    </div>
+    <div class="pre-search-list" v-show="value">
+      <div class="pre-search-list-warp">
+        <slot>
+          <my-cell v-for="item in result" :title="item.name" @click.native="selectProfession(item.name, item.id)"></my-cell>
+        </slot>
       </div>
+    </div>
   </div>
 </template>
 
