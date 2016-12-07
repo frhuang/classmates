@@ -1,26 +1,19 @@
-<script>
-export default {
+<template>
+<div class="upload">
+    <slot></slot>
+    <input type="file" class="upload" @change="fileChange" :accept="accepts">
+</div>
+</template>
+<script type="text/babel">
+  export default {
     props: {
-        // Server host,like "http://jinzhe.net"
-        server: {
-            type: String,
-            require:true
-        },
-        // Server api path,like "/api/v1/getdata/"
-        api: {
-            type: String,
-            require:true
-        },
-        // POST Params
-        params:{
-            type:Object,
-            default:()=>{
-                return {}
-            }
-        },
-        success:{
-            type:Function
-        }
+      apiUrl: String,
+      params: {
+        isSend: Boolean,
+        app: String,
+        ac: String,
+      },
+      success:Function
     },
     data(){
       return {
@@ -29,30 +22,37 @@ export default {
         accepts:"image/*"
       }
     },
-    watch:{
-        percent(){
-          console.log(this.percent)
-            if(this.percent == 100){
-                setTimeout(()=>{
-                    this.percent=0
-                },500)
-            }
-        },
-    },
     methods:{
-        fileChange(e){
-            this.input=e.target
-                if(e.target.files.length==0)return false
-                // 读取本地图片转成base64显示到页面待使用
-                let fr=new FileReader()
-                fr.onload=e=>{
-                  // this.file = fr.result;
-                  this.success(fr.result);
-                }
-                fr.readAsDataURL(e.target.files[0])
+      fileChange(e){
+        var self = this;
+        if(e.target.files.length==0)return false
+        // 读取本地图片转成base64显示到页面待使用
+        let fr=new FileReader()
+        fr.onload=e=>{
+          if(!!self.params.isSend) {
+            self.uploadToSever(fr.result);
+          }else {
+            this.success(fr.result);
+          }
         }
+        fr.readAsDataURL(e.target.files[0])
+      },
+      uploadToSever(data) {
+        var vm = this;
+        vm.$http.post(vm.apiUrl, {
+          app: vm.params.app,
+          ac: vm.params.ac,
+          uploadFile: data
+        }).then((response) => {
+          vm.success();
+        }, (response) => {
+          console.log(response.data)
+        })
+        .catch(function(response) {
+        })
+      }
     }
-}
+  }
 </script>
 <style scoped>
 .upload{
@@ -62,19 +62,6 @@ export default {
     cursor: pointer;
     border-radius: inherit;
 }
-.upload .image{
-    transition: all .3s ease-in-out;
-    position: absolute;
-    left:0;
-    top:0;
-    right:0;
-    bottom:0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: inherit;
-}
-
 .upload>input{
     position: absolute;
     left:0;
@@ -94,7 +81,7 @@ export default {
     box-sizing:border-box;
     background-color:rgba(0, 0, 0,.8);
 }
-.upload .progress span{
+/*.upload .progress span{
     box-sizing: border-box;
     display: block;
     height:100%;
@@ -114,11 +101,5 @@ export default {
     left:50%;
     top:50%;
     transform: translate(-50%,-50%);
-}
+}*/
 </style>
-
-<template>
-<div class="upload">
-    <input type="file" class="upload" @change="fileChange" :accept="accepts">
-</div>
-</template>

@@ -9,9 +9,10 @@
       <p class="upload-title">请上传相应的<span class="green-title">微信二维码</span></p>
       <div class="upload-box" v-show="uploadVisible == true">
         <upload
-          :api="upload.api"
+          :apiUrl="upload.apiUrl"
+          :params="upload.params"
           :success="upload.success">
-          <div class="box-add-arrow" v-show="arrowVisible"></div>
+          <div class="box-add-arrow"></div>
         </upload>
       </div>
       <div class="readyImg" v-show="uploadVisible == false" :style="{'background-image': 'url('+file+')'}"></div>
@@ -24,11 +25,17 @@
 
 <script>
 import upload from "../../components/Upload.vue"
+import { rootUrl } from '../../config'
 export default {
   data() {
     return {
       upload:{
-        api:"",
+        apiUrl: rootUrl + "/upload/file",
+        params: {
+          isSend: false,
+          app: "3",
+          ac: "ev",
+        },
         success:(data)=>{
           this.successCallback(data);
         }
@@ -55,7 +62,17 @@ export default {
     },
     confirm() {
       if(!this.uploadVisible) {
-        alert('confirm');
+        var vm = this;
+        vm.$http.post(vm.upload.apiUrl, {
+          app: vm.upload.params.app,
+          ac: vm.upload.params.ac,
+          uploadFile: vm.file
+        }).then((response) => {
+        }, (response) => {
+          console.log(response.data)
+        })
+        .catch(function(response) {
+        })
       }
     }
   }

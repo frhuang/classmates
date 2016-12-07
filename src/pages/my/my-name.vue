@@ -31,7 +31,6 @@ export default {
   },
 
   created() {
-    console.log(this.$route.params.id)
     this.id = this.$route.params.id;
     if(this.id == 1) {
       this.title = '真实姓名';
@@ -39,7 +38,6 @@ export default {
       this.maxLength = 10;
       this.value = this.$store.state.info.username;
       this.length = this.maxLength - this.value.length;
-      console.log(this.value)
     }else if(this.id == 2) {
       this.title = '学生职位';
       this.placeholder = '填写目前担任的学生干部职务，如学生会、团委、社团协会、班干部等等';

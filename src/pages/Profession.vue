@@ -28,14 +28,21 @@ export default {
     return {
       value: '',
       sid: '',
+      typeId: '',
       result: [],
       apiUrl: rootUrl + '/find/speciality-list',
       editUrl: rootUrl + '/user/edit'
     }
   },
-  computed: mapState({
-    sid: state => state.filter.schoolId,
-  }),
+  created() {
+    this.typeId = this.$route.params.id;
+    if(this.typeId == 1) {
+      this.sid = this.$store.state.filter.schoolId;
+    } else if(this.typeId == 2) {
+      this.sid = this.$store.state.info.schools;
+    }
+    console.log(this.sid);
+  },
   watch: {
     value() {
       if(this.value != '') {

@@ -59,7 +59,7 @@
         </div>
       </router-link>
     </div>
-    <my-navbar v-model="selected" v-if="$route.path == '/my' || $route.path == '/'">
+    <my-navbar v-model="selected">
       <my-nav-item id="找同学" @click.native="homeRouter">找同学</my-nav-item>
       <my-nav-item id="我的">我的</my-nav-item>
     </my-navbar>
