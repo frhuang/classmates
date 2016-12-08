@@ -8,9 +8,16 @@ export const infoDefault = {
   profession: '填写可以让同专业的找到你',
   year: '填写可以让同年级的找到你',
   interest: '填写可以让志同道合的找到你',
-  qrcode: '填写为你收获人脉和心意',
-  stdcard: '让人觉得你靠谱',
+  wechat: '填写为你收获人脉和心意',
+  student: '让人觉得你靠谱',
   jobs: '展示你的才能（选填）'
+}
+
+export const StatusLabel = {
+  '1': '待审核',
+  '2': '审核失败',
+  '3': '审核失效',
+  '4': '审核成功'
 }
 
 

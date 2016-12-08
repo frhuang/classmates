@@ -2,13 +2,14 @@
   <div class="myinfo">
     <my-header title="个人信息" fixed>
       <my-back slot="left"/>
-      <my-button class="join-btn" slot="right" :disabled="disabled">我要加入</my-button>
+      <button class="filter-btn" :class="{'disabled':disabled}" @click="joinTo" slot="right">我要加入</button>
     </my-header>
     <div class="cell-list">
       <my-cell title="头像" is-link required @click.native="sheetAvatarVisible = true">
         <img :src="user_info.avatar" class="my-avatar">
       </my-cell>
-      <my-cell title="真实姓名" to="/my/myinfo/myname/1" :value="user_info.username=='' ? defalut.name : user_info.username" is-link required></my-cell>
+      <my-cell title="真实姓名" @click.native="nextTo('/my/myinfo/myname/1')"
+        :value="user_info.username=='' ? defaultLabel.name : user_info.username" :is-link="isLink" required></my-cell>
       <my-cell title="性别" required>
         <div class="pre-cell-sex">
           <my-radio
@@ -18,29 +19,34 @@
         </div>
       </my-cell>
       <my-cell title="籍贯"
-        to="/filter/nativeplace/2"
-        :value="user_info.origin_province_text == '' ? defalut.pro : user_info.origin_province_text +' '+ user_info.origin_city_text"
-        is-link required></my-cell>
+        @click.native="nextTo('/filter/nativeplace/2')"
+        :value="user_info.origin_province_text == '' ? defaultLabel.pro : user_info.origin_province_text +' '+ user_info.origin_city_text"
+        :is-link="isLink" required></my-cell>
       <my-cell title="学校"
-        to="/filter/school/2"
-        :value="user_info.schools_text == '' ? defalut.school : user_info.schools_text"
-        is-link required></my-cell>
+        @click.native="nextTo('/filter/school/2')"
+        :value="user_info.schools_text == '' ? defaultLabel.school : user_info.schools_text"
+        :is-link="isLink" required></my-cell>
       <my-cell title="专业"
-        to="/filter/profession/2"
-        :value="user_info.speciality_text == '' ? defalut.profession : user_info.speciality_text"
-        is-link required></my-cell>
+        @click.native="nextTo('/filter/profession/2')"
+        :value="user_info.speciality_text == '' ? defaultLabel.profession : user_info.speciality_text"
+        :is-link="isLink" required></my-cell>
       <my-cell title="入学年份"
-        to="/filter/startyear/2"
-        :value="user_info.syear == '' ? defalut.year : user_info.syear"
-        is-link required></my-cell>
+        @click.native="nextTo('/filter/startyear/2')"
+        :value="user_info.syear == '' ? defaultLabel.year : user_info.syear"
+        :is-link="isLink" required></my-cell>
       <my-cell title="兴趣爱好"
         to="/my/myinfo/myinterests"
-        :value="interestValue == '' ? defalut.interest : interestValue" is-link required></my-cell>
-      <my-cell title="微信二维码"  to="/my/myinfo/qrcode" :value="qrcode" is-link required></my-cell>
-      <my-cell title="实名认证学生证" to="/my/myinfo/stdcard" :value="stdcard" is-link required></my-cell>
+        :value="interestValue == '' ? defaultLabel.interest : interestValue" is-link required></my-cell>
+      <my-cell title="微信二维码"
+        to="/my/myinfo/qrcode" is-link required>
+         <span :class="{'red-title': wechatStatus < 4 && wechatStatus> 0, 'green-title':  wechatStatus == 4 }"><i class="icon"></i>{{qrcodeLabel}}</span>
+       </my-cell>
+      <my-cell title="实名认证学生证" to='/my/myinfo/stdcard' is-link required>
+         <span :class="{'red-title': stuStatus < 4 && stuStatus > 0, 'green-title':  stuStatus == 4 }"><i class="icon"></i>{{studentLabel}}</span>
+      </my-cell>
       <my-cell title="学生职位"
         to="/my/myinfo/myname/2"
-        :value="user_info.job_name == '' ? defalut.jobs : user_info.job_name"
+        :value="user_info.job_name == '' ? defaultLabel.jobs : user_info.job_name"
          is-link></my-cell>
       <p class="photo-title">上传自己的魅力相册，多方位展示才有故事发生</p>
       <div class="img-box">
@@ -63,27 +69,33 @@
 
 <script type="text/babel">
   import { mapState } from 'vuex';
-  import { infoDefault, rootUrl } from '../../config';
+  import { infoDefault, rootUrl, StatusLabel } from '../../config';
+  import { MessageBox } from 'mint-ui';
   import upload from "../../components/Upload.vue"
   export default {
     data () {
       return {
         sheetAvatarVisible: false,
         sheetPhotoVisible: false,
+        disabled: true,
         options: [
           {label: '男', value: '1'},
           {label: '女', value: '0'}
         ],
+        isLink: true,
         user_photo: [],
         interests: [],
         photoInfo: {},
-        qrcode: '',
-        stdcard: '',
+        qrcodeLabel: '',
+        studentLabel: '',
         interestValue: '',
-        defalut: infoDefault,
+        defaultLabel: infoDefault,
+        wechatStatus: 0,
+        stuStatus: 0,
         photoLength: 0,
         apiUrl: rootUrl + '/user/detail',
         removeUrl: rootUrl + '/user/photo-del',
+        editUrl: rootUrl + '/user/edit',
         user_info: {
           avatar: '',
           avatar_status: '',
@@ -111,7 +123,7 @@
           success:(data)=>{
             this.successCallback(data);
           }
-        }
+        },
       }
     },
     components: {
@@ -137,12 +149,37 @@
       this.getData();
     },
     methods: {
+      joinTo() {
+        if(!this.disabled) {
+          var vm = this;
+          vm.$http.post(vm.editUrl,{
+            gender: vm.user_info.gender
+          }).then((response) => {
+            MessageBox.alert('你已成功加入找同学的大家庭，可以去找同学了，学生证认证结果会在24小时内通知你', '', {
+              confirmButtonText: '知道了',
+              confirmButtonClass: 'noconfirm'
+            }).then(()=> {
+
+            }, ()=> {
+
+            })
+          }, (response) => {
+            // console.log(response.data)
+          })
+          .catch(function(response) {
+          })
+        }
+      },
+      nextTo(str) {
+        if(this.stuStatus !== 4) {
+          this.$router.push(str);
+        }
+      },
       fileChange(e) {
         if(e.target.files.length==0)return false
         // 读取本地图片转成base64显示到页面待使用
         let fr=new FileReader()
         fr.onload=e=>{
-            console.log(fr.result);
         }
         fr.readAsDataURL(e.target.files[0])
       },
@@ -165,7 +202,6 @@
         }).then((response) => {
           vm.getData();
         }, (response) => {
-          console.log(response.data)
         })
         .catch(function(response) {
         })
@@ -185,18 +221,35 @@
           for(var key in vm.user_info) {
             vm.user_info[key] = userInfo[key];
           }
+          // vm.user_info['student_id_status'] = '4';
+          var ws = vm.wechatStatus = parseInt(vm.user_info['wechat_status']);
+          var ss = vm.stuStatus = parseInt(vm.user_info['student_id_status']);
+          if(ws >= 1 && ws <= 4) {
+            vm.qrcodeLabel = StatusLabel[ws];
+          }else {
+            vm.qrcodeLabel = vm.defaultLabel.wechat;
+          }
+          if(ss >= 1 && ss <= 4) {
+            vm.studentLabel = StatusLabel[ss];
+          } else{
+            vm.studentLabel = vm.defaultLabel.student
+          }
+          if(ss === 4) {
+            vm.isLink = false;
+          }
           vm.user_photo = data.data.user_photo;
           vm.setInterestsData(data.data.user_interests);
           vm.updatePersonalInfo();
+          vm.checkIsDisabled();
         }, (response) => {
-          console.log(response.data)
+          // console.log(response.data)
         })
         .catch(function(response) {
         })
       },
       setInterestsData(data) {
         this.interestValue = '';
-        for(let i=0; i<data.length; i++) {
+        for(let i=0; i < data.length; i++) {
           this.interestValue += data[i]['name'];
           this.interestValue += ' ';
         }
@@ -209,8 +262,24 @@
           schools: this.user_info.schools,
           wechat: this.user_info.wechat,
           student_id: this.user_info.student_id,
+          student_id_status: this.user_info.student_id_status,
           interests: this.user_info.interests
         })
+      },
+      checkIsDisabled() {
+        var ui = this.user_info;
+        if(ui.username != ''
+          && ui.avatar != ''
+          && ui.gender != ''
+          && ui.origin_city != ''
+          && ui.origin_province != ''
+          && ui.schools != ''
+          && ui.speciality != ''
+          && ui.student_id != ''
+          && ui.syear != '0'
+          && ui.wechat != '0') {
+          this.disabled = false;
+        }
       },
       successCallback(data) {
         this.getData();

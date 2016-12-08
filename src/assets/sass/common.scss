@@ -85,3 +85,51 @@ ul{
     }
   }
 }
+
+.mint-msgbox-wrapper {
+  .mint-msgbox {
+    width: 92%;
+    border-radius: 0.3rem;
+    .mint-msgbox-message{
+      @include font-dpr(15px);
+      color: $color-black;
+    }
+    .mint-msgbox-content{
+      border: none;
+      height: 1rem;
+      line-height: 1rem;
+      vertical-align: middle;
+      padding: 0.8rem 0.5rem;
+    }
+    .mint-msgbox-btns {
+      height: 0.9333333333333333rem;
+      line-height: 0.9333333333333333rem;
+      width: 7rem;
+      margin: 0 auto;
+      margin-bottom: .5rem;
+      display: block;
+      .mint-msgbox-btn {
+        line-height: 0.9333333333333333rem;
+        color: #fff;
+        width: 3.3rem;
+        display: inline-block;
+        margin-left: 0.3rem;
+        border-radius: 5px;
+        &:first-child{
+          margin-left: 0;
+        }
+        @include font-dpr(15px);
+        &.mint-msgbox-cancel {
+          background: $color-black;
+        }
+        &.mint-msgbox-confirm {
+          background: $color-green;
+        }
+        &.noconfirm {
+          margin-left: 1.8rem;
+        }
+      }
+    }
+  }
+
+}

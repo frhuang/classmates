@@ -6,6 +6,26 @@ body {
   .join-btn {
 
   }
+  .red-title {
+    .icon {
+      display: inline-block;
+      width: 0.4rem;
+      height: 0.4rem;
+      background-image: url(/static/img/under_review.png);
+      background-size: cover;
+      margin-right: 0.1rem;
+    }
+  }
+  .green-title {
+    .icon {
+      display: inline-block;
+      width: 0.4rem;
+      height: 0.4rem;
+      background-image: url(/static/img/check-selected.png);
+      background-size: cover;
+      margin-right: 0.1rem;
+    }
+  }
   .photo-title{
     color: $color-grey;
     padding: 0.26666666666666666rem;
