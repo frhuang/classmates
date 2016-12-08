@@ -18,6 +18,9 @@
       line-height: 1.3333333333333333rem;
       .content-item {
         padding-left: 0.26666666666666666rem;
+        &:first-child {
+          padding-left: 0;
+        }
       }
     }
   }

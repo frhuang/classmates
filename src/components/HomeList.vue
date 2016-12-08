@@ -74,9 +74,6 @@
       ).then((response) => {
         var data = JSON.parse(response.data);
         vm.mainLists = data.data;
-        for(let i=0; i< 20; i++) {
-            vm.mainLists.push(data.data[0]);
-        }
       })
       .catch(function(response) {
       })

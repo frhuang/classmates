@@ -2,7 +2,7 @@
   <div class="photo-list">
     <ul>
       <li v-for="photo in photos" class="photo-item">
-        <img :src="photo">
+        <img :src="photo.fname">
       </li>
     </ul>
   </div>
