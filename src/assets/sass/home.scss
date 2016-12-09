@@ -84,5 +84,14 @@
       border-radius: 3px;
       font-weight: normal;
     }
+    .flag-n-auth {
+      @include font-dpr(10px);
+      margin-left: 0.26666666666666666rem;
+      padding: 0.05rem 0.14rem;
+      color: $color-red;
+      border: 1px solid $color-red;
+      border-radius: 3px;
+      font-weight: normal;
+    }
   }
 }

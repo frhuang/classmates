@@ -6,17 +6,28 @@
     </my-header>
     <home-list></home-list>
     <my-navbar v-model="selected" fixed>
-      <my-nav-item id="找同学">找同学</my-nav-item>
+      <my-nav-item id="找同学" :disabled="disabled">找同学</my-nav-item>
+      <my-nav-item id="加入" @click.native="joinTo" v-show="is_join != '1'">加入</my-nav-item>
       <my-nav-item id="我的" @click.native="meRouter">我的</my-nav-item>
     </my-navbar>
   </div>
 </template>
 <script type="text/babel">
   import HomeList from '../components/HomeList.vue';
+  import { getCookie } from '../utils';
   export default {
     data() {
       return {
-        selected: "找同学",
+        selected: "加入",
+        is_join: '',
+        disabled: true
+      }
+    },
+    created() {
+      this.is_join = getCookie('is_join');
+      if(this.is_join != null) {
+        this.selected = '找同学'
+        this.disabled = false;
       }
     },
     components: {
@@ -25,6 +36,9 @@
     methods: {
       meRouter() {
         this.$router.push('/my')
+      },
+      joinTo() {
+        this.$router.push('/my/myinfo');
       }
     }
   }

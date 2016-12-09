@@ -2,7 +2,7 @@
   <div class="myinfo">
     <my-header title="个人信息" fixed>
       <my-back slot="left"/>
-      <button class="filter-btn" :class="{'disabled':disabled}" @click="joinTo" slot="right">我要加入</button>
+      <button class="filter-btn" @click="joinTo" slot="right" v-show="is_join == null">我要加入</button>
     </my-header>
     <div class="cell-list">
       <my-cell title="头像" is-link required @click.native="sheetAvatarVisible = true">
@@ -71,6 +71,7 @@
   import { mapState } from 'vuex';
   import { infoDefault, rootUrl, StatusLabel } from '../../config';
   import { MessageBox } from 'mint-ui';
+  import { getCookie } from '../../utils';
   import upload from "../../components/Upload.vue"
   export default {
     data () {
@@ -78,6 +79,7 @@
         sheetAvatarVisible: false,
         sheetPhotoVisible: false,
         disabled: true,
+        is_join: '',
         options: [
           {label: '男', value: '1'},
           {label: '女', value: '0'}
@@ -146,27 +148,30 @@
       }]
     },
     created() {
+      this.is_join = getCookie('is_join');
+      console.log(this.is_join);
       this.getData();
     },
     methods: {
       joinTo() {
         if(!this.disabled) {
-          var vm = this;
-          vm.$http.post(vm.editUrl,{
-            gender: vm.user_info.gender
-          }).then((response) => {
-            MessageBox.alert('你已成功加入找同学的大家庭，可以去找同学了，学生证认证结果会在24小时内通知你', '', {
-              confirmButtonText: '知道了',
-              confirmButtonClass: 'noconfirm'
-            }).then(()=> {
+          this.is_join = '1';
+          MessageBox.alert('你已成功加入找同学的大家庭，可以去找同学了，学生证认证结果会在24小时内通知你', '', {
+            confirmButtonText: '知道了',
+            confirmButtonClass: 'noconfirm'
+          }).then(()=> {
 
-            }, ()=> {
+          }, ()=> {
 
-            })
-          }, (response) => {
-            // console.log(response.data)
           })
-          .catch(function(response) {
+        }else {
+          MessageBox.alert('请完善个人信息后才能加入哦', '', {
+            confirmButtonText: '知道了',
+            confirmButtonClass: 'noconfirm'
+          }).then(()=> {
+
+          }, ()=> {
+
           })
         }
       },

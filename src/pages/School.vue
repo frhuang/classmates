@@ -74,9 +74,9 @@ import { rootUrl } from '../config'
 </script>
 <style lang="scss">
 .search-box {
-  position: absolute;
-  top: 1.3333333333333333rem;
-  left: 0;
-  right: 0;
+  // position: absolute;
+  margin-top: 1.3333333333333333rem;
+  // left: 0;
+  // right: 0;
 }
 </style>
