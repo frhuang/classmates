@@ -2,6 +2,7 @@
   <div class="complaints">
     <my-header title="投诉">
       <my-back slot="left"></my-back>
+      <button class="filter-btn" slot="right" title="确定" @click="confirm">确定</button>
     </my-header>
     <my-checklist align="right" v-model="value" :options="options"></mt-checklist>
   </div>
@@ -16,6 +17,9 @@
       }
     },
     methods: {
+      confirm() {
+
+      }
     }
   }
 </script>

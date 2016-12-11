@@ -1,9 +1,11 @@
 <template>
   <div class="profession">
-    <my-header title="兴趣爱好">
+    <my-header title="兴趣爱好" fixed>
       <my-back slot="left"></my-back>
     </my-header>
-    <my-cell v-for="interest in interests" :title="interest.name" @click.native="selectInterest(interest.name, interest.it_id)"></my-cell>
+    <div class="cell-list">
+      <my-cell v-for="interest in interests" :title="interest.name" @click.native="selectInterest(interest.name, interest.it_id)"></my-cell>
+    </div>
   </div>
 </template>
 
@@ -12,7 +14,7 @@
   export default {
     data() {
       return {
-        interests: {},
+        interests: [],
         apiUrl: rootUrl + '/find/interests-list'
       }
     },
@@ -25,7 +27,16 @@
         emulateJSON: true
       }).then((response) => {
         var data = JSON.parse(response.data);
-        vm.interests = data.data;
+        var interests = data.data;
+        for(let key in interests) {
+          var list = interests[key]['list'];
+          for(var i=0; i<list.length; i++) {
+            let params = {};
+            params.it_id = list[i]['it_id'];
+            params.name = list[i]['name'];
+            vm.interests.push(params);
+          }
+        }
       })
       .catch(function(response) {
       })

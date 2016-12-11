@@ -110,8 +110,19 @@
         } else if(this.other_info['is_know'] === 0) {
           this.$router.push('/personalinfo/'+this.id+'/lookta');
         } else if(this.other_info['is_know'] === 1 && this.other_info['is_auth'] === 1) {
-          alert('查看二维码');
+          this.getQrcode();
         }
+      },
+      getQrcode() {
+        var vm = this;
+        vm.$http.get(vm.apiUrl, {
+          params: {uid:vm.id},
+          emulateJSON: true
+        }).then((response) => {
+          
+        })
+        .catch(function(response) {
+        })
       }
     },
     components: {

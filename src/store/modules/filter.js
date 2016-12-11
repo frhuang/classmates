@@ -1,17 +1,17 @@
 import * as types from '../mutation-types'
 
 const state = {
-  province: "不限",
+  province: "",
   provinceId: "",
   city: "",
   cityId: "",
-  school: "不限",
+  school: "",
   schoolId: "",
-  year: "不限",
+  year: "",
   sex: "",
-  profession: "不限",
+  profession: "",
   professionId: "",
-  interest: "不限",
+  interest: "",
   interestId: "",
   sex: " ",
   status: false

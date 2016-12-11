@@ -6,11 +6,11 @@
       </router-link>
       <button class="filter-btn" slot="right" title="确定" @click="confirm">确定</button>
     </my-header>
-    <my-cell title="籍贯" to="/filter/nativeplace/1" :value="province +' '+ city" is-link req></my-cell>
-    <my-cell title="学校" to="/filter/school/1" :value="school" is-link></my-cell>
-    <my-cell title="专业" to="/filter/profession/1" :value="profession" is-link></my-cell>
-    <my-cell title="入学年份" to="/filter/startyear/1" :value="year" is-link></my-cell>
-    <my-cell title="兴趣爱好" to="/filter/interest" :value="interest" is-link></my-cell>
+    <my-cell title="籍贯" to="/filter/nativeplace/1" :value="province == '' ? '不限' : province +' '+ city" is-link req></my-cell>
+    <my-cell title="学校" to="/filter/school/1" :value="school == '' ? '不限' : school" is-link></my-cell>
+    <my-cell title="专业" to="/filter/profession/1" :value="profession == '' ? '不限' : profession" is-link></my-cell>
+    <my-cell title="入学年份" to="/filter/startyear/1" :value="year == '' ? '不限' : year" is-link></my-cell>
+    <my-cell title="兴趣爱好" to="/filter/interest" :value="interest == '' ? '不限' : interest" is-link></my-cell>
     <my-cell title="性别">
       <div class="pre-cell-sex">
         <my-radio
@@ -45,6 +45,8 @@ import { mapState } from 'vuex';
     },
     methods: {
       confirm() {
+        this.$store.dispatch('selectFilterSex', this.value);
+        this.$store.dispatch('setFilterStatus', true);
         this.$router.push('/');
       }
     },

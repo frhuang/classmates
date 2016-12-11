@@ -5,7 +5,7 @@ import VueResource from 'vue-resource'
 import routes from './routes'
 import store from './store'
 
-import { Tabbar, TabItem, TabContainer, TabContainerItem, Search } from 'mint-ui';
+import { Tabbar, TabItem, TabContainer, TabContainerItem, Search, Loadmore } from 'mint-ui';
 
 import MyHeader from './uicomponents/Header'
 import MyCell from './uicomponents/Cell'
@@ -25,6 +25,7 @@ Vue.component(TabItem.name, TabItem);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Search.name, Search);
+Vue.component(Loadmore.name, Loadmore);
 
 //my-ui
 Vue.component(MyHeader.name, MyHeader);

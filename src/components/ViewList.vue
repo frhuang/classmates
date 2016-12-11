@@ -1,6 +1,6 @@
 <template>
   <div class="view-list">
-    <div v-for="list in detailLists" class="flag">
+    <div v-for="list in detailLists" class="flag" @click="routeTo(list.uid)">
       <div class="avatar flag-item">
         <img :src="list.avatar" class="avatar-img">
         <i :class="{'female': list.gender =='0', 'male': list.gender == '1'}"></i>
@@ -24,6 +24,11 @@
   export default {
     props: {
       detailLists: Array
+    },
+    methods: {
+      routeTo(id) {
+        this.$router.push('/personalinfo/'+ id);
+      }
     }
   }
 </script>

@@ -126,6 +126,11 @@
             this.successCallback(data);
           }
         },
+        avatarUpload: {
+          apiUrl: rootUrl + "/upload/file",
+          app: '1',
+          ac: 'edit'
+        }
       }
     },
     components: {
@@ -149,7 +154,6 @@
     },
     created() {
       this.is_join = getCookie('is_join');
-      console.log(this.is_join);
       this.getData();
     },
     methods: {
@@ -181,12 +185,27 @@
         }
       },
       fileChange(e) {
+        var vm = this;
         if(e.target.files.length==0)return false
         // 读取本地图片转成base64显示到页面待使用
         let fr=new FileReader()
         fr.onload=e=>{
+          vm.uploadToSever(fr.result);
         }
         fr.readAsDataURL(e.target.files[0])
+      },
+      uploadToSever(str) {
+        var vm = this;
+        vm.$http.post(vm.avatarUpload.apiUrl,{
+          uploadFile: str,
+          app: vm.avatarUpload.app,
+          ac: vm.avatarUpload.ac
+        }).then((response) => {
+          vm.getData();
+        }, (response) => {
+        })
+        .catch(function(response) {
+        })
       },
       updateAvatar() {
         var fileEle = document.getElementById('avatar-upload');

@@ -24,6 +24,9 @@ export const selectFilterInterest = ({ commit }, {id, name}) => {
 export const selectFilterSex = ({ commit }, id) => {
   commit(types.SELECT_FILTER_SEX, id)
 }
+export const setFilterStatus = ({ commit }, status) => {
+  commit(types.FILTER_STATUS, status)
+}
 //查看大图
 export const albumImgSrc = ( { commit }, {title, src}) => {
   commit(types.ALBUM_IMG_SRC, {title, src});
