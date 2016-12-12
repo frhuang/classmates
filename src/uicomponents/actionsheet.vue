@@ -2,7 +2,9 @@
   <transition name="actionsheet-float">
     <div v-show="currentValue" class="my-actionsheet">
       <ul class="my-actionsheet-list">
-        <li v-for="item in actions" class="my-actionsheet-listitem" @click="itemClick(item)">{{ item.name }}</li>
+        <li v-for="item in actions" class="my-actionsheet-listitem" @click="itemClick(item)">
+          <span :style="{color: item.color}">{{ item.name }}</span>
+        </li>
       </ul>
     </div>
   </transition>

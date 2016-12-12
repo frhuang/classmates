@@ -10,7 +10,7 @@
 </template>
 
 <script type="text/babel">
-  import { rootUrl } from '../config';
+  import { rootUrl } from '../../config';
   export default {
     data() {
       return {

@@ -60,8 +60,9 @@
           </upload>
         </div>
       </div>
+      <span class="info-name-tips" :class="{'red-title': avatarStatus < 4 && avatarStatus> 0, 'green-title':  avatarStatus == 4 }"><i class="icon"></i>{{avatarLabel}}</span>
       <my-actionsheet :actions="actionAvatar" v-model="sheetAvatarVisible" cancel-text=""></my-actionsheet>
-      <my-actionsheet :actions="actionPhoto" v-model="sheetPhotoVisible" cancel-text=""></my-actionsheet>
+      <my-actionsheet :actions="actionPhoto" v-model="sheetPhotoVisible" cancel-text="" isRed></my-actionsheet>
       <input type="file" id="avatar-upload" class="avatar-upload" @change="fileChange" accept="image/*">
     </div>
   </div>
@@ -86,15 +87,15 @@
         ],
         isLink: true,
         user_photo: [],
-        interests: [],
         photoInfo: {},
         qrcodeLabel: '',
         studentLabel: '',
+        avatarLabel: '',
         interestValue: '',
         defaultLabel: infoDefault,
+        avatarStatus: 0,
         wechatStatus: 0,
         stuStatus: 0,
-        photoLength: 0,
         apiUrl: rootUrl + '/user/detail',
         removeUrl: rootUrl + '/user/photo-del',
         editUrl: rootUrl + '/user/edit',
@@ -139,16 +140,20 @@
     mounted() {
       this.actionAvatar = [{
         name: '更改头像',
+        color: '##999999',
         method: this.updateAvatar
       }, {
         name: '查看大图',
+        color: '##999999',
         method: this.openAvatarAlbum
       }];
       this.actionPhoto = [{
         name: '查看大图',
+        color: '##999999',
         method: this.openPhotoAlbum
       }, {
         name: '删除',
+        color: '#ed2b4c',
         method: this.removePhoto
       }]
     },
@@ -248,6 +253,7 @@
           // vm.user_info['student_id_status'] = '4';
           var ws = vm.wechatStatus = parseInt(vm.user_info['wechat_status']);
           var ss = vm.stuStatus = parseInt(vm.user_info['student_id_status']);
+          var as = vm.avatarStatus = parseInt(vm.user_info['avatar_status']);
           if(ws >= 1 && ws <= 4) {
             vm.qrcodeLabel = StatusLabel[ws];
           }else {
@@ -257,6 +263,9 @@
             vm.studentLabel = StatusLabel[ss];
           } else{
             vm.studentLabel = vm.defaultLabel.student
+          }
+          if(as >=1 && as <= 4) {
+            vm.avatarLabel = StatusLabel[as];
           }
           if(ss === 4) {
             vm.isLink = false;

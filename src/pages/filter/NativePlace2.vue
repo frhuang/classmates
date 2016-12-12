@@ -10,7 +10,7 @@
 </template>
 
 <script type="text/babel">
-  import { rootUrl } from '../config';
+  import { rootUrl } from '../../config';
   export default {
     data () {
       return {
@@ -58,6 +58,3 @@
     }
   }
 </script>
-<style lang="scss">
-  @import "../assets/sass/uicomponents/cell.scss";
-</style>

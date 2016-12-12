@@ -2,7 +2,7 @@
   <div class="personalInfo">
     <my-header :title="user_info.username">
       <my-back slot="left"></my-back>
-      <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right">投诉</router-link>
+      <router-link class="complaints-btn" :to="'/personalinfo/'+id+'/complaints'" slot="right" v-show="other_info['is_self'] != 1">投诉</router-link>
     </my-header>
     <div class="flag">
       <div class="avatar flag-item">
@@ -119,7 +119,7 @@
           params: {uid:vm.id},
           emulateJSON: true
         }).then((response) => {
-          
+
         })
         .catch(function(response) {
         })

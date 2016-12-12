@@ -6,6 +6,21 @@ body {
   .join-btn {
 
   }
+  .info-name-tips {
+    position: absolute;
+    left: 50%;
+    top: 1.8rem;
+    transform: translate(-50%, 0);
+    text-align: center;
+    color: $color-grey;
+    @include font-dpr(15px);
+    &.red-title{
+      color:$color-red;
+    }
+    &.green-title {
+      color: $color-green;
+    }
+  }
   .red-title {
     .icon {
       display: inline-block;

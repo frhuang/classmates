@@ -2,6 +2,7 @@
   <div class="school">
     <my-header title="专业" fixed>
       <my-back slot="left"></my-back>
+      <a href="javascript:;" @click="reset" slot="right" class="reset-btn" v-show="typeId === 1">重置</a>
     </my-header>
     <div class="search-box">
       <mt-search
@@ -17,17 +18,21 @@
         </slot>
       </div>
     </div>
+    <mt-popup v-model="popupVisible" position="top" class="popup-top" :modal="false">
+      <p>重置成功</p>
+    </mt-popup>
   </div>
 </template>
 
 <script type="text/babel">
 import { mapState } from 'vuex';
-import { rootUrl } from '../config';
+import { rootUrl } from '../../config';
 export default {
   data () {
     return {
       value: '',
       sid: '',
+      popupVisible: false,
       typeId: '',
       result: [],
       apiUrl: rootUrl + '/find/speciality-list',
@@ -35,28 +40,34 @@ export default {
     }
   },
   created() {
-    this.typeId = this.$route.params.id;
-    if(this.typeId == 1) {
+    this.typeId = parseInt(this.$route.params.id);
+    if(this.typeId === 1) {
       this.sid = this.$store.state.filter.schoolId;
-    } else if(this.typeId == 2) {
+    } else if(this.typeId === 2) {
       this.sid = this.$store.state.info.schools;
     }
-    console.log(this.sid);
   },
   watch: {
     value() {
       if(this.value != '') {
         this.getProfession();
       }
+    },
+    popupVisible(val) {
+      if (val) {
+        setTimeout(() => {
+          this.popupVisible = false;
+        }, 2000);
+      }
     }
   },
   methods: {
     selectProfession(title, id) {
-      var rid = this.$route.params.id;
-      if(rid == 1) {
+      var rid = this.typeId;
+      if(rid === 1) {
         this.$store.dispatch('selectFilterProfession', {id: id, name: title});
         this.$router.go(-1);
-      } else if(rid == 2) {
+      } else if(rid === 2) {
         var vm = this;
         var params = {};
         params.speciality = id;
@@ -82,6 +93,12 @@ export default {
       })
       .catch(function(response) {
       })
+    },
+    reset() {
+      this.$store.dispatch('selectFilterProfession', {
+        id: '', name: ''
+      });
+      this.popupVisible = true;
     }
   }
 }

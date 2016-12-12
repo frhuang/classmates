@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/babel">
-  import { years, rootUrl } from '../config.js';
+  import { years, rootUrl } from '../../config.js';
   export default {
     data() {
       return {

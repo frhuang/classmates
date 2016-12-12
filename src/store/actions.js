@@ -24,6 +24,7 @@ export const selectFilterInterest = ({ commit }, {id, name}) => {
 export const selectFilterSex = ({ commit }, id) => {
   commit(types.SELECT_FILTER_SEX, id)
 }
+//设置选择状态
 export const setFilterStatus = ({ commit }, status) => {
   commit(types.FILTER_STATUS, status)
 }
