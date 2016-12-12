@@ -33,7 +33,7 @@ export default {
       value: '',
       sid: '',
       popupVisible: false,
-      typeId: '',
+      typeId: 1,
       result: [],
       apiUrl: rootUrl + '/find/speciality-list',
       editUrl: rootUrl + '/user/edit'

@@ -29,7 +29,7 @@ import { rootUrl } from '../../config'
       return {
         value: '',
         popupVisible: false,
-        typeId: '',
+        typeId: 1,
         result: [],
         apiUrl: rootUrl + '/find/school-list',
         editUrl: rootUrl + '/user/edit'

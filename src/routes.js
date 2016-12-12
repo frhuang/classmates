@@ -10,17 +10,17 @@ import PersonalInfo from './pages/PersonalInfo';
 import MyPage from './pages/MyPage';
 import LookTa from './pages/LookTa';
 import Complaints from './pages/Complaints';
-import Money from './pages/my/money';
-import Contacts from './pages/my/contacts';
-import Records from './pages/my/records';
-import About from './pages/my/about';
-import MyInfo from './pages/my/myinfo';
-import MyName from './pages/my/my-name';
-import MyQrcode from './pages/my/my-qrcode';
-import MyStdCard from './pages/my/my-std-card';
+import Money from './pages/my/Money';
+import Contacts from './pages/my/Contacts';
+import Records from './pages/my/Records';
+import About from './pages/my/About';
+import MyInfo from './pages/my/MyInfo';
+import MyName from './pages/my/MyName';
+import MyQrcode from './pages/my/MyQrcode';
+import MyStdCard from './pages/my/MyStdCard';
 import Album from './components/Album';
 import NoFound from './components/NoFound';
-import MyInterests from './pages/my/my-interests'
+import MyInterests from './pages/my/MyInterests'
 
 const routes = [
   {
