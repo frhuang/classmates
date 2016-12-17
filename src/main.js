@@ -44,7 +44,9 @@ Vue.component(MyActionsheet.name, MyActionsheet);
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
+
 const router = new VueRouter({
+  mode: 'history',
   base: __dirname,
   routes
 })

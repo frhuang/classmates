@@ -25,7 +25,7 @@ import MyInterests from './pages/my/MyInterests'
 const routes = [
   {
     path: '/',
-    component: require('./pages/Home.vue')
+    component: Home
   },
   {
     path: '/filter',

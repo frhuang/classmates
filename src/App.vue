@@ -1,23 +1,22 @@
 <template>
-  <div>
-    <!-- <transition :name="transitionName"> -->
-    <router-view></router-view>
-    <!-- </transition> -->
+  <div id="app">
+    <transition :name="transitionName">
+      <router-view class="child-view"></router-view>
+    </transition>
     <loading v-show="isLoading"></loading>
   </div>
 </template>
 
 <style lang="scss">
-@import './assets/sass/components/nav.scss';
 @import './assets/sass/common.scss';
-  // .child-view {
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 0;
-  //   bottom: 0;
-  //   // transition: all .5s cubic-bezier(.55, 0, .1 ,1);
-  // }
+  .child-view {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all .5s ease;
+  }
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
     -webkit-transform: translate(100%, 0);
@@ -35,7 +34,7 @@
     data () {
       return {
         transitionName: 'slide-left',
-        selected: "我的",
+        selected: "找同学",
         isLoading: false
       }
     },
@@ -60,6 +59,9 @@
     //   }
     // },
     methods: {
+      joinTo() {
+        this.$router.push('/my/myinfo');
+      },
       homeRouter() {
         this.$router.push('/');
       },

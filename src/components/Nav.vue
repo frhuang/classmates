@@ -1,27 +1,30 @@
-<template id="nav">
+<template>
   <div class="nav">
-    <mt-tabbar v-model="selected" fixed>
-      <pre-tab-item id="找同学" to="/">找同学</pre-tab-item>
-      <!-- <pre-tab-item id="加入" class="nav-join">加入</pre-tab-item> -->
-      <pre-tab-item id="我的" to="/my">我的</pre-tab-item>
-    </mt-tabbar>
+    <my-navbar v-model="selected" fixed>
+      <my-nav-item id="找同学" @click.native="homeRouter">找同学</my-nav-item>
+      <my-nav-item id="加入" @click.native="joinTo">加入</my-nav-item>
+      <my-nav-item id="我的" @click.native="meRouter">我的</my-nav-item>
+    </my-navbar>
   </div>
 </template>
 
 <script type="text/babel">
-  import PreTabItem from '../uicomponents/TabItem';
   export default {
     data () {
       return {
         selected: "找同学"
       }
     },
-    components: {
-      PreTabItem
+    methods: {
+      joinTo() {
+        this.$router.push('/my/myinfo');
+      },
+      homeRouter() {
+        this.$router.push('/');
+      },
+      meRouter() {
+        this.$router.push('/my')
+      }
     }
   }
 </script>
-
-<style lang="scss" scope>
-  @import '../assets/sass/components/nav.scss';
-</style>
